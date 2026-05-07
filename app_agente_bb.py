@@ -1494,6 +1494,119 @@ if modo == "consumir":
 
 
 # ============================================================================
+# ETAPA 0 — Universo de dados sintéticos (visível, didático)
+# ============================================================================
+DADOS_SINT_DIR = ROOT / "dados_sinteticos"
+
+with st.expander(
+    "📂 Etapa 0 — Universo de dados sintéticos (clique para expandir)",
+    expanded=False,
+):
+    st.markdown(
+        "<p style='color:#5C6670'>Por que <b>sintéticos</b>? Acesso a dados reais "
+        "BB é inviável no prazo. Geramos um universo realista de Licitação "
+        "Eletrônica (Lei 14.133/21) por código auditável, com <b>seed fixo "
+        "(42)</b> — qualquer máquina que rode o gerador obtém os mesmos "
+        "arquivos byte-a-byte.</p>",
+        unsafe_allow_html=True,
+    )
+
+    # Métricas resumo
+    m_files = {
+        "EAPs": "eaps.csv",
+        "Contratos": "contratos.csv",
+        "Etapas": "etapas_eap.csv",
+        "Participantes": "participantes.csv",
+        "Fornecedores": "fornecedores.csv",
+        "EAPs Padrão": "eaps_padrao.csv",
+    }
+    metric_cols = st.columns(len(m_files))
+    for col, (label, fname) in zip(metric_cols, m_files.items()):
+        fp = DADOS_SINT_DIR / fname
+        if fp.exists():
+            try:
+                with open(fp, "r", encoding="utf-8") as f:
+                    n = sum(1 for _ in f) - 1
+            except Exception:
+                n = 0
+            col.metric(label, f"{n:,}")
+        else:
+            col.metric(label, "—")
+
+    # Tabs com prévia
+    if all((DADOS_SINT_DIR / f).exists() for f in m_files.values()):
+        tabs = st.tabs(list(m_files.keys()))
+        for tab, (label, fname) in zip(tabs, m_files.items()):
+            with tab:
+                try:
+                    df_preview = pd.read_csv(
+                        DADOS_SINT_DIR / fname, nrows=5
+                    )
+                    st.caption(
+                        f"`{fname}` · primeiras 5 linhas · "
+                        f"{len(df_preview.columns)} colunas"
+                    )
+                    st.dataframe(
+                        df_preview, use_container_width=True, hide_index=True
+                    )
+                except Exception as e:
+                    st.warning(f"Erro ao ler {fname}: {e}")
+    else:
+        st.warning(
+            "⚠️ Pasta `dados_sinteticos/` incompleta. Clique em "
+            "**Regenerar** abaixo para construir os arquivos do zero."
+        )
+
+    st.markdown("&nbsp;", unsafe_allow_html=True)
+    rg_col1, rg_col2 = st.columns([1, 3])
+    with rg_col1:
+        regenerar = st.button(
+            "🔄 Regenerar (seed=42)",
+            help="Roda `python gerar_dados_sinteticos_eaps.py` e produz "
+                 "os mesmos CSVs commitados no repo. Demora ~10s.",
+            use_container_width=True,
+        )
+    with rg_col2:
+        st.caption(
+            "ℹ️ Em modo demonstração da banca, **não é necessário regerar** "
+            "— os CSVs já vêm versionados no repo. O botão serve para "
+            "*provar* a reprodutibilidade: rode e veja que os números "
+            "do gerador batem com os arquivos commitados."
+        )
+
+    if regenerar:
+        import subprocess
+        with st.status("Regenerando dados sintéticos com seed=42...",
+                       expanded=True) as status:
+            try:
+                proc = subprocess.run(
+                    ["python", "gerar_dados_sinteticos_eaps.py"],
+                    cwd=str(ROOT),
+                    capture_output=True,
+                    text=True,
+                    encoding="utf-8",
+                    errors="replace",
+                    timeout=180,
+                )
+                if proc.returncode == 0:
+                    st.code(proc.stdout[-3000:], language="text")
+                    status.update(
+                        label="✅ Dados regenerados com sucesso (idêntico ao commit)",
+                        state="complete",
+                    )
+                    st.rerun()
+                else:
+                    st.error(f"Falha (rc={proc.returncode})")
+                    st.code(proc.stderr[-2000:], language="text")
+                    status.update(label="❌ Erro ao regenerar", state="error")
+            except subprocess.TimeoutExpired:
+                st.error("Timeout (>3 min). Algo travou no gerador.")
+                status.update(label="❌ Timeout", state="error")
+            except Exception as e:
+                st.error(f"Erro: {type(e).__name__}: {e}")
+                status.update(label="❌ Erro", state="error")
+
+# ============================================================================
 # DEMO 1 — Treinar modelo (codigo abaixo so executa quando modo == 'treinar')
 # ============================================================================
 st.markdown("## 🤖 Demo 1 — Etapa 1: Conversa com o agente preparador")
