@@ -124,7 +124,7 @@ Há 3 sub-caminhos:
 ### Etapa 6 — Testar em evento real
 
 **O que esperar.**
-- Em modo demo: 3 cenários pré-roteirizados como cards clicáveis (EAPs hipotéticas das áreas DICOI, DISUP, DITEC).
+- Em modo demo: 3 cenários pré-roteirizados como cards clicáveis (EAPs hipotéticas das áreas DICOI, DISEC, DITEC).
 - Clicar num cenário pré-preenche o formulário com valores realistas.
 - Predição mostrada com **semáforo** (🟢 / 🟡 / 🔴) e probabilidade.
 - Botão **"Pedir interpretação"** leva o resultado para a Etapa 5.

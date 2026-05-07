@@ -832,7 +832,7 @@ st.markdown(
             <span style='font-weight:400;font-size:1.1rem;color:{BB_AMARELO};
             margin-left:0.6rem;'>· Preparador + Modelo Analítico</span>
         </h1>
-        <div class="bb-sub">DISEC · Banco do Brasil · Licitação Eletrônica · Lei 14.133/21</div>
+        <div class="bb-sub">DISEC · Banco do Brasil · Licitação Eletrônica · Lei 13.303/16</div>
         <span class="bb-tag">HyperCopa DISEC 2026 · MVP</span>
     </div>
     """,
@@ -1505,7 +1505,7 @@ with st.expander(
     st.markdown(
         "<p style='color:#5C6670'>Por que <b>sintéticos</b>? Acesso a dados reais "
         "BB é inviável no prazo. Geramos um universo realista de Licitação "
-        "Eletrônica (Lei 14.133/21) por código auditável, com <b>seed fixo "
+        "Eletrônica (Lei 13.303/16) por código auditável, com <b>seed fixo "
         "(42)</b> — qualquer máquina que rode o gerador obtém os mesmos "
         "arquivos byte-a-byte.</p>",
         unsafe_allow_html=True,
@@ -2819,7 +2819,7 @@ Gerado em: {r['treinado_em']}
                 },
                 {
                     "id": "B",
-                    "titulo": "Cenário B — DISUP · Reforma · ME",
+                    "titulo": "Cenário B — DISEC · Reforma · ME",
                     "descricao": "Reforma de agência · ~R$ 320k · fornecedor pequeno (ME) · sem aditivos",
                     "filtro": lambda df: df[
                         (df.get("porte_fornecedor", "") == "ME") &

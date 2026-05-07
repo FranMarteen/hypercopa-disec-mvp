@@ -1,10 +1,22 @@
-# HyperCopa DISEC 2026 — Agente Predfy + H2O AutoML
+# Predfy — HyperCopa DISEC 2026
 
-> **Modelos preditivos sobre Licitação Eletrônica** (Lei 14.133/21) para
+> **Modelos preditivos sobre Licitação Eletrônica** (Lei 13.303/16) para
 > **apoiar decisões e minimizar riscos** em prazos, intercorrências
 > (impugnação/recurso), atrasos e ruptura contratual.
 >
+> Desenvolvido em conjunto pelos **Times 1 e 2 da ECOA do CESUP-Contratações**
+> (Banco do Brasil) durante a HyperCopa DISEC 2026.
+>
+> **Time 1 — Modelos Analíticos:** João 23 (capitão) · Francisco · Rosali · Silvia
+> **Time 2 — Agente IA + RPA:** Bento 14 (capitão) · Felipe · Amélia · Vânia · Rafael
+>
+> **Visão de produção:** integrar ao fluxo de trabalho e à plataforma do BB para
+> indicar preventivamente riscos e prazos reais. Acoplado ao Agente Predfy, o
+> app se generaliza para qualquer extrato/domínio.
+>
 > ⚖️ **Avaliadores da banca: comece por [`docs/COMO_AVALIAR.md`](docs/COMO_AVALIAR.md).**
+> O **Modo demonstração offline** (sem chave de LLM externa) cobre toda a jornada.
+> Uma chave brinde para o Caminho A será encaminhada por canal seguro.
 
 ---
 
@@ -13,7 +25,7 @@
 Uma **jornada de 7 passos** que conduz o usuário do dado bruto à decisão acionável:
 
 ```
-0. Construção dos dados sintéticos (Faker + regras Lei 14.133, seed=42)
+0. Construção dos dados sintéticos (Faker + regras Lei 13.303, seed=42)
        ↓
 1. Agente Predfy (Teams ou local)  ── feature engineering visível,
                                            escolha de target, formulação
@@ -47,7 +59,7 @@ Este repositório foi **revisado e anonimizado** para distribuição pública à
 
 | O que NÃO está no repo | O que ESTÁ no repo |
 |---|---|
-| ❌ Dados reais de Licitação Eletrônica BB | ✅ Dados 100% sintéticos gerados por código (Faker + regras Lei 14.133) |
+| ❌ Dados reais de Licitação Eletrônica BB | ✅ Dados 100% sintéticos gerados por código (Faker + regras Lei 13.303) |
 | ❌ CPFs, CNPJs, valores nominais reais | ✅ Identificadores e CNPJs gerados artificialmente |
 | ❌ Nomes completos da equipe | ✅ Apenas papéis ("Capitão da Equipe") e codinomes |
 | ❌ Chaves OpenAI ou de qualquer API | ✅ Apenas `.env.example` (template vazio) |

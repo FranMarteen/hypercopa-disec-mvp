@@ -32,7 +32,7 @@ A solução resolve a maior dor da DISEC ao operacionalizar analytics: **o tempo
 
 ### 2.1 Realidade DISEC
 
-A DISEC do Banco do Brasil opera **Licitação Eletrônica** sob a Lei 14.133/21. As áreas demandantes (DICOI, DISUP, DITEC, GECOI) periodicamente recebem perguntas de negócio:
+A DISEC do Banco do Brasil opera **Licitação Eletrônica** sob a Lei 13.303/16. As áreas demandantes (DICOI, DISEC, DITEC, GECOI) periodicamente recebem perguntas de negócio:
 
 - *"Quais EAPs vão atrasar nos próximos 30 dias?"*
 - *"Qual o risco de ruptura contratual desta carteira?"*
@@ -194,13 +194,13 @@ A solução tem **dois caminhos paralelos** para a fase conversacional, com a me
 - [x] MVP funcional com agente + 3 modelos.
 - [x] Identidade visual BB.
 - [x] Relatório HTML auto-contido.
-- [ ] Demonstração com extratos sintéticos das 4 áreas (DICOI, DISUP, DITEC, GECOI).
+- [ ] Demonstração com extratos sintéticos das 4 áreas (DICOI, DISEC, DITEC, GECOI).
 - [ ] Vídeo de 2 min + slides de pitch.
 
 ### 8.2 Médio prazo (após aprovação)
 - [ ] Substituir IBM Plex Sans pelas fontes oficiais BB (BB Texto / BB Títulos).
 - [ ] Publicar agente Copilot no Teams via Copilot Studio (Caminho B oficial — ver `docs/COPILOT_STUDIO_GUIA.md`).
-- [ ] RAG com EAPs Padrão e jurisprudência da Lei 14.133/21.
+- [ ] RAG com EAPs Padrão e jurisprudência da Lei 13.303/16.
 - [ ] Integração com Microsoft Teams (Copilot Studio — já há `teams_copilot/declarative-agent.json`).
 - [ ] Persistência das conversas em banco BB para auditoria.
 
@@ -236,7 +236,7 @@ A solução tem **dois caminhos paralelos** para a fase conversacional, com a me
 - **Capitão da Equipe** — líder técnico, arquitetura da jornada, agente preparador, integração Copilot/Streamlit.
 - **Bento** — modelagem preditiva, feature engineering, validação dos 3 modelos H2O.
 - **João** — fluxo conversacional, refinamento do `system_prompt`, exemplos few-shot, identidade visual BB.
-- **Apoio**: DISEC — terminologia oficial BB e conformidade Lei 14.133/21.
+- **Apoio**: DISEC — terminologia oficial BB e conformidade Lei 13.303/16.
 
 ---
 

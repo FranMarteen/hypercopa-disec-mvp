@@ -209,7 +209,7 @@ def _recomenda(target: str, task: str, metrics: dict,
 
     rec.append(
         "Reentreinar o modelo a cada **trimestre fiscal** ou após mudanças "
-        "relevantes de política de Licitação Eletrônica (Lei 14.133/21)."
+        "relevantes de política de Licitação Eletrônica (Lei 13.303/16)."
     )
 
     return rec[:5]

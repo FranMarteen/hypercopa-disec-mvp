@@ -74,7 +74,7 @@ Na aba **`Settings`** → **`Generative AI`**:
 | Opção | Configuração |
 |---|---|
 | **Knowledge** | `Disabled` (não vamos usar fontes de conhecimento extras) |
-| **Web search** | `Enabled` (útil para o agente consultar a Lei 14.133/21) |
+| **Web search** | `Enabled` (útil para o agente consultar a Lei 13.303/16) |
 | **Code interpreter** | `Disabled` (a execução fica no Streamlit local, NÃO no Copilot) |
 | **Image generation** | `Disabled` |
 | **Actions / Connectors** | **NENHUMA** — fluxo é puramente conversacional |

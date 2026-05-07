@@ -479,7 +479,7 @@ def passo_6_interpretacao(r: dict, meta: dict, nome_base: str) -> Path:
     md += "## Recomendacoes operacionais\n\n"
     if lvl == "OK":
         md += "- Modelo apto para apoio a decisao do gestor de area.\n"
-        md += "- Calibrar limiar com a area DICOI/DISUP/DITEC/GECOI antes de operacionalizar.\n"
+        md += "- Calibrar limiar com a area DICOI/DISEC/DITEC/GECOI antes de operacionalizar.\n"
         md += "- Monitorar mensalmente o drift das variaveis top — reentreinar se desviar.\n"
         md += "- Reentreinar a cada trimestre fiscal.\n"
     elif lvl == "ATENCAO":

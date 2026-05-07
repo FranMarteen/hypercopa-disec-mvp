@@ -13,7 +13,7 @@
 | Time | Time 1 — **Inteligência Analítica para Compras e Fornecedores** |
 | Camada no Predfy | Etapas 0, 2 e 3 da jornada (Dados sintéticos + Treino H2O AutoML + Avaliação) |
 | Tema HyperCopa | Inteligência Acionável para Compras e Fornecedores |
-| Equipe | Equipe HyperCopa DISEC 2026 — Capitão · Bento · João |
+| Equipe | **Time 1 — ECOA / CESUP-Contratações:** João 23 (capitão) · Francisco · Rosali · Silvia |
 | Cooperação | Time 2 (Agente Predfy + Intérprete) — schema único de saída JSON dos modelos |
 | Repositório | https://github.com/FranMarteen/hypercopa-disec-mvp (público) |
 
@@ -21,7 +21,7 @@
 
 ## 2. Resumo executivo
 
-A camada analítica do **Predfy** entrega **3 modelos H2O AutoML treinados, validados e empacotados** sobre dados sintéticos de Licitação Eletrônica (Lei 14.133/21), com schema JSON padronizado consumível pelo Time 2. O escopo de **6 modelos** da proposta original foi **rebalanceado para 3 modelos prioritários** após o Estudo de Campo, com 4 protótipos analíticos auxiliares (recorrência, anomalias, HHI, lock-in) preservados como evidência técnica e backlog de evolução.
+A camada analítica do **Predfy** entrega **3 modelos H2O AutoML treinados, validados e empacotados** sobre dados sintéticos de Licitação Eletrônica (Lei 13.303/16), com schema JSON padronizado consumível pelo Time 2. O escopo de **6 modelos** da proposta original foi **rebalanceado para 3 modelos prioritários** após o Estudo de Campo, com 4 protótipos analíticos auxiliares (recorrência, anomalias, HHI, lock-in) preservados como evidência técnica e backlog de evolução.
 
 A entrega é **reprodutível ponta-a-ponta**: `seed=42` em geradores, splits e AutoML; `h2o==3.46.0.6` pinado em `requirements_app.txt`; dados sintéticos commitados no repo. **A banca clona, instala e vê os mesmos números que a equipe.**
 
@@ -72,7 +72,7 @@ A entrega é **reprodutível ponta-a-ponta**: `seed=42` em geradores, splits e A
 ## 4. Decisões de adaptação (registro técnico)
 
 1. **6 → 3 modelos focados.** Critério: pergunta de negócio acionável > variedade de algoritmos. Mantemos a evidência técnica dos outros 4 como protótipos.
-2. **Dados reais → dados sintéticos.** Risco "Dados não disponíveis no prazo" da proposta (Tabela 10) materializou-se. Mitigação aplicada: geradores sintéticos com regras Lei 14.133/21 e ciclo pós-contrato (aditivos, rescisão, atrasos).
+2. **Dados reais → dados sintéticos.** Risco "Dados não disponíveis no prazo" da proposta (Tabela 10) materializou-se. Mitigação aplicada: geradores sintéticos com regras Lei 13.303/16 e ciclo pós-contrato (aditivos, rescisão, atrasos).
 3. **RPA de coleta → upload manual + sandbox `pandas`.** Fora de escopo do MVP; substituído por jornada "usuário sobe CSV no app". RPA real entra no roadmap.
 4. **Schema por modelo → schema único do relatório H2O.** Reduz custo de integração com Time 2 e padroniza qualquer target futuro.
 5. **Re-treino semanal → re-treino sob demanda.** Mais alinhado ao perfil do usuário-demandante (não há frequência fixa de pergunta).

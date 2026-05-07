@@ -1,9 +1,24 @@
 # MVP Canvas — HyperCopa DISEC 2026
 
-**Equipe:** Equipe HyperCopa DISEC 2026 (Capitão · Bento · João)
 **Solução:** **Predfy** — Agente Predfy (preparação) + Modelo Analítico H2O AutoML (treino) + Intérprete Predfy (interpretação)
+
+**Atribuição:** desenvolvido **em conjunto pelos Times 1 e 2 da ECOA do CESUP-Contratações** (Banco do Brasil) durante a HyperCopa DISEC 2026.
+
+**Equipes:**
+
+| Time | Foco | Integrantes |
+|---|---|---|
+| **Time 1** — Modelos Analíticos | Camadas 0, 2 e 3 (Dados sintéticos · Treino H2O · Avaliação) | João 23 (capitão) · Francisco · Rosali · Silvia |
+| **Time 2** — Agente IA + RPA | Camadas 1, 4, 5 e 6 (Agente Predfy · Pacote · Intérprete · Evento real) | Bento 14 (capitão) · Felipe · Amélia · Vânia · Rafael |
+
 **Repositório público:** https://github.com/FranMarteen/hypercopa-disec-mvp
-**Data de entrega:** 07/05/2026
+**Data de entrega do MVP:** 07/05/2026
+
+**Visão de produção (objetivo final).** O **Predfy** foi concebido para ser **incorporado ao fluxo de trabalho e à plataforma do BB**, atuando preventivamente sobre dados de Licitação Eletrônica para **indicar riscos e prazos reais por carteira / processo / contrato**, **facilitando a tomada de decisão e a gestão de riscos** das áreas demandantes. Adicionalmente, **acoplado ao Agente Predfy**, o app **se generaliza para qualquer extrato / domínio**: o agente conduz a feature engineering, a escolha do target e o reuso dos modelos a partir das definições de negócio do usuário — sem código.
+
+**Modo demonstração para a banca.** O app oferece um **Caminho C — Modo demonstração offline** que dispensa qualquer API externa de LLM (OpenAI ou similar): o agente roda com turnos pré-gravados executando as ferramentas reais sobre o CSV pré-curado, **inteiramente local**. Para a avaliação, a equipe encaminhará à banca uma **chave brinde de OpenAI** (canal seguro, fora do repo) para também demonstrar o **Caminho A com LLM real**, mas o **Caminho C é suficiente para validar toda a jornada**.
+
+> **Para aproveitamento completo em produção:** o app precisa ser hospedado em ambiente do banco com integração ao Microsoft Copilot Studio (Caminho B) — o agente declarativo já está versionado em `teams_copilot/declarative-agent.json` e o passo-a-passo de publicação está em `docs/COPILOT_STUDIO_GUIA.md`. **O Agente Predfy é exatamente a forma de minimizar a fricção** de ter que escrever código toda vez que uma área demandante traz uma pergunta nova.
 
 ---
 
@@ -15,8 +30,8 @@
 
 **Personas atendidas (DISEC – CESUP-Contratações):**
 
-- **Demandantes de áreas-cliente** (DICOI, DISUP, DITEC, GECOI) — gestores que recebem pergunta de negócio (ex: *"quais EAPs vão atrasar?"*) e hoje dependem de fila de DBA + Cientista de Dados.
-- **Líderes de contratação da DISEC** — quem prioriza carteira de Licitação Eletrônica sob a Lei 14.133/21.
+- **Demandantes de áreas-cliente** (DICOI, DISEC, DITEC, GECOI) — gestores que recebem pergunta de negócio (ex: *"quais EAPs vão atrasar?"*) e hoje dependem de fila de DBA + Cientista de Dados.
+- **Líderes de contratação da DISEC** — quem prioriza carteira de Licitação Eletrônica sob a Lei 13.303/16.
 - **Cientistas de dados internos** — deixam de fazer ETL repetitivo e se concentram em modelos de maior valor.
 
 ---
@@ -74,7 +89,7 @@
 - **Tempo de resposta a demandas analíticas** (redução de 3-10 dias → 3-5 min).
 - **Aderência à governança de dados BB** (Caminho B mantém CSV completo no laptop; só amostra trafega no tenant M365 BB sob Microsoft Purview).
 - **Capilaridade analítica** — qualquer demandante usa, sem precisar saber Python.
-- **Conformidade Lei 14.133/21** — terminologia oficial (Licitação Eletrônica, EAPs Padrão, EAPs, Etapas, Contratos, Unidades Demandante/Executante) embutida no `system_prompt` versionado.
+- **Conformidade Lei 13.303/16** — terminologia oficial (Licitação Eletrônica, EAPs Padrão, EAPs, Etapas, Contratos, Unidades Demandante/Executante) embutida no `system_prompt` versionado.
 - **Reprodutibilidade**: banca, equipe e auditoria interna obtêm os mesmos números (seed=42 em todos os pontos de aleatoriedade).
 
 ---
@@ -92,7 +107,7 @@
 | **Intérprete Predfy (Etapa 5)** | Simulador rule-based local (`app/interprete_rules.py`) + OpenAI ou Copilot Teams (opcional) | Lê o JSON do relatório e gera resumo executivo + tradução de métricas + recomendações em PT-BR. Sem rede. UI estilo Teams. |
 | **Frontend / UX** | Streamlit single-page com **identidade visual BB** (paleta `#FAE128` / `#003DA5`, IBM Plex Sans) + **stepper visual de 7 etapas** | Jornada linear, sidebar = estado / centro = ação. Pensado para demandante recorrente, não para data scientist. |
 | **Relatório** | HTML autocontido + JSON estruturado + **pacote ZIP unificado** (HTML + JSON + `summary.md` + `como_reproduzir.txt` + `MVP_CANVAS`) | Banca anexa um único ZIP à entrega. Cada artefato auditável separadamente. |
-| **Dados** | **Sintéticos** (`Faker` desnecessário — geração própria com regras Lei 14.133/21, seed=42) | Acesso a dados reais inviável no prazo. Inclui ciclo pós-contrato (aditivos, rescisão, atrasos, penalidades). 6 datasets relacionais (EAPs, contratos, etapas, participantes, fornecedores, EAPs Padrão). |
+| **Dados** | **Sintéticos** (`Faker` desnecessário — geração própria com regras Lei 13.303/16, seed=42) | Acesso a dados reais inviável no prazo. Inclui ciclo pós-contrato (aditivos, rescisão, atrasos, penalidades). 6 datasets relacionais (EAPs, contratos, etapas, participantes, fornecedores, EAPs Padrão). |
 
 ---
 
@@ -157,7 +172,7 @@
 | Área | Pergunta de negócio análoga | Reaproveitamento |
 |---|---|---|
 | **DIRAO / DIROP** | Risco de inadimplência por carteira | Mesma jornada, target diferente. |
-| **DICOI / DITEC / DISUP / GECOI** | Atraso em projetos de TI / obras | Já contemplada; reaproveitar templates de prompt. |
+| **DICOI / DITEC / DISEC / GECOI** | Atraso em projetos de TI / obras | Já contemplada; reaproveitar templates de prompt. |
 | **DICAR / DIPES** | Turnover por agência / função | Trocar dataset; arquitetura idêntica. |
 | **CRGOV / DIRIS** | Risco regulatório por contrato | Adicionar tools de leitura de cláusulas (RAG). |
 
@@ -175,7 +190,7 @@
 **Caminho de escala.**
 
 1. **Curto prazo (até Pitch Day 10/06/2026):** publicar agente Copilot no Teams via Copilot Studio (Caminho B oficial); rodar pilotos com extratos sintéticos das 4 áreas DISEC.
-2. **Médio prazo:** RAG com EAPs Padrão e jurisprudência da Lei 14.133/21; persistência das conversas em banco BB para auditoria; substituir IBM Plex Sans pelas fontes oficiais BB.
+2. **Médio prazo:** RAG com EAPs Padrão e jurisprudência da Lei 13.303/16; persistência das conversas em banco BB para auditoria; substituir IBM Plex Sans pelas fontes oficiais BB.
 3. **Longo prazo:** out-of-time validation trimestral; detecção de drift; agente proativo (alerta a área quando uma EAP cruza limiar de risco); API REST (já em `api/main.py` em FastAPI) para consumo por sistemas internos BB.
 
 ---

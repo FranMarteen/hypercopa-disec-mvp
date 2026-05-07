@@ -422,7 +422,7 @@ def gerar_fornecedor():
         # Faturamento anual ~ 1.5-6x PL (empresas saudáveis giram o patrimônio)
         faturamento = round(patrimonio * np.random.uniform(1.5, 6.0), 2)
         # Índices: a maioria das empresas saudáveis tem LC/LG/SG > 1
-        # Lei 14.133/21 art. 69: exige índices >= 1 para qualificação econômico-financeira
+        # Lei 13.303/16 art. 69: exige índices >= 1 para qualificação econômico-financeira
         liq_corrente = round(np.clip(np.random.lognormal(0.5, 0.35), 0.5, 6.0), 2)
         liq_geral    = round(np.clip(np.random.lognormal(0.4, 0.30), 0.4, 5.0), 2)
         solv_geral   = round(np.clip(np.random.lognormal(0.6, 0.30), 0.5, 8.0), 2)
@@ -1274,7 +1274,7 @@ CREATE TABLE fornecedor (
     nota_desempenho            NUMERIC(3,1),
     situacao_sicaf             TEXT,
     dt_cadastro                DATE,
-    -- Qualificação econômico-financeira (Lei 14.133/21 art. 69)
+    -- Qualificação econômico-financeira (Lei 13.303/16 art. 69)
     patrimonio_liquido         NUMERIC(16,2),
     capital_social             NUMERIC(16,2),
     faturamento_anual          NUMERIC(16,2),
@@ -1483,7 +1483,7 @@ def main():
     t0 = fase(2, TOTAL, "TEMPLATES (EAP Padrão + Etapas Padrão)",
               "Para cada combinação tipo×objeto criamos uma EAP Padrão com suas etapas. "
               "Engenharia ganha 'Aprovação de Projeto', TI ganha 'Prova de Conceito'. "
-              "Licitação usa 3 etapas reais da Lei 14.133/21: Habilitação Jurídica, "
+              "Licitação usa 3 etapas reais da Lei 13.303/16: Habilitação Jurídica, "
               "Qualificação Técnica, Qualificação Econômico-Financeira.",
               "eap_padrao (templates) + etapa_padrao (etapas do template)")
     passo(f"Cruzando {len(df_tipo)} tipos × {len(df_obj)} objetos = {len(df_tipo)*len(df_obj)} templates...")
@@ -1499,7 +1499,7 @@ def main():
     # ------------------------------------------------------------------
     t0 = fase(3, TOTAL, "FORNECEDORES (cadastro + especialidades + regiões)",
               "Empresas sintéticas com dados econômico-financeiros (PL, capital, "
-              "índices de liquidez/solvência — requisitos de qualificação da Lei 14.133/21). "
+              "índices de liquidez/solvência — requisitos de qualificação da Lei 13.303/16). "
               "N:M com objetos (especialidades) e regiões atendidas.",
               "fornecedor + fornecedor_especialidade + fornecedor_regiao")
     passo(f"Gerando {NUM_FORNECEDORES} empresas (CNPJ, porte, nota, PL, faturamento, índices)...")

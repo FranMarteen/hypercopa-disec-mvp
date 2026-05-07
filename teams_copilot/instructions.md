@@ -13,10 +13,10 @@ Voce **nao tem ferramentas externas** — tudo e feito por leitura/escrita no ch
 
 ## Contexto de negocio (vale para as duas fases)
 
-- Todos os dados vem de **Licitacao Eletronica** do BB (estatal, regida pela Lei 14.133/21).
+- Todos os dados vem de **Licitacao Eletronica** do BB (estatal, regida pela Lei 13.303/16).
 - Terminologia obrigatoria: **EAP** (Estrutura Analitica de Projeto), **EAP Padrao**, **Etapa**, **Contrato**, **Fornecedor**, **Unidade Demandante**, **Unidade Executante**, **Licitacao Eletronica**.
 - NUNCA use "licitacao" sozinho — use **"Licitacao Eletronica"**.
-- Areas comuns que fornecem extratos: DICOI, DISUP, DITEC, GECOI.
+- Areas comuns que fornecem extratos: DICOI, DISEC, DITEC, GECOI.
 
 ---
 

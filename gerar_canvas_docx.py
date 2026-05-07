@@ -140,8 +140,8 @@ def main():
             ("h", "Categoria do desafio"),
             ("p", "Inteligência Acionável para Compras e Fornecedores."),
             ("h", "Personas atendidas (DISEC – CESUP-Contratações)"),
-            ("b", "Demandantes de áreas-cliente (DICOI, DISUP, DITEC, GECOI) — gestores que recebem perguntas analíticas e hoje dependem de fila DBA + Cientista de Dados."),
-            ("b", "Líderes de contratação da DISEC — quem prioriza carteira sob a Lei 14.133/21."),
+            ("b", "Demandantes de áreas-cliente (DICOI, DISEC, DITEC, GECOI) — gestores que recebem perguntas analíticas e hoje dependem de fila DBA + Cientista de Dados."),
+            ("b", "Líderes de contratação da DISEC — quem prioriza carteira sob a Lei 13.303/16."),
             ("b", "Cientistas de dados internos — deixam de fazer ETL repetitivo e focam em modelos de maior valor."),
         ],
     )
@@ -179,7 +179,7 @@ def main():
             ("b", "Tempo de resposta a demandas analíticas (3-10 dias → 3-5 min)."),
             ("b", "Aderência à governança de dados BB (Caminho B mantém CSV completo no laptop; só amostra trafega no tenant M365 sob Microsoft Purview)."),
             ("b", "Capilaridade analítica — qualquer demandante usa, sem precisar saber Python."),
-            ("b", "Conformidade Lei 14.133/21 — terminologia oficial (Licitação Eletrônica, EAPs Padrão) embutida no system_prompt versionado em git."),
+            ("b", "Conformidade Lei 13.303/16 — terminologia oficial (Licitação Eletrônica, EAPs Padrão) embutida no system_prompt versionado em git."),
         ],
     )
 
@@ -199,7 +199,7 @@ def main():
             ("h", "Frontend / UX"),
             ("b", "Streamlit single-page com identidade visual BB (paleta #FAE128 / #003DA5, IBM Plex Sans como proxy de BB Texto). Jornada linear; sidebar = estado, centro = ação."),
             ("h", "Dados"),
-            ("b", "Sintéticos (Faker + regras Lei 14.133/21). Acesso a dados reais inviável no prazo. Inclui ciclo pós-contrato (aditivos, rescisão, atrasos)."),
+            ("b", "Sintéticos (Faker + regras Lei 13.303/16). Acesso a dados reais inviável no prazo. Inclui ciclo pós-contrato (aditivos, rescisão, atrasos)."),
         ],
     )
 
@@ -254,7 +254,7 @@ def main():
         [
             ("h", "Outras áreas BB que podem ser beneficiadas (mesmo padrão de jornada)"),
             ("b", "DIRAO / DIROP — risco de inadimplência por carteira."),
-            ("b", "DICOI / DITEC / DISUP / GECOI — atraso em projetos de TI / obras (já contemplada)."),
+            ("b", "DICOI / DITEC / DISEC / GECOI — atraso em projetos de TI / obras (já contemplada)."),
             ("b", "DICAR / DIPES — turnover por agência ou função."),
             ("b", "CRGOV / DIRIS — risco regulatório por contrato (com RAG de cláusulas)."),
             ("h", "Previsão de ganhos (cenário DISEC anualizado, hipóteses conservadoras)"),
@@ -265,7 +265,7 @@ def main():
             ("b", "Saldo estimado primeiro ano DISEC: ~ R$ 4 milhões."),
             ("h", "Caminho de escala"),
             ("b", "Curto prazo (até 10/06/2026): publicar agente Copilot no Teams (Copilot Studio); pilotar com extratos das 4 áreas DISEC."),
-            ("b", "Médio prazo: RAG com EAPs Padrão e jurisprudência da Lei 14.133/21; persistência das conversas em banco BB; substituir IBM Plex Sans pelas fontes oficiais BB."),
+            ("b", "Médio prazo: RAG com EAPs Padrão e jurisprudência da Lei 13.303/16; persistência das conversas em banco BB; substituir IBM Plex Sans pelas fontes oficiais BB."),
             ("b", "Longo prazo: out-of-time validation trimestral; detecção de drift; agente proativo (alerta quando EAP cruza limiar de risco); API REST para sistemas internos BB."),
         ],
     )

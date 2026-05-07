@@ -13,7 +13,7 @@
 | Time | Time 2 — **Inteligência Acionável para Compras e Fornecedores** |
 | Camada no Predfy | Etapas 1, 4, 5 e 6 da jornada (Preparação + Pacote ZIP + Interpretação + Evento real) |
 | Tema HyperCopa | Inteligência Acionável para Compras e Fornecedores |
-| Equipe | Equipe HyperCopa DISEC 2026 — Capitão · Bento · João |
+| Equipe | **Time 2 — ECOA / CESUP-Contratações:** Bento 14 (capitão) · Felipe · Amélia · Vânia · Rafael |
 | Cooperação | Time 1 (Modelos Analíticos) — consome JSON do relatório H2O |
 | Repositório | https://github.com/FranMarteen/hypercopa-disec-mvp (público) |
 
@@ -26,7 +26,7 @@ A camada de interação do **Predfy** entrega um **Agente Predfy conversacional 
 A arquitetura **RAG + ChromaDB** da proposta original foi substituída por **Tool Use (function calling)** com sandbox `pandas`, decisão validada na Mentoria de Agentes IA (01-02/04). Os fluxos RPA de alertas via e-mail/Teams foram substituídos por:
 
 - **Intérprete Predfy** rule-based local (`app/interprete_rules.py`) — UI estilo Teams que lê o JSON do relatório H2O e devolve resumo executivo + recomendações em PT-BR, sem rede externa.
-- **3 cenários pré-roteirizados** na Etapa 6 (DICOI/DISUP/DITEC) com **semáforo visual de risco** 🟢/🟡/🔴.
+- **3 cenários pré-roteirizados** na Etapa 6 (DICOI/DISEC/DITEC) com **semáforo visual de risco** 🟢/🟡/🔴.
 - **Pacote ZIP unificado** na Etapa 4 (HTML + JSON + summary + canvas + instruções de reprodução) — banca anexa um único arquivo à entrega.
 
 ---
@@ -37,7 +37,7 @@ A arquitetura **RAG + ChromaDB** da proposta original foi substituída por **Too
 
 | Componente proposto (Mar/2026) | Status | O que foi entregue | Justificativa da mudança |
 |---|---|---|---|
-| LLM + RAG (LangChain + ChromaDB/FAISS) | 🟡 substituído | **OpenAI gpt-4o-mini com Tool Use (4 tools)**: `ler_schema`, `ler_amostra`, `executar_pandas`, `salvar_csv_final` — sandbox `exec()` com globals restritos | Function calling tem cobertura suficiente para o caso de uso (preparação de dados). RAG normativo (Lei 14.133) virou roadmap. |
+| LLM + RAG (LangChain + ChromaDB/FAISS) | 🟡 substituído | **OpenAI gpt-4o-mini com Tool Use (4 tools)**: `ler_schema`, `ler_amostra`, `executar_pandas`, `salvar_csv_final` — sandbox `exec()` com globals restritos | Function calling tem cobertura suficiente para o caso de uso (preparação de dados). RAG normativo (Lei 13.303) virou roadmap. |
 | Interface Teams/Web | ✅ entregue (dois caminhos) | **Caminho A:** chat embutido em Streamlit. **Caminho B:** Microsoft Copilot do Teams via Copilot Studio (declarativo). | Caminho B é o de **produção BB** — trafega no tenant M365 sob acordo Microsoft↔BB com auditoria Microsoft Purview automática. |
 | Alertas Proativos (anomalias, concentração, lock-in, picos) | 🟡 substituído | **Semáforo de risco** + interpretação executiva no Copilot do Teams a partir do JSON do relatório H2O | Alerta proativo via e-mail exige RPA agendado (fora de escopo MVP). Substituído por interpretação sob demanda — efeito equivalente ao usuário-demandante. |
 | Consultas sob demanda (recorrência, fornecedor, volume, previsão) | ✅ entregue (genérico) | Agente entende qualquer pergunta preditiva (não fica preso aos 4 tipos da proposta) e dispara o pipeline H2O AutoML | Genericidade > catálogo fechado: 1 jornada cobre N perguntas. |
@@ -48,7 +48,7 @@ A arquitetura **RAG + ChromaDB** da proposta original foi substituída por **Too
 | Camada proposta | Status | O que foi usado | Justificativa |
 |---|---|---|---|
 | Agente IA: LLM + RAG (Python/LangChain) | 🟡 substituído | OpenAI SDK direto + Tool Use; Microsoft Copilot Studio para Caminho B | LangChain agrega complexidade desnecessária para 4 tools determinísticas. Copilot Studio é mais alinhado à governança BB. |
-| RAG: Vector DB (ChromaDB/FAISS) | 🔴 não implementado | n/a — schema + amostra cabem no contexto do LLM | Modelo de vetores prematuro. Roadmap: RAG de Lei 14.133/21 e EAPs Padrão. |
+| RAG: Vector DB (ChromaDB/FAISS) | 🔴 não implementado | n/a — schema + amostra cabem no contexto do LLM | Modelo de vetores prematuro. Roadmap: RAG de Lei 13.303/16 e EAPs Padrão. |
 | RPA (automação): PowerAutomate / Python | 🟡 parcial | Sandbox Python in-app + Copilot do Teams (interpretação) | PowerAutomate exigiria integração com sistemas BB ainda fora de escopo. |
 | RPA (ingestão): Python + cron | 🔴 não implementado | Substituído por upload manual no app | Coerente com decisão Time 1 (sem dados reais → sem cron de coleta). |
 | Interface: Teams / Streamlit | ✅ entregue | **Streamlit single-page com identidade visual BB** + agente Copilot Studio publicável no Teams | Streamlit cobre Caminhos A e B; Teams é nativo no Caminho B. |
@@ -79,7 +79,7 @@ A arquitetura **RAG + ChromaDB** da proposta original foi substituída por **Too
 
 ## 4. Decisões de adaptação (registro técnico)
 
-1. **RAG → Tool Use.** Function calling com 4 tools determinísticas atende preparação de dados com mais auditabilidade do que RAG. RAG fica para a evolução (jurisprudência Lei 14.133, EAPs Padrão).
+1. **RAG → Tool Use.** Function calling com 4 tools determinísticas atende preparação de dados com mais auditabilidade do que RAG. RAG fica para a evolução (jurisprudência Lei 13.303, EAPs Padrão).
 2. **LangChain → OpenAI SDK direto.** Reduz dependência de framework e ganha controle sobre o sandbox de execução.
 3. **Caminho B (Microsoft Copilot do Teams) é a contribuição inesperada.** Não estava na proposta original, mas é o caminho de produção BB: zero custo marginal (incluso na licença Copilot já paga), tenant M365 sob acordo, auditoria Microsoft Purview automática. Materializado via Copilot Studio (declarativo, sem código).
 4. **Alertas push → interpretação pull.** Em vez de e-mail/Teams disparado por anomalia, o usuário pede análise quando precisa e o Copilot interpreta. Mais barato e mais respeitoso da atenção dos gestores.
@@ -159,10 +159,10 @@ A arquitetura **RAG + ChromaDB** da proposta original foi substituída por **Too
 ## 9. Próximos passos (pós-MVP até Pitch Day 10/06/2026)
 
 1. **Publicar o agente Copilot do Teams oficialmente** — submeter `teams_copilot/declarative-agent.json` ao admin M365 BB (Caminho B em produção).
-2. **RAG da Lei 14.133/21 + EAPs Padrão.** ChromaDB ou Vector DB do tenant Microsoft.
+2. **RAG da Lei 13.303/16 + EAPs Padrão.** ChromaDB ou Vector DB do tenant Microsoft.
 3. **Alertas push** (e-mail/Teams) quando a integração com sistemas internos BB liberar trigger por evento.
 4. **Validação SICAF** via API SICAF (quando acesso for liberado).
-5. **Piloto DISEC** com 4 áreas-cliente (DICOI, DISUP, DITEC, GECOI) para aferir métrica de "satisfação dos gestores > 4,0/5,0" da proposta original.
+5. **Piloto DISEC** com 4 áreas-cliente (DICOI, DISEC, DITEC, GECOI) para aferir métrica de "satisfação dos gestores > 4,0/5,0" da proposta original.
 6. **Persistência de conversas em banco BB** para auditoria e feedback loop.
 7. **Substituir IBM Plex Sans** pelas fontes oficiais BB (BB Texto / BB Títulos) via `@font-face` quando licenciadas.
 

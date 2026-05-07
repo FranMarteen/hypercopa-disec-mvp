@@ -247,7 +247,7 @@ def main():
     paragraph(
         doc,
         "A DISEC do Banco do Brasil opera Licitacao Eletronica sob a Lei "
-        "14.133/21. As areas demandantes (DICOI, DISUP, DITEC, GECOI) "
+        "13.303/16. As areas demandantes (DICOI, DISEC, DITEC, GECOI) "
         "periodicamente recebem perguntas de negocio:",
     )
     bullet(doc, "Quais EAPs vao atrasar nos proximos 30 dias?")
@@ -459,7 +459,7 @@ def main():
     bullet(doc, "[ok] Identidade visual BB.")
     bullet(doc, "[ok] Relatorio HTML auto-contido.")
     bullet(doc, "[ ] Demonstracao com extratos sinteticos das 4 areas "
-                "(DICOI, DISUP, DITEC, GECOI).")
+                "(DICOI, DISEC, DITEC, GECOI).")
     bullet(doc, "[ ] Video de 2 min + slides de pitch.")
 
     heading2(doc, "8.2 Medio prazo (apos aprovacao)")
@@ -467,7 +467,7 @@ def main():
                 "(BB Texto / BB Titulos).")
     bullet(doc, "Publicar agente Copilot no Teams via Copilot Studio "
                 "(Caminho B oficial — ver docs/COPILOT_STUDIO_GUIA.md).")
-    bullet(doc, "RAG com EAPs Padrao e jurisprudencia da Lei 14.133/21.")
+    bullet(doc, "RAG com EAPs Padrao e jurisprudencia da Lei 13.303/16.")
     bullet(doc, "Integracao com Microsoft Teams (Copilot Studio).")
     bullet(doc, "Persistencia das conversas em banco BB para auditoria.")
 
@@ -516,7 +516,7 @@ def main():
     bullet(doc, "João — fluxo conversacional, refinamento do system_prompt, "
                 "exemplos few-shot, identidade visual BB.")
     bullet(doc, "Apoio: DISEC — terminologia oficial BB e conformidade "
-                "Lei 14.133/21.")
+                "Lei 13.303/16.")
 
     # ----- 11. Conclusao -----
     heading1(doc, "11. Conclusao")
