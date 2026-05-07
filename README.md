@@ -41,19 +41,27 @@ A jornada tem **3 caminhos** para a fase conversacional, escolhidos na sidebar:
 
 ---
 
-## Quickstart para a banca (sem chave OpenAI)
+## Segurança e privacidade — leia antes de clonar
 
-```bash
-git clone https://github.com/FranMarteen/hypercopa-disec-mvp.git
-cd hypercopa-disec-mvp
-python -m venv .venv
-.venv\Scripts\activate                    # Windows
-# source .venv/bin/activate               # Linux/Mac
-pip install -r requirements_app.txt
-streamlit run app_agente_bb.py
-```
+Este repositório foi **revisado e anonimizado** para distribuição pública à banca avaliadora. **Nenhum dado real do Banco do Brasil ou pessoal está incluído.**
 
-Abra `http://localhost:8501` e na sidebar **ative o toggle "🎓 Modo demonstração da banca"**. A jornada inteira roda sem rede externa, com cenário pré-curado *EAP DICOI / "vai atrasar?"*.
+| O que NÃO está no repo | O que ESTÁ no repo |
+|---|---|
+| ❌ Dados reais de Licitação Eletrônica BB | ✅ Dados 100% sintéticos gerados por código (Faker + regras Lei 14.133) |
+| ❌ CPFs, CNPJs, valores nominais reais | ✅ Identificadores e CNPJs gerados artificialmente |
+| ❌ Nomes completos da equipe | ✅ Apenas papéis ("Capitão da Equipe") e codinomes |
+| ❌ Chaves OpenAI ou de qualquer API | ✅ Apenas `.env.example` (template vazio) |
+| ❌ Logs de produção, dumps de banco, screenshots de sistemas BB | ✅ Apenas saídas geradas localmente pela jornada da demo |
+| ❌ Documentos com classificação interna BB | ✅ Apenas o MVP Canvas e relatórios gerados pelo MVP |
+
+**Outras camadas de proteção embutidas:**
+- `.gitignore` bloqueia `.env`, `dados reais/`, `dados_reais_limpos/`, PDFs, modelos H2O salvos e relatórios gerados.
+- **Sandbox de execução**: o agente roda código `pandas` em `exec()` com globals restritos — sem `os`, `subprocess`, rede, abertura de arquivos.
+- **Caminho A** (OpenAI): apenas schema + ≤ 20 linhas de amostra trafegam para o LLM. CSV inteiro nunca sai do laptop.
+- **Caminho B** (Copilot Teams): em produção BB, trafega no tenant M365 sob acordo Microsoft↔BB com auditoria Microsoft Purview.
+- **Caminho C** (Modo demo): zero chamadas externas — todas as respostas do agente são pré-gravadas e versionadas em `docs/demo/script_turnos.json`.
+
+**Após o Pitch Day (10/06/2026)**, este repositório pode ser convertido para privado sem prejuízo para os avaliadores que já testaram.
 
 ---
 
@@ -61,11 +69,84 @@ Abra `http://localhost:8501` e na sidebar **ative o toggle "🎓 Modo demonstra�
 
 | Item | Versão | Como verificar |
 |---|---|---|
-| Python | 3.10, 3.11 ou 3.12 | `python --version` |
-| Java JDK | 17 ou 21 | `java -version` (o H2O exige Java) |
-| Memória RAM | ≥ 4 GB livre | — |
+| **Python** | 3.10, 3.11 ou 3.12 (3.13/3.14 podem precisar afrouxar pins do `requirements_app.txt`) | `python --version` |
+| **Java JDK** | 17 ou 21 (o H2O exige Java; sem isso o treino não inicia) | `java -version` |
+| **Memória RAM** | ≥ 4 GB livre | — |
+| **Espaço em disco** | ≥ 2 GB livres (h2o + venv) | — |
 
-> Se a máquina não tem Java, baixe o [JDK 21 ZIP portátil](https://www.oracle.com/java/technologies/downloads/#jdk21-windows) e descompacte numa pasta — não precisa instalar como administrador.
+> Se a máquina não tem Java, baixe o [JDK 21 ZIP portátil](https://www.oracle.com/java/technologies/downloads/#jdk21-windows) e descompacte numa pasta — não precisa instalar como administrador. Adicione `bin\` ao `PATH` da sessão antes de iniciar o app.
+
+---
+
+## Quickstart — sem chave OpenAI (Modo demonstração da banca)
+
+A jornada inteira roda offline, com cenário pré-curado *"EAP DICOI / vai atrasar?"* e **resultado idêntico em qualquer máquina** (seed=42).
+
+### Windows (PowerShell)
+
+Cole **uma linha por vez** (não cole o bloco inteiro — quebras de linha podem fragmentar URLs):
+
+```powershell
+git clone https://github.com/FranMarteen/hypercopa-disec-mvp.git
+```
+
+```powershell
+cd hypercopa-disec-mvp
+```
+
+```powershell
+python -m venv .venv
+```
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+```
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+> Esperado: o prompt vira `(.venv) PS C:\...\hypercopa-disec-mvp>`. Se não aparecer `(.venv)`, o venv não ativou.
+
+```powershell
+python -m pip install --upgrade pip
+```
+
+```powershell
+pip install -r requirements_app.txt
+```
+
+> Demora 3-7 minutos (o H2O tem ~250 MB).
+
+```powershell
+streamlit run app_agente_bb.py
+```
+
+> Abre `http://localhost:8501` no navegador. Na sidebar, ative o toggle **🎓 Modo demonstração da banca** e siga a jornada de 7 etapas.
+
+Para encerrar: `Ctrl+C` no PowerShell. Para sair do venv depois: `deactivate`.
+
+### Linux / macOS (bash)
+
+```bash
+git clone https://github.com/FranMarteen/hypercopa-disec-mvp.git
+cd hypercopa-disec-mvp
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements_app.txt
+streamlit run app_agente_bb.py
+```
+
+### Solução para erros comuns
+
+| Erro | Solução |
+|---|---|
+| `Activate.ps1 cannot be loaded — execution policies` | Rode `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force` antes |
+| `Could not find a version that satisfies h2o==3.46.0.6` (em Python 3.13/3.14) | Edite `requirements_app.txt` e troque `==` por `~=` no `h2o` e `scikit-learn`, ou use Python 3.10–3.12 |
+| `H2OConnectionError: Java not found` | Instale o JDK 17 ou 21 e reabra o terminal |
+| `MemoryError` ao iniciar H2O | Feche outros apps; H2O precisa de ~2 GB livres |
+| App carrega mas modo demo não pré-carrega CSV | Garanta que `dados_sinteticos/contratos.csv` existe (ele vem versionado no repo) |
 
 ---
 
