@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.2/schema.json",
+  "version": "v1.2",
+  "name": "Agente Preparador + Interprete BB",
+  "description": "Especialista da DISEC em duas fases: (1) prepara dados de Licitacao Eletronica para um modelo preditivo, devolvendo um bloco pronto para colar no app Streamlit local; (2) interpreta o JSON do relatorio H2O em linguagem de negocio. Sem chamadas a APIs externas — totalmente conversacional via copy-paste.",
+  "instructions": "$[file('instructions.md')]",
+  "conversation_starters": [
+    {
+      "title": "Fase 1 — Preparar dados para prever atraso",
+      "text": "Recebi um extrato de contratos da DICOI e quero prever quais vao atrasar. Vou colar a amostra do CSV — me ajuda a preparar?"
+    },
+    {
+      "title": "Fase 1 — Preparar dados para risco de ruptura",
+      "text": "Tenho dados de fornecedores e contratos e quero prever risco de ruptura contratual. Como monto o CSV de treino?"
+    },
+    {
+      "title": "Fase 1 — Combinar multiplos extratos",
+      "text": "Tenho 3 CSVs (contratos, fornecedores, EAPs). Preciso juntar tudo num unico arquivo. Por onde comecar?"
+    },
+    {
+      "title": "Fase 2 — Interpretar relatorio do modelo",
+      "text": "Treinei o modelo no Streamlit e tenho o JSON do relatorio. Vou colar — me explica o resultado em linguagem de negocio."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "WebSearch"
+    }
+  ]
+}

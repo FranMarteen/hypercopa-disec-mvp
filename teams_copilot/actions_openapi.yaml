@@ -1,0 +1,234 @@
+openapi: 3.0.1
+info:
+  title: H2O Guiado — Agente Preparador BB
+  version: 2.0.0
+  description: >
+    Actions do Agente Preparador H2O. Expõe as 4 tools do preparador local
+    (ler_schema, ler_amostra, executar_pandas, salvar_csv_final) como endpoints
+    HTTP para o Microsoft 365 Copilot chamar. O backend executa tudo localmente
+    no servidor da DISEC — nenhum CSV cru sai da rede BB.
+
+servers:
+  - url: https://SEU-TUNEL-OU-DOMINIO.com
+    description: URL pública da FastAPI do preparador (definir antes do deploy)
+
+paths:
+  /preparador/ler_schema:
+    post:
+      operationId: preparadorLerSchema
+      summary: Lê o schema (colunas e tipos) de um CSV já disponibilizado pelo usuário
+      description: >
+        Retorna o schema (colunas e seus tipos) de um CSV que o usuário já
+        disponibilizou na sessão. Use para descobrir o que existe no arquivo
+        antes de propor qualquer preparação.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LerSchemaRequest'
+      responses:
+        '200':
+          description: Schema retornado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchemaResponse'
+        '404':
+          description: Arquivo não encontrado na sessão
+
+  /preparador/ler_amostra:
+    post:
+      operationId: preparadorLerAmostra
+      summary: Retorna as N primeiras linhas de um CSV
+      description: >
+        Retorna as N primeiras linhas de um CSV para entender o conteúdo real
+        (valores típicos, formato de datas, categorias). Use logo após ler_schema.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LerAmostraRequest'
+      responses:
+        '200':
+          description: Amostra retornada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AmostraResponse'
+        '404':
+          description: Arquivo não encontrado na sessão
+
+  /preparador/executar_pandas:
+    post:
+      operationId: preparadorExecutarPandas
+      summary: Executa código pandas em sandbox para preparar o DataFrame
+      description: >
+        Executa código pandas/numpy em sandbox para preparar o DataFrame
+        (JOINs, filtros, seleção de colunas, tratamento de nulos, validações
+        estatísticas). O código DEVE atribuir o resultado final à variável
+        chamada `resultado`. O agente tem acesso ao dicionário `dfs` contendo
+        todos os arquivos disponíveis — acesse como `dfs['nome_arquivo.csv']`
+        ou `dfs['df_abc12345']`. Bibliotecas disponíveis: `pd` (pandas),
+        `np` (numpy). Sem acesso a rede, filesystem ou imports.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecutarPandasRequest'
+      responses:
+        '200':
+          description: Execução bem-sucedida, retorna df_id e metadados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutarPandasResponse'
+        '400':
+          description: Erro de execução (sintaxe, coluna inexistente, etc)
+
+  /preparador/salvar_csv_final:
+    post:
+      operationId: preparadorSalvarCsvFinal
+      summary: Persiste o DataFrame final e grava sidecar .meta.json
+      description: >
+        Persiste o DataFrame final (criado por executar_pandas) como CSV em
+        disco e grava um sidecar .meta.json com a pergunta, o target e o tipo
+        de tarefa. O H2O Guiado lê esse sidecar para pré-preencher a pergunta,
+        escolher o target e fazer o split treino/teste automaticamente.
+        Use APENAS após validar. Chame exatamente uma vez por conversa.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalvarCsvFinalRequest'
+      responses:
+        '200':
+          description: CSV e sidecar gravados com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SalvarCsvFinalResponse'
+        '404':
+          description: df_id inexistente
+
+components:
+  schemas:
+    LerSchemaRequest:
+      type: object
+      required: [nome_arquivo]
+      properties:
+        nome_arquivo:
+          type: string
+          description: Nome do CSV exatamente como aparece na lista "Arquivos disponíveis agora".
+
+    SchemaResponse:
+      type: object
+      properties:
+        nome_arquivo:
+          type: string
+        n_linhas:
+          type: integer
+        colunas:
+          type: array
+          items:
+            type: object
+            properties:
+              nome:
+                type: string
+              dtype:
+                type: string
+              pct_nulos:
+                type: number
+
+    LerAmostraRequest:
+      type: object
+      required: [nome_arquivo]
+      properties:
+        nome_arquivo:
+          type: string
+        n:
+          type: integer
+          minimum: 1
+          maximum: 20
+          default: 5
+          description: Quantas linhas trazer.
+
+    AmostraResponse:
+      type: object
+      properties:
+        nome_arquivo:
+          type: string
+        linhas:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+
+    ExecutarPandasRequest:
+      type: object
+      required: [codigo]
+      properties:
+        codigo:
+          type: string
+          description: >
+            Código Python (pandas) a executar. Deve terminar atribuindo um
+            DataFrame ou resultado à variável `resultado`. Exemplo:
+            "contratos = dfs['contratos_ti_2024.csv']; resultado = contratos[contratos['dt_vigencia_fim'] < '2025-01-01'][['valor_contratado','porte_fornecedor','teve_atraso']]".
+
+    ExecutarPandasResponse:
+      type: object
+      properties:
+        df_id:
+          type: string
+          description: ID do DataFrame gerado, para passar em salvar_csv_final.
+        n_linhas:
+          type: integer
+        n_colunas:
+          type: integer
+        colunas:
+          type: array
+          items:
+            type: string
+        preview:
+          type: array
+          description: Primeiras 5 linhas para o agente inspecionar o resultado.
+          items:
+            type: object
+            additionalProperties: true
+
+    SalvarCsvFinalRequest:
+      type: object
+      required: [df_id, nome_sugerido, pergunta, target, task]
+      properties:
+        df_id:
+          type: string
+          description: ID retornado por executar_pandas (ex: "df_abc12345").
+        nome_sugerido:
+          type: string
+          description: Nome descritivo do dataset de treino, sem extensão (ex: "contratos_atraso_ti_2026-04-17").
+        pergunta:
+          type: string
+          description: Pergunta preditiva em linguagem natural, PT-BR.
+        target:
+          type: string
+          description: Nome EXATO da coluna-alvo do modelo no DataFrame final.
+        task:
+          type: string
+          enum: [classification, regression]
+          description: classification se binário/categórico; regression se numérico contínuo.
+
+    SalvarCsvFinalResponse:
+      type: object
+      properties:
+        caminho_csv:
+          type: string
+        caminho_meta:
+          type: string
+        nome_arquivo:
+          type: string
+        mensagem:
+          type: string
+          description: Confirmação amigável para o agente repassar ao usuário.

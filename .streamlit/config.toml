@@ -1,0 +1,23 @@
+# Configuração do Streamlit — H2O Guiado
+# Aumenta limites para suportar CSVs reais (>200MB)
+
+[server]
+# Tamanho máximo de upload em MB (default: 200)
+maxUploadSize = 1024
+
+# Tamanho máximo de mensagem WebSocket em MB (default: 200)
+# Necessário para renderizar DataFrames grandes
+maxMessageSize = 1024
+
+# Timeout do WebSocket (segundos) — útil para cargas longas
+[browser]
+gatherUsageStats = false
+
+[theme]
+# Tema BB light — branco com primario azul BB
+base = "light"
+primaryColor = "#003DA5"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F7F8FA"
+textColor = "#1F1F1F"
+font = "sans serif"

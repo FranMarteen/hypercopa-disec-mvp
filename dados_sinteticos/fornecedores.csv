@@ -1,0 +1,301 @@
+﻿fornecedor_id,razao_social,cnpj,uf,porte,especialidade_principal,especialidades,nota_desempenho,num_contratos_ativos,situacao_sicaf,dt_cadastro
+FORN-0001,Express Engenharia Ltda,21.819.600/1338-90,AL,EPP,Facilities - Recepção,Facilities - Recepção|Material de Escritório,5.8,1,Irregular,2020-03-25
+FORN-0002,Net Transporte ME,02.654.235/1161-55,SE,Médio,Logística - Transporte,Logística - Transporte,8.0,1,Regular,2020-12-19
+FORN-0003,Sul Serviços ME,84.959.310/3413-16,CE,Médio,Consultoria - Jurídica,Consultoria - Jurídica|TI - Licenciamento,7.5,1,Regular,2023-02-01
+FORN-0004,Express Telecomunicações S.A.,41.928.327/6483-50,PE,EPP,Facilities - Vigilância,Facilities - Vigilância,6.9,3,Regular,2018-05-12
+FORN-0005,Sul Construções ME,95.376.724/2388-49,AM,ME,Facilities - Vigilância,Facilities - Vigilância,5.8,3,Regular,2022-06-24
+FORN-0006,Smart Segurança S.A.,12.269.166/9784-80,MS,ME,TI - Licenciamento,TI - Licenciamento|TI - Desenvolvimento,8.1,2,Regular,2019-04-15
+FORN-0007,Fast Transporte Eireli,46.270.482/8148-93,PR,EPP,Segurança Patrimonial,Segurança Patrimonial|Engenharia - Obras,8.7,3,Regular,2022-03-12
+FORN-0008,Norte Logística EPP,57.015.430/3911-71,AC,Médio,Material de Escritório,Material de Escritório|TI - Infraestrutura|Logística - Armazenagem,5.7,4,Regular,2023-12-22
+FORN-0009,Norte Consultoria S.A.,89.638.346/5787-13,PE,ME,Facilities - Limpeza,Facilities - Limpeza|Logística - Transporte,6.0,3,Regular,2018-09-20
+FORN-0010,Master Soluções EPP,10.310.518/3473-82,TO,EPP,Facilities - Recepção,Facilities - Recepção|TI - Infraestrutura,5.1,1,Regular,2023-04-21
+FORN-0011,Brasil Manutenção ME,65.667.010/6513-33,AL,Grande,Engenharia - Obras,Engenharia - Obras,6.5,0,Regular,2023-01-12
+FORN-0012,Omega Gestão S.A.,17.810.801/3267-73,MA,ME,Facilities - Recepção,Facilities - Recepção,8.4,8,Vencido,2018-08-29
+FORN-0013,Prime Infraestrutura Ltda,68.723.430/9805-00,PI,EPP,Logística - Transporte,Logística - Transporte|Treinamento e Capacitação|Engenharia - Manutenção,8.7,3,Regular,2023-05-07
+FORN-0014,Max Limpeza S.A.,12.191.361/9399-09,MG,Médio,Material de Escritório,Material de Escritório,9.5,2,Regular,2022-09-14
+FORN-0015,Fast Limpeza Eireli,46.247.510/7991-18,DF,ME,Facilities - Vigilância,Facilities - Vigilância|Segurança Patrimonial|Engenharia - Obras,5.4,3,Regular,2023-09-04
+FORN-0016,Nacional Consultoria Eireli,27.849.808/4124-11,TO,ME,Facilities - Recepção,Facilities - Recepção|Consultoria - Gestão|Engenharia - Manutenção,9.1,6,Regular,2019-09-29
+FORN-0017,Nacional Digital EPP,34.874.016/4005-24,BA,Grande,Segurança Patrimonial,Segurança Patrimonial,9.6,2,Regular,2022-12-15
+FORN-0018,Top Gestão EPP,28.059.826/2045-05,DF,Médio,TI - Licenciamento,TI - Licenciamento,7.8,0,Irregular,2020-10-19
+FORN-0019,Fast Engenharia Eireli,32.260.256/3421-60,PB,Grande,Marketing e Comunicação,Marketing e Comunicação|Engenharia - Manutenção,7.5,2,Regular,2020-06-30
+FORN-0020,Tech Administração Eireli,30.365.414/5868-50,RS,ME,Facilities - Recepção,Facilities - Recepção,7.1,1,Regular,2020-12-05
+FORN-0021,Prime Sistemas Ltda,55.698.169/3406-08,AP,EPP,Marketing e Comunicação,Marketing e Comunicação,7.5,3,Regular,2020-03-18
+FORN-0022,Smart Gestão Ltda,14.846.564/8236-62,SE,EPP,Segurança Patrimonial,Segurança Patrimonial|Material de Escritório|Seguros,7.5,2,Regular,2021-05-17
+FORN-0023,Mega Transporte Ltda,69.957.773/8721-48,MS,Médio,Facilities - Vigilância,Facilities - Vigilância,8.0,3,Regular,2021-10-04
+FORN-0024,Delta Segurança Eireli,20.037.917/6936-76,PE,ME,Facilities - Vigilância,Facilities - Vigilância,10.0,6,Regular,2019-08-28
+FORN-0025,Express Soluções Ltda,87.083.172/7889-57,SE,ME,Facilities - Recepção,Facilities - Recepção|Facilities - Limpeza,7.6,1,Regular,2023-08-30
+FORN-0026,Ultra Transporte ME,34.873.471/4345-58,MG,Grande,Seguros,Seguros|Treinamento e Capacitação|Engenharia - Manutenção,6.7,1,Regular,2019-07-21
+FORN-0027,Omega Segurança ME,66.587.603/6690-96,PB,Médio,Facilities - Vigilância,Facilities - Vigilância|TI - Licenciamento,8.4,1,Regular,2018-01-25
+FORN-0028,Smart Digital ME,34.670.656/2729-80,MA,ME,Marketing e Comunicação,Marketing e Comunicação|Facilities - Recepção|Seguros,7.3,3,Regular,2018-04-22
+FORN-0029,Delta Gestão S.A.,65.375.564/6417-08,RJ,EPP,Facilities - Limpeza,Facilities - Limpeza|TI - Desenvolvimento|Engenharia - Manutenção,7.6,2,Regular,2021-12-04
+FORN-0030,Brasil Tecnologia Ltda,09.232.719/3745-29,SE,Médio,Facilities - Recepção,Facilities - Recepção|Facilities - Vigilância,8.3,4,Regular,2019-04-15
+FORN-0031,Norte Logística Eireli,49.663.193/1491-90,PA,Grande,TI - Infraestrutura,TI - Infraestrutura,7.9,0,Vencido,2023-12-23
+FORN-0032,Ultra Telecomunicações Ltda,67.165.726/2849-87,ES,EPP,Segurança Patrimonial,Segurança Patrimonial|TI - Infraestrutura,6.4,4,Irregular,2022-11-20
+FORN-0033,Leste Sistemas Eireli,73.799.650/7527-35,AP,ME,TI - Licenciamento,TI - Licenciamento|Logística - Transporte|Treinamento e Capacitação,9.5,4,Vencido,2020-11-24
+FORN-0034,Master Sistemas EPP,83.136.783/7770-14,PE,ME,Logística - Transporte,Logística - Transporte|TI - Infraestrutura,6.4,6,Regular,2022-07-15
+FORN-0035,Net Segurança Eireli,88.568.557/4443-13,GO,ME,Consultoria - Gestão,Consultoria - Gestão|Seguros,6.1,0,Regular,2019-05-05
+FORN-0036,Sol Transporte S.A.,49.894.134/3524-08,PR,ME,Seguros,Seguros,9.0,6,Vencido,2021-01-28
+FORN-0037,Beta Serviços EPP,71.094.777/5204-71,RR,Grande,Engenharia - Manutenção,Engenharia - Manutenção,6.2,2,Regular,2018-09-25
+FORN-0038,Mega Manutenção Ltda,29.413.186/9993-86,ES,EPP,TI - Desenvolvimento,TI - Desenvolvimento|Engenharia - Manutenção,5.2,3,Vencido,2022-12-19
+FORN-0039,Global Gestão Eireli,33.412.328/1206-79,PB,EPP,TI - Desenvolvimento,TI - Desenvolvimento|Engenharia - Obras,6.2,2,Vencido,2021-04-07
+FORN-0040,Beta Segurança Eireli,34.936.183/2421-02,AP,EPP,Treinamento e Capacitação,Treinamento e Capacitação|TI - Licenciamento,6.0,6,Irregular,2021-06-13
+FORN-0041,Premium Digital ME,64.887.719/0659-40,MG,ME,Logística - Armazenagem,Logística - Armazenagem,7.3,1,Regular,2020-07-26
+FORN-0042,Fast Soluções Eireli,87.429.671/7565-51,BA,Médio,Facilities - Limpeza,Facilities - Limpeza|Seguros,6.5,3,Vencido,2021-09-12
+FORN-0043,Ultra Manutenção Eireli,71.545.168/0876-03,RN,EPP,Consultoria - Jurídica,Consultoria - Jurídica|TI - Desenvolvimento,6.9,0,Vencido,2022-01-21
+FORN-0044,Premium Manutenção ME,82.477.109/3248-08,AM,EPP,Facilities - Vigilância,Facilities - Vigilância|Logística - Transporte,7.6,3,Regular,2019-01-17
+FORN-0045,Brasil Engenharia ME,48.467.737/8263-98,TO,Médio,Engenharia - Manutenção,Engenharia - Manutenção|Seguros|Treinamento e Capacitação,10.0,6,Regular,2019-07-14
+FORN-0046,Oeste Tecnologia Eireli,84.044.997/2787-55,AL,Médio,Marketing e Comunicação,Marketing e Comunicação|Segurança Patrimonial,10.0,1,Vencido,2022-03-26
+FORN-0047,Super Construções S.A.,60.576.627/0289-51,ES,Grande,Facilities - Recepção,Facilities - Recepção|Consultoria - Jurídica|Engenharia - Obras,6.3,1,Regular,2019-02-13
+FORN-0048,Max Administração Ltda,17.459.615/8657-80,SE,ME,Marketing e Comunicação,Marketing e Comunicação|Engenharia - Manutenção,10.0,1,Irregular,2018-10-08
+FORN-0049,Brasil Digital S.A.,17.240.050/4556-23,RN,EPP,Marketing e Comunicação,Marketing e Comunicação|Engenharia - Obras,10.0,2,Irregular,2022-08-15
+FORN-0050,Elite Logística S.A.,93.792.374/7407-48,BA,ME,Consultoria - Jurídica,Consultoria - Jurídica,9.0,1,Regular,2018-10-30
+FORN-0051,Super Telecomunicações EPP,47.436.713/6959-44,SP,EPP,Marketing e Comunicação,Marketing e Comunicação,6.7,2,Vencido,2022-06-10
+FORN-0052,Nacional Soluções EPP,43.953.394/2104-70,PI,Médio,TI - Desenvolvimento,TI - Desenvolvimento|Seguros|Marketing e Comunicação,9.1,0,Regular,2022-02-03
+FORN-0053,Sol Consultoria Ltda,32.858.842/4745-17,MG,Médio,Segurança Patrimonial,Segurança Patrimonial|Marketing e Comunicação|TI - Licenciamento,9.2,2,Regular,2019-07-31
+FORN-0054,Norte Segurança ME,60.481.754/9651-37,SP,ME,Consultoria - Gestão,Consultoria - Gestão|TI - Licenciamento|Consultoria - Jurídica,7.5,5,Regular,2021-09-05
+FORN-0055,Inter Segurança Ltda,61.200.471/1382-67,PA,Grande,Treinamento e Capacitação,Treinamento e Capacitação|Logística - Armazenagem,9.2,2,Regular,2022-09-13
+FORN-0056,Elite Consultoria ME,40.537.735/1585-06,CE,ME,Seguros,Seguros|Marketing e Comunicação,8.2,0,Regular,2020-02-17
+FORN-0057,Sigma Administração Ltda,53.293.183/9335-29,SP,Médio,TI - Infraestrutura,TI - Infraestrutura|TI - Desenvolvimento,9.3,3,Regular,2021-02-09
+FORN-0058,Oeste Consultoria S.A.,02.053.950/2402-68,RS,Médio,Facilities - Limpeza,Facilities - Limpeza|Engenharia - Obras,5.6,2,Regular,2018-09-18
+FORN-0059,Pro Administração Eireli,83.908.470/0766-17,RO,Grande,Engenharia - Obras,Engenharia - Obras|Treinamento e Capacitação,6.3,6,Vencido,2022-12-22
+FORN-0060,Delta Tecnologia Eireli,49.985.698/4789-61,AP,Médio,TI - Licenciamento,TI - Licenciamento|Engenharia - Manutenção,6.7,3,Vencido,2019-04-14
+FORN-0061,Oeste Transporte S.A.,65.766.156/5452-71,MG,Grande,Facilities - Recepção,Facilities - Recepção,9.5,3,Regular,2018-12-16
+FORN-0062,Delta Gestão Ltda,80.988.516/5604-94,PA,Grande,Consultoria - Gestão,Consultoria - Gestão|Engenharia - Manutenção,7.5,5,Irregular,2019-03-01
+FORN-0063,Elite Limpeza S.A.,31.585.149/3689-98,SP,EPP,Seguros,Seguros,9.3,3,Regular,2020-12-31
+FORN-0064,Alpha Logística Eireli,50.229.612/0183-66,ES,Grande,Logística - Armazenagem,Logística - Armazenagem|Segurança Patrimonial,5.7,2,Irregular,2021-10-28
+FORN-0065,Prime Telecomunicações Eireli,22.901.476/7976-43,AC,EPP,TI - Licenciamento,TI - Licenciamento|TI - Desenvolvimento,8.4,1,Irregular,2023-09-30
+FORN-0066,Sigma Telecomunicações ME,84.036.900/3432-44,GO,ME,Seguros,Seguros,9.5,3,Vencido,2019-05-07
+FORN-0067,Alpha Manutenção ME,83.885.160/6071-59,AM,Grande,Consultoria - Jurídica,Consultoria - Jurídica,5.3,5,Irregular,2022-07-15
+FORN-0068,Net Gestão Eireli,52.975.161/3696-81,MA,EPP,TI - Infraestrutura,TI - Infraestrutura,5.4,3,Irregular,2021-06-24
+FORN-0069,Sol Construções S.A.,18.188.355/2312-43,BA,ME,Facilities - Limpeza,Facilities - Limpeza,6.5,1,Regular,2019-09-19
+FORN-0070,Norte Tecnologia S.A.,99.799.552/7177-44,PI,Médio,Seguros,Seguros|Treinamento e Capacitação|Consultoria - Jurídica,7.4,3,Regular,2018-08-19
+FORN-0071,Smart Limpeza Ltda,00.541.199/8679-80,ES,Grande,Treinamento e Capacitação,Treinamento e Capacitação,7.8,1,Regular,2020-02-11
+FORN-0072,Master Manutenção EPP,71.518.203/7788-92,PA,ME,TI - Desenvolvimento,TI - Desenvolvimento,7.5,1,Regular,2022-03-08
+FORN-0073,Inter Digital ME,90.515.186/4492-51,PI,Médio,Segurança Patrimonial,Segurança Patrimonial,8.8,0,Regular,2019-08-03
+FORN-0074,Inter Telecomunicações Eireli,14.865.281/6850-54,BA,Grande,Consultoria - Jurídica,Consultoria - Jurídica|Engenharia - Manutenção|Logística - Armazenagem,7.8,1,Regular,2020-05-27
+FORN-0075,Master Manutenção S.A.,21.418.880/5929-62,BA,EPP,Engenharia - Manutenção,Engenharia - Manutenção,8.2,2,Irregular,2020-01-11
+FORN-0076,Leste Logística ME,37.947.383/4735-97,ES,Grande,Consultoria - Gestão,Consultoria - Gestão,5.9,6,Vencido,2021-02-28
+FORN-0077,Norte Infraestrutura EPP,92.407.581/8141-24,ES,ME,Facilities - Limpeza,Facilities - Limpeza|Facilities - Vigilância,7.3,2,Vencido,2023-10-04
+FORN-0078,Omega Gestão Ltda,50.606.853/6153-05,RS,Grande,Facilities - Recepção,Facilities - Recepção|Treinamento e Capacitação|Seguros,8.5,0,Regular,2021-10-05
+FORN-0079,Sul Consultoria S.A.,27.790.104/3289-86,RS,Médio,Seguros,Seguros,8.0,5,Regular,2021-03-26
+FORN-0080,Brasil Digital Ltda,97.117.980/8932-46,SP,EPP,Marketing e Comunicação,Marketing e Comunicação,7.5,1,Vencido,2021-12-16
+FORN-0081,Brasil Gestão S.A.,18.888.806/7065-40,PA,Médio,TI - Licenciamento,TI - Licenciamento|Consultoria - Gestão,10.0,5,Regular,2018-10-04
+FORN-0082,Smart Segurança Ltda,05.852.772/2170-43,RJ,ME,Segurança Patrimonial,Segurança Patrimonial|Engenharia - Manutenção,7.8,5,Regular,2020-03-28
+FORN-0083,Central Serviços Eireli,87.403.450/5415-66,TO,EPP,Material de Escritório,Material de Escritório|Consultoria - Jurídica|Marketing e Comunicação,9.4,3,Regular,2022-12-07
+FORN-0084,Central Infraestrutura Eireli,84.161.692/8451-15,MS,EPP,Seguros,Seguros|Material de Escritório|Facilities - Limpeza,7.4,1,Irregular,2021-04-25
+FORN-0085,Global Administração EPP,57.059.640/1658-20,PR,Médio,Facilities - Limpeza,Facilities - Limpeza|Treinamento e Capacitação,6.1,1,Vencido,2022-11-30
+FORN-0086,Beta Consultoria Ltda,56.909.275/5719-28,PA,Médio,Consultoria - Gestão,Consultoria - Gestão,8.5,2,Regular,2022-06-19
+FORN-0087,Master Sistemas S.A.,86.814.473/9473-12,MG,EPP,TI - Infraestrutura,TI - Infraestrutura|Facilities - Limpeza|Facilities - Recepção,9.8,4,Regular,2023-01-26
+FORN-0088,Prime Administração Ltda,18.844.225/8313-23,AP,EPP,Segurança Patrimonial,Segurança Patrimonial|Consultoria - Gestão,7.6,4,Regular,2023-07-17
+FORN-0089,Alpha Telecomunicações EPP,91.146.786/6912-51,ES,Médio,Treinamento e Capacitação,Treinamento e Capacitação|Engenharia - Manutenção,8.2,4,Regular,2023-03-24
+FORN-0090,Omega Transporte EPP,68.018.242/2535-84,MG,EPP,Engenharia - Manutenção,Engenharia - Manutenção,4.4,3,Regular,2020-10-23
+FORN-0091,Tech Transporte Eireli,98.182.992/2995-90,RR,ME,Logística - Armazenagem,Logística - Armazenagem,6.7,1,Vencido,2018-04-27
+FORN-0092,Delta Serviços EPP,96.907.844/7364-71,RO,ME,Facilities - Vigilância,Facilities - Vigilância,9.1,2,Vencido,2018-09-03
+FORN-0093,Prime Administração ME,59.255.562/5881-53,ES,EPP,Facilities - Vigilância,Facilities - Vigilância,6.6,3,Irregular,2019-05-17
+FORN-0094,Nacional Administração S.A.,46.963.259/5327-87,PB,ME,TI - Desenvolvimento,TI - Desenvolvimento,7.1,2,Regular,2021-06-17
+FORN-0095,Pro Soluções Ltda,39.500.479/7480-16,PR,ME,Material de Escritório,Material de Escritório|Treinamento e Capacitação|Engenharia - Obras,7.1,4,Regular,2020-12-19
+FORN-0096,Sol Telecomunicações ME,09.835.841/6878-49,MS,Médio,Consultoria - Jurídica,Consultoria - Jurídica,4.0,3,Regular,2019-05-02
+FORN-0097,Omega Engenharia ME,85.239.868/0002-57,RN,EPP,Segurança Patrimonial,Segurança Patrimonial,6.2,4,Vencido,2023-02-15
+FORN-0098,Omega Limpeza S.A.,26.949.588/8794-70,PA,ME,Segurança Patrimonial,Segurança Patrimonial,7.2,5,Vencido,2021-09-18
+FORN-0099,Fast Engenharia ME,49.930.972/8962-30,PI,Médio,TI - Infraestrutura,TI - Infraestrutura|Seguros,6.8,1,Vencido,2019-03-27
+FORN-0100,Tech Soluções ME,63.689.702/8385-78,MA,Grande,Engenharia - Manutenção,Engenharia - Manutenção,9.9,3,Regular,2021-07-09
+FORN-0101,Prime Administração EPP,49.733.484/3443-75,PB,ME,Consultoria - Gestão,Consultoria - Gestão,6.5,2,Regular,2021-11-29
+FORN-0102,Top Sistemas Eireli,65.240.415/7473-38,CE,ME,Consultoria - Jurídica,Consultoria - Jurídica,6.8,3,Regular,2021-01-17
+FORN-0103,Omega Engenharia EPP,08.330.165/7120-82,AM,Médio,Facilities - Recepção,Facilities - Recepção|Material de Escritório,7.5,6,Regular,2023-05-03
+FORN-0104,Pro Facilities Eireli,19.380.262/0672-40,SP,EPP,TI - Desenvolvimento,TI - Desenvolvimento,8.2,3,Regular,2021-05-07
+FORN-0105,Elite Engenharia Eireli,72.874.315/2742-05,AP,Médio,Material de Escritório,Material de Escritório,7.5,4,Irregular,2021-04-23
+FORN-0106,Elite Facilities S.A.,85.161.227/5304-63,ES,ME,Consultoria - Jurídica,Consultoria - Jurídica|Marketing e Comunicação,6.2,4,Regular,2020-12-29
+FORN-0107,Master Digital EPP,53.017.426/8414-59,PE,ME,TI - Infraestrutura,TI - Infraestrutura|Logística - Transporte,10.0,4,Irregular,2020-06-16
+FORN-0108,Omega Manutenção S.A.,68.783.391/8785-19,RS,Médio,Consultoria - Gestão,Consultoria - Gestão,6.6,2,Vencido,2018-09-10
+FORN-0109,Leste Transporte EPP,25.871.397/1870-72,RN,ME,Engenharia - Manutenção,Engenharia - Manutenção,8.4,4,Vencido,2022-08-29
+FORN-0110,Super Serviços EPP,06.403.910/6518-01,PB,EPP,Logística - Armazenagem,Logística - Armazenagem,8.2,4,Vencido,2018-05-10
+FORN-0111,Global Gestão S.A.,67.661.825/1286-82,TO,Grande,Marketing e Comunicação,Marketing e Comunicação|Consultoria - Gestão,8.6,3,Regular,2020-07-01
+FORN-0112,Leste Soluções Ltda,63.375.243/1069-03,DF,EPP,Treinamento e Capacitação,Treinamento e Capacitação|Marketing e Comunicação|Logística - Transporte,10.0,4,Regular,2018-10-03
+FORN-0113,Sigma Serviços ME,06.738.302/8439-59,SE,ME,TI - Desenvolvimento,TI - Desenvolvimento|Facilities - Recepção,8.3,4,Irregular,2021-08-06
+FORN-0114,Fast Limpeza S.A.,08.926.870/5685-66,PR,Médio,Logística - Transporte,Logística - Transporte,9.4,1,Regular,2021-05-13
+FORN-0115,Mega Logística EPP,42.708.668/8263-43,GO,Médio,Facilities - Recepção,Facilities - Recepção,7.0,3,Irregular,2018-11-20
+FORN-0116,Inter Administração Eireli,04.699.013/9837-35,SC,EPP,Facilities - Vigilância,Facilities - Vigilância,8.7,3,Regular,2018-03-04
+FORN-0117,Tech Facilities Ltda,93.638.546/7854-45,RN,Médio,Seguros,Seguros|Facilities - Recepção,5.1,3,Regular,2023-07-30
+FORN-0118,Super Engenharia ME,55.609.320/4899-64,PR,Grande,Segurança Patrimonial,Segurança Patrimonial|Facilities - Vigilância,7.9,2,Regular,2020-03-14
+FORN-0119,Master Segurança ME,85.477.725/2287-28,MT,EPP,Facilities - Recepção,Facilities - Recepção|Seguros,8.5,3,Regular,2018-08-29
+FORN-0120,Max Serviços Ltda,23.120.387/5099-77,SP,Médio,TI - Desenvolvimento,TI - Desenvolvimento|TI - Infraestrutura|Facilities - Vigilância,9.8,1,Regular,2018-01-28
+FORN-0121,Top Transporte ME,48.408.621/1823-39,RN,Médio,Material de Escritório,Material de Escritório,6.0,5,Irregular,2020-10-30
+FORN-0122,Leste Telecomunicações Eireli,67.933.410/1666-87,RJ,EPP,TI - Licenciamento,TI - Licenciamento|Consultoria - Gestão,7.3,4,Regular,2018-02-08
+FORN-0123,Net Logística Ltda,59.180.339/7401-48,PI,EPP,Marketing e Comunicação,Marketing e Comunicação,7.2,3,Regular,2018-05-15
+FORN-0124,Prime Construções Ltda,14.293.968/5621-85,RJ,Grande,Engenharia - Manutenção,Engenharia - Manutenção|Consultoria - Jurídica|Treinamento e Capacitação,8.4,2,Irregular,2019-02-05
+FORN-0125,Ultra Segurança Ltda,50.477.358/6629-61,AC,Grande,Consultoria - Jurídica,Consultoria - Jurídica,9.1,1,Irregular,2021-04-24
+FORN-0126,Sul Segurança Ltda,62.655.110/4754-12,MG,EPP,Engenharia - Manutenção,Engenharia - Manutenção,4.7,5,Regular,2020-02-07
+FORN-0127,Ultra Administração EPP,01.581.995/6046-61,TO,EPP,Marketing e Comunicação,Marketing e Comunicação|Engenharia - Obras,5.5,4,Regular,2020-09-21
+FORN-0128,Fast Infraestrutura S.A.,47.212.646/4715-43,TO,ME,Logística - Armazenagem,Logística - Armazenagem,4.6,4,Vencido,2023-07-24
+FORN-0129,Premium Facilities ME,06.596.575/6924-59,RO,Médio,Logística - Armazenagem,Logística - Armazenagem,7.1,2,Regular,2020-04-02
+FORN-0130,Pro Construções S.A.,79.356.465/1939-82,MS,Médio,Segurança Patrimonial,Segurança Patrimonial|Logística - Armazenagem|Consultoria - Gestão,6.4,1,Regular,2018-04-21
+FORN-0131,Sol Administração S.A.,16.724.342/6617-97,PI,Grande,Logística - Armazenagem,Logística - Armazenagem,7.1,2,Irregular,2022-06-30
+FORN-0132,Top Limpeza ME,13.529.096/5610-14,PE,Médio,Consultoria - Gestão,Consultoria - Gestão|TI - Licenciamento,9.0,7,Vencido,2023-09-23
+FORN-0133,Sol Limpeza EPP,56.798.250/7146-11,RR,Grande,Facilities - Recepção,Facilities - Recepção|Treinamento e Capacitação,10.0,3,Regular,2019-08-04
+FORN-0134,Smart Digital Eireli,87.571.775/1401-05,MT,ME,Facilities - Vigilância,Facilities - Vigilância,6.0,0,Irregular,2019-03-24
+FORN-0135,Fast Logística S.A.,86.736.226/6093-79,AM,Grande,Facilities - Limpeza,Facilities - Limpeza|Segurança Patrimonial,9.6,5,Regular,2022-05-12
+FORN-0136,Alpha Facilities S.A.,91.825.537/1478-59,MA,Médio,TI - Licenciamento,TI - Licenciamento,8.9,3,Regular,2022-05-27
+FORN-0137,Smart Administração EPP,99.125.134/1252-86,AM,Grande,Logística - Armazenagem,Logística - Armazenagem,7.0,3,Regular,2019-07-19
+FORN-0138,Elite Infraestrutura ME,82.742.257/9050-72,DF,ME,Facilities - Limpeza,Facilities - Limpeza,7.9,3,Vencido,2022-04-22
+FORN-0139,Ultra Manutenção ME,21.903.404/3842-79,TO,Médio,Treinamento e Capacitação,Treinamento e Capacitação|Seguros,5.9,7,Irregular,2023-07-22
+FORN-0140,Top Limpeza Ltda,80.783.613/4074-51,ES,Médio,Logística - Transporte,Logística - Transporte|Consultoria - Gestão,7.2,2,Irregular,2019-04-26
+FORN-0141,Norte Segurança S.A.,29.233.095/8498-25,RO,EPP,Consultoria - Gestão,Consultoria - Gestão|Marketing e Comunicação,8.9,3,Regular,2021-04-13
+FORN-0142,Global Sistemas EPP,60.422.325/3672-94,MT,EPP,Engenharia - Obras,Engenharia - Obras|Engenharia - Manutenção|Consultoria - Jurídica,6.1,2,Regular,2022-08-24
+FORN-0143,Mega Administração Ltda,84.577.590/1751-86,DF,Grande,TI - Licenciamento,TI - Licenciamento|Consultoria - Jurídica,7.2,6,Regular,2022-10-26
+FORN-0144,Leste Facilities ME,58.929.750/0170-12,ES,EPP,Logística - Armazenagem,Logística - Armazenagem,9.3,5,Regular,2023-02-13
+FORN-0145,Alpha Gestão S.A.,41.541.520/6436-11,SP,Médio,Engenharia - Manutenção,Engenharia - Manutenção|Logística - Armazenagem|TI - Licenciamento,7.4,4,Regular,2020-05-24
+FORN-0146,Pro Tecnologia S.A.,00.516.271/3611-15,PA,Grande,Material de Escritório,Material de Escritório|Treinamento e Capacitação,10.0,0,Regular,2021-05-10
+FORN-0147,Omega Infraestrutura S.A.,89.092.753/2697-31,RS,EPP,Engenharia - Manutenção,Engenharia - Manutenção|TI - Licenciamento,5.5,7,Regular,2019-07-28
+FORN-0148,Norte Engenharia EPP,52.341.389/9940-43,RN,Médio,Consultoria - Gestão,Consultoria - Gestão|Marketing e Comunicação,7.2,1,Regular,2023-09-19
+FORN-0149,Tech Infraestrutura Eireli,61.379.180/5526-96,PA,ME,Facilities - Recepção,Facilities - Recepção|Seguros,8.1,3,Irregular,2019-12-09
+FORN-0150,Norte Manutenção Ltda,04.300.684/8666-18,AL,Médio,TI - Licenciamento,TI - Licenciamento,7.8,1,Regular,2019-09-18
+FORN-0151,Nacional Tecnologia Eireli,28.569.146/3031-61,ES,Grande,Facilities - Vigilância,Facilities - Vigilância,9.2,3,Regular,2018-08-14
+FORN-0152,Global Logística Ltda,02.758.842/5241-05,AP,Médio,Engenharia - Manutenção,Engenharia - Manutenção,7.4,4,Regular,2022-10-25
+FORN-0153,Nacional Limpeza Ltda,77.850.792/5241-91,PE,EPP,TI - Licenciamento,TI - Licenciamento,9.3,4,Regular,2023-09-16
+FORN-0154,Alpha Serviços Ltda,56.220.863/5365-41,PI,ME,Seguros,Seguros,8.8,7,Irregular,2022-03-08
+FORN-0155,Sigma Limpeza Ltda,06.174.451/8705-34,PI,EPP,Material de Escritório,Material de Escritório,5.1,1,Regular,2021-05-29
+FORN-0156,Sol Segurança ME,38.320.603/8505-06,TO,Médio,Seguros,Seguros,8.4,1,Vencido,2021-06-13
+FORN-0157,Sigma Facilities EPP,24.103.865/7191-82,MT,EPP,Marketing e Comunicação,Marketing e Comunicação|Seguros|TI - Infraestrutura,8.2,3,Regular,2022-06-04
+FORN-0158,Delta Serviços ME,44.565.574/3132-91,PR,EPP,Engenharia - Manutenção,Engenharia - Manutenção|Facilities - Recepção,8.6,3,Regular,2019-03-09
+FORN-0159,Master Gestão Ltda,47.411.249/0352-13,PA,EPP,Facilities - Vigilância,Facilities - Vigilância|Treinamento e Capacitação,10.0,2,Regular,2022-06-12
+FORN-0160,Max Serviços Eireli,06.788.317/1210-03,PR,Grande,Facilities - Limpeza,Facilities - Limpeza,6.5,2,Regular,2020-03-22
+FORN-0161,Leste Infraestrutura Eireli,10.137.215/1070-29,AM,ME,TI - Licenciamento,TI - Licenciamento|Logística - Transporte,6.6,2,Regular,2022-06-06
+FORN-0162,Pro Soluções ME,32.447.209/9934-76,AL,EPP,Facilities - Limpeza,Facilities - Limpeza|Consultoria - Gestão,6.7,3,Regular,2023-05-17
+FORN-0163,Beta Tecnologia Eireli,38.380.657/8759-85,MA,Médio,Marketing e Comunicação,Marketing e Comunicação,8.0,2,Regular,2021-01-12
+FORN-0164,Prime Soluções Eireli,07.859.321/3348-03,PI,Grande,TI - Infraestrutura,TI - Infraestrutura|Logística - Transporte,6.9,3,Irregular,2022-05-10
+FORN-0165,Smart Logística S.A.,59.059.929/3784-27,RJ,Grande,Segurança Patrimonial,Segurança Patrimonial,8.3,1,Regular,2019-01-05
+FORN-0166,Beta Segurança EPP,70.593.252/5002-92,AC,EPP,Material de Escritório,Material de Escritório,9.1,3,Regular,2019-03-31
+FORN-0167,Oeste Limpeza Eireli,15.452.267/5289-53,MS,ME,Consultoria - Gestão,Consultoria - Gestão|Consultoria - Jurídica|Logística - Armazenagem,8.9,7,Regular,2019-12-20
+FORN-0168,Mega Digital Eireli,96.902.959/3917-25,TO,Grande,TI - Infraestrutura,TI - Infraestrutura,7.6,6,Regular,2018-11-15
+FORN-0169,Brasil Telecomunicações Eireli,57.043.315/4100-67,TO,Grande,TI - Licenciamento,TI - Licenciamento,9.1,0,Regular,2022-09-15
+FORN-0170,Prime Gestão ME,79.327.104/0541-15,BA,ME,Consultoria - Gestão,Consultoria - Gestão|Consultoria - Jurídica|TI - Desenvolvimento,7.4,1,Regular,2022-03-18
+FORN-0171,Prime Tecnologia EPP,97.062.962/0153-36,RO,Grande,TI - Licenciamento,TI - Licenciamento|Segurança Patrimonial|Logística - Armazenagem,7.2,4,Regular,2020-12-22
+FORN-0172,Fast Digital Eireli,69.872.050/6149-73,RS,ME,TI - Desenvolvimento,TI - Desenvolvimento,7.5,2,Regular,2018-04-16
+FORN-0173,Tech Logística Eireli,67.741.862/5652-70,CE,EPP,Seguros,Seguros|Engenharia - Obras|Engenharia - Manutenção,7.0,3,Regular,2022-12-07
+FORN-0174,Super Sistemas S.A.,11.586.938/0686-87,PI,ME,TI - Desenvolvimento,TI - Desenvolvimento|Engenharia - Manutenção,9.2,2,Regular,2020-08-23
+FORN-0175,Pro Digital Ltda,89.899.217/2233-20,AM,EPP,TI - Desenvolvimento,TI - Desenvolvimento,6.6,3,Regular,2018-11-17
+FORN-0176,Fast Gestão S.A.,11.686.854/8709-98,AP,EPP,Engenharia - Manutenção,Engenharia - Manutenção|Logística - Transporte|Facilities - Limpeza,10.0,4,Irregular,2022-09-15
+FORN-0177,Sigma Gestão S.A.,19.148.564/6799-70,BA,Grande,Engenharia - Obras,Engenharia - Obras,9.4,3,Regular,2021-02-02
+FORN-0178,Mega Consultoria EPP,65.307.450/5444-71,PE,EPP,Consultoria - Jurídica,Consultoria - Jurídica|TI - Desenvolvimento,7.7,4,Regular,2019-07-05
+FORN-0179,Global Administração Eireli,91.373.678/5082-14,RO,Grande,Marketing e Comunicação,Marketing e Comunicação,7.0,4,Regular,2023-09-07
+FORN-0180,Central Soluções S.A.,03.070.534/5786-10,PE,Médio,Facilities - Vigilância,Facilities - Vigilância,9.8,4,Regular,2022-03-06
+FORN-0181,Pro Administração S.A.,24.140.602/9333-34,MT,ME,Seguros,Seguros|Consultoria - Gestão|Facilities - Limpeza,7.3,1,Irregular,2022-08-05
+FORN-0182,Max Soluções Ltda,29.034.944/6657-43,ES,ME,Engenharia - Manutenção,Engenharia - Manutenção,5.7,0,Regular,2021-05-22
+FORN-0183,Fast Limpeza EPP,08.589.944/1715-45,CE,Grande,Engenharia - Obras,Engenharia - Obras,7.3,0,Regular,2020-12-05
+FORN-0184,Express Digital S.A.,09.652.074/4666-09,RO,Médio,Facilities - Recepção,Facilities - Recepção,5.5,2,Regular,2020-02-17
+FORN-0185,Master Segurança EPP,84.282.417/2482-51,PE,ME,Seguros,Seguros|Consultoria - Gestão,5.1,3,Regular,2021-12-26
+FORN-0186,Brasil Digital ME,49.471.709/9917-38,RS,Médio,Segurança Patrimonial,Segurança Patrimonial|Consultoria - Gestão,8.3,9,Regular,2022-04-13
+FORN-0187,Max Digital ME,23.569.725/2175-25,MT,Grande,Engenharia - Manutenção,Engenharia - Manutenção,7.5,3,Regular,2018-08-26
+FORN-0188,Alpha Administração Eireli,92.712.966/6676-00,AL,ME,Facilities - Limpeza,Facilities - Limpeza,5.8,2,Irregular,2020-03-27
+FORN-0189,Sol Telecomunicações Ltda,03.354.216/8942-10,SC,ME,Material de Escritório,Material de Escritório|Facilities - Vigilância|TI - Infraestrutura,6.0,4,Regular,2021-04-06
+FORN-0190,Super Limpeza EPP,57.532.603/3230-98,BA,Grande,Marketing e Comunicação,Marketing e Comunicação|Engenharia - Manutenção,7.1,3,Regular,2019-05-20
+FORN-0191,Smart Serviços ME,01.001.676/1847-23,RO,Médio,Logística - Transporte,Logística - Transporte|TI - Desenvolvimento|Logística - Armazenagem,8.1,3,Regular,2018-02-08
+FORN-0192,Global Gestão Ltda,61.891.411/7393-48,DF,Médio,Logística - Transporte,Logística - Transporte|Engenharia - Manutenção,8.5,3,Regular,2022-01-06
+FORN-0193,Prime Serviços EPP,75.300.119/7218-11,CE,Médio,Facilities - Vigilância,Facilities - Vigilância,6.5,4,Irregular,2020-08-04
+FORN-0194,Super Digital Eireli,20.455.611/0022-55,ES,Médio,Engenharia - Obras,Engenharia - Obras,6.8,3,Regular,2021-01-03
+FORN-0195,Central Tecnologia Eireli,66.746.762/1202-16,PI,EPP,Facilities - Limpeza,Facilities - Limpeza|Engenharia - Obras,7.2,2,Regular,2023-06-01
+FORN-0196,Sul Administração S.A.,27.716.701/4508-99,PE,ME,Consultoria - Gestão,Consultoria - Gestão|TI - Infraestrutura,6.4,7,Regular,2021-10-17
+FORN-0197,Max Limpeza EPP,75.628.900/2877-21,AC,Médio,Facilities - Recepção,Facilities - Recepção,10.0,4,Regular,2023-07-07
+FORN-0198,Master Segurança Eireli,66.317.797/1775-17,TO,EPP,TI - Desenvolvimento,TI - Desenvolvimento|Facilities - Recepção|Logística - Transporte,6.8,4,Regular,2018-03-14
+FORN-0199,Sigma Infraestrutura ME,19.948.837/5503-75,AL,Médio,TI - Infraestrutura,TI - Infraestrutura,8.0,3,Regular,2023-04-22
+FORN-0200,Net Telecomunicações ME,05.548.851/0272-61,CE,Médio,Facilities - Recepção,Facilities - Recepção,7.1,2,Regular,2020-03-13
+FORN-0201,Tech Engenharia ME,51.609.177/9827-08,TO,EPP,Facilities - Vigilância,Facilities - Vigilância,5.6,3,Regular,2018-07-18
+FORN-0202,Pro Limpeza S.A.,16.995.866/9346-54,ES,Grande,Facilities - Limpeza,Facilities - Limpeza|Engenharia - Manutenção,9.2,3,Regular,2019-07-01
+FORN-0203,Omega Gestão EPP,85.833.394/5228-85,RO,EPP,Material de Escritório,Material de Escritório|Logística - Armazenagem,8.5,2,Regular,2019-04-18
+FORN-0204,Norte Telecomunicações EPP,84.608.106/2003-42,SC,Médio,Marketing e Comunicação,Marketing e Comunicação,5.4,4,Vencido,2020-10-23
+FORN-0205,Omega Serviços Eireli,57.198.386/3840-66,AM,ME,TI - Desenvolvimento,TI - Desenvolvimento,7.0,1,Regular,2021-07-04
+FORN-0206,Top Serviços Ltda,35.989.334/7212-28,RS,ME,Facilities - Vigilância,Facilities - Vigilância|Treinamento e Capacitação,6.7,2,Regular,2022-03-26
+FORN-0207,Beta Gestão Eireli,94.057.202/5909-47,AP,EPP,Engenharia - Manutenção,Engenharia - Manutenção|Facilities - Limpeza,6.6,3,Regular,2022-01-06
+FORN-0208,Delta Construções EPP,81.826.886/1533-55,PA,EPP,Facilities - Limpeza,Facilities - Limpeza,7.5,4,Vencido,2021-04-17
+FORN-0209,Tech Limpeza ME,57.399.305/6164-84,SP,ME,TI - Infraestrutura,TI - Infraestrutura|Engenharia - Obras|Segurança Patrimonial,6.1,3,Vencido,2023-10-19
+FORN-0210,Leste Telecomunicações EPP,04.358.112/8801-33,MS,Grande,Treinamento e Capacitação,Treinamento e Capacitação|Seguros,8.5,5,Regular,2022-10-04
+FORN-0211,Leste Engenharia S.A.,20.750.110/2481-93,CE,Grande,Marketing e Comunicação,Marketing e Comunicação|TI - Licenciamento,8.1,3,Vencido,2022-07-28
+FORN-0212,Mega Administração ME,61.809.190/1581-44,SE,EPP,TI - Infraestrutura,TI - Infraestrutura,8.3,2,Regular,2018-12-21
+FORN-0213,Global Administração ME,72.832.684/2450-88,PR,Médio,TI - Infraestrutura,TI - Infraestrutura,8.7,3,Regular,2019-05-20
+FORN-0214,Beta Soluções EPP,35.368.222/3943-12,MS,Grande,TI - Licenciamento,TI - Licenciamento|Logística - Armazenagem,6.9,5,Regular,2018-08-11
+FORN-0215,Oeste Transporte ME,14.139.755/2314-91,DF,Grande,TI - Licenciamento,TI - Licenciamento|Logística - Armazenagem,5.3,4,Regular,2021-07-25
+FORN-0216,Premium Digital EPP,56.205.336/4525-77,ES,EPP,Consultoria - Gestão,Consultoria - Gestão,6.2,2,Regular,2022-01-09
+FORN-0217,Norte Digital ME,42.834.110/8099-69,DF,ME,Facilities - Limpeza,Facilities - Limpeza|TI - Licenciamento,5.7,8,Irregular,2018-05-31
+FORN-0218,Top Sistemas EPP,63.942.788/1658-03,AP,EPP,Seguros,Seguros|Engenharia - Manutenção|Facilities - Limpeza,8.0,7,Regular,2019-11-11
+FORN-0219,Norte Limpeza S.A.,99.275.037/3145-30,MS,ME,Facilities - Limpeza,Facilities - Limpeza,8.6,2,Irregular,2020-04-26
+FORN-0220,Max Telecomunicações ME,00.518.449/8926-65,PI,EPP,Treinamento e Capacitação,Treinamento e Capacitação,7.9,1,Regular,2018-11-15
+FORN-0221,Max Sistemas ME,57.790.827/2318-43,PR,EPP,Facilities - Recepção,Facilities - Recepção|Consultoria - Jurídica|Facilities - Limpeza,6.0,5,Regular,2020-02-05
+FORN-0222,Prime Telecomunicações EPP,65.177.739/2603-02,PI,Grande,Engenharia - Obras,Engenharia - Obras|Facilities - Recepção,5.8,3,Regular,2019-10-22
+FORN-0223,Omega Limpeza Ltda,42.869.904/1379-77,BA,Médio,Engenharia - Manutenção,Engenharia - Manutenção|TI - Desenvolvimento|TI - Licenciamento,9.6,1,Regular,2020-06-17
+FORN-0224,Leste Gestão EPP,98.425.799/1366-21,SP,ME,Facilities - Limpeza,Facilities - Limpeza,7.4,0,Vencido,2020-04-08
+FORN-0225,Max Limpeza ME,79.908.811/7298-06,RN,Grande,Engenharia - Obras,Engenharia - Obras|Facilities - Limpeza,7.1,3,Regular,2022-09-20
+FORN-0226,Smart Serviços EPP,65.991.624/7314-98,AM,ME,Seguros,Seguros,8.1,5,Regular,2020-11-21
+FORN-0227,Tech Soluções Ltda,63.565.126/9448-69,PA,ME,Engenharia - Obras,Engenharia - Obras|TI - Infraestrutura,5.8,4,Irregular,2021-02-02
+FORN-0228,Ultra Transporte EPP,88.744.956/2137-21,DF,Médio,Consultoria - Gestão,Consultoria - Gestão,7.1,3,Irregular,2023-09-14
+FORN-0229,Mega Construções EPP,60.127.961/1435-19,RJ,ME,TI - Desenvolvimento,TI - Desenvolvimento|Facilities - Limpeza,6.8,5,Regular,2022-04-24
+FORN-0230,Inter Infraestrutura EPP,27.703.843/0988-39,BA,Grande,Logística - Armazenagem,Logística - Armazenagem|TI - Desenvolvimento,6.5,4,Irregular,2018-05-28
+FORN-0231,Prime Tecnologia Eireli,69.380.118/4895-54,PE,Grande,Consultoria - Gestão,Consultoria - Gestão|Consultoria - Jurídica,6.6,2,Regular,2020-03-07
+FORN-0232,Super Infraestrutura EPP,68.181.845/1848-94,RO,Grande,Facilities - Limpeza,Facilities - Limpeza,6.0,1,Irregular,2022-12-19
+FORN-0233,Mega Manutenção S.A.,90.714.163/3565-88,SP,EPP,Treinamento e Capacitação,Treinamento e Capacitação|Material de Escritório,10.0,2,Regular,2020-12-14
+FORN-0234,Mega Construções Ltda,55.394.237/3334-33,DF,Grande,Facilities - Limpeza,Facilities - Limpeza|Seguros,8.8,4,Regular,2020-10-19
+FORN-0235,Leste Telecomunicações S.A.,79.080.759/5794-72,AC,ME,Engenharia - Obras,Engenharia - Obras|TI - Licenciamento,7.7,3,Regular,2023-09-25
+FORN-0236,Nacional Infraestrutura S.A.,86.780.856/2718-75,RO,EPP,Engenharia - Manutenção,Engenharia - Manutenção|TI - Desenvolvimento,8.1,4,Vencido,2018-02-04
+FORN-0237,Alpha Facilities ME,94.284.347/9552-76,DF,Grande,Segurança Patrimonial,Segurança Patrimonial|Consultoria - Gestão,7.6,3,Regular,2022-09-13
+FORN-0238,Net Telecomunicações Eireli,92.931.438/6632-27,AP,Médio,Logística - Transporte,Logística - Transporte|Treinamento e Capacitação|TI - Licenciamento,8.7,2,Regular,2018-02-09
+FORN-0239,Omega Limpeza EPP,48.906.120/3471-75,CE,EPP,Seguros,Seguros|Logística - Armazenagem,6.3,2,Regular,2022-01-18
+FORN-0240,Smart Transporte EPP,61.593.998/2455-87,AC,Grande,Logística - Transporte,Logística - Transporte|Consultoria - Gestão|TI - Infraestrutura,5.5,3,Vencido,2023-01-05
+FORN-0241,Central Tecnologia ME,25.699.611/2535-54,RO,EPP,Treinamento e Capacitação,Treinamento e Capacitação|Engenharia - Manutenção,7.6,6,Irregular,2020-12-31
+FORN-0242,Premium Infraestrutura Eireli,22.023.413/2611-17,AL,ME,Consultoria - Gestão,Consultoria - Gestão|Treinamento e Capacitação|Facilities - Vigilância,7.4,1,Vencido,2018-08-09
+FORN-0243,Alpha Infraestrutura EPP,49.216.433/4722-82,SP,Grande,TI - Licenciamento,TI - Licenciamento|Engenharia - Obras,9.1,4,Vencido,2018-05-24
+FORN-0244,Fast Telecomunicações Eireli,72.829.979/6884-57,AL,Grande,Treinamento e Capacitação,Treinamento e Capacitação|Logística - Transporte|Seguros,8.2,4,Irregular,2020-07-19
+FORN-0245,Sul Tecnologia ME,42.400.825/4780-77,SC,ME,Marketing e Comunicação,Marketing e Comunicação,8.3,3,Regular,2018-02-07
+FORN-0246,Norte Gestão Eireli,36.866.326/6341-63,RN,Grande,TI - Infraestrutura,TI - Infraestrutura|Consultoria - Gestão,7.6,0,Regular,2021-01-18
+FORN-0247,Global Transporte Eireli,22.417.974/9735-02,RJ,Médio,TI - Licenciamento,TI - Licenciamento,6.1,1,Regular,2018-04-01
+FORN-0248,Prime Engenharia Eireli,03.120.735/6475-70,GO,ME,Treinamento e Capacitação,Treinamento e Capacitação,8.1,4,Regular,2018-11-25
+FORN-0249,Leste Consultoria Ltda,18.723.460/1367-30,DF,ME,Consultoria - Jurídica,Consultoria - Jurídica,6.9,2,Regular,2023-03-03
+FORN-0250,Sol Engenharia EPP,64.520.881/4743-50,MS,Médio,Facilities - Vigilância,Facilities - Vigilância|Seguros,6.4,2,Irregular,2020-06-11
+FORN-0251,Sigma Segurança ME,49.163.009/7925-13,BA,Médio,Facilities - Limpeza,Facilities - Limpeza,3.7,3,Regular,2023-08-10
+FORN-0252,Delta Construções Ltda,81.273.585/7306-52,CE,EPP,Engenharia - Manutenção,Engenharia - Manutenção,8.9,3,Regular,2018-06-11
+FORN-0253,Pro Administração EPP,39.285.574/9821-82,ES,ME,Seguros,Seguros,9.6,3,Irregular,2021-04-26
+FORN-0254,Leste Sistemas EPP,86.209.593/5186-38,MS,ME,TI - Infraestrutura,TI - Infraestrutura,6.9,5,Regular,2023-07-31
+FORN-0255,Norte Transporte S.A.,51.181.022/0317-31,RJ,Médio,Segurança Patrimonial,Segurança Patrimonial|Marketing e Comunicação,4.9,1,Regular,2022-05-11
+FORN-0256,Fast Manutenção EPP,53.910.371/7058-65,AP,EPP,Logística - Transporte,Logística - Transporte|TI - Desenvolvimento,7.5,4,Irregular,2018-08-27
+FORN-0257,Delta Facilities EPP,86.338.392/8861-95,MS,Grande,Facilities - Recepção,Facilities - Recepção,8.2,2,Regular,2023-02-22
+FORN-0258,Net Gestão Ltda,86.852.897/5585-56,AC,ME,Facilities - Limpeza,Facilities - Limpeza,7.7,7,Irregular,2022-10-30
+FORN-0259,Leste Construções EPP,68.457.760/0490-82,SC,ME,Facilities - Vigilância,Facilities - Vigilância,7.6,1,Regular,2018-01-27
+FORN-0260,Global Segurança S.A.,88.899.210/7522-45,PI,Médio,TI - Infraestrutura,TI - Infraestrutura|Logística - Transporte|Treinamento e Capacitação,10.0,3,Regular,2020-10-20
+FORN-0261,Brasil Sistemas Eireli,93.157.279/1940-96,MG,Médio,Consultoria - Jurídica,Consultoria - Jurídica,5.5,3,Regular,2018-08-18
+FORN-0262,Inter Construções Eireli,13.906.048/0589-25,RN,EPP,Marketing e Comunicação,Marketing e Comunicação|Material de Escritório|Treinamento e Capacitação,6.0,2,Regular,2020-06-23
+FORN-0263,Omega Serviços ME,64.622.517/9086-41,MA,ME,Material de Escritório,Material de Escritório|TI - Licenciamento|Engenharia - Obras,9.0,2,Regular,2023-08-18
+FORN-0264,Ultra Consultoria S.A.,76.938.983/3146-59,MG,EPP,Facilities - Vigilância,Facilities - Vigilância,6.4,1,Regular,2019-04-06
+FORN-0265,Fast Gestão ME,55.904.259/7927-03,DF,EPP,Facilities - Vigilância,Facilities - Vigilância,6.5,6,Regular,2022-03-12
+FORN-0266,Omega Tecnologia Ltda,40.514.770/5383-38,RN,Grande,Facilities - Recepção,Facilities - Recepção|Engenharia - Manutenção,8.9,2,Regular,2020-11-25
+FORN-0267,Top Manutenção EPP,69.804.204/3940-70,MG,EPP,Engenharia - Manutenção,Engenharia - Manutenção|TI - Infraestrutura,6.7,3,Irregular,2022-05-11
+FORN-0268,Fast Sistemas Eireli,63.681.579/8123-87,AL,EPP,TI - Infraestrutura,TI - Infraestrutura|Logística - Armazenagem|Marketing e Comunicação,6.4,6,Vencido,2018-03-30
+FORN-0269,Global Construções ME,05.554.384/0460-84,PE,Médio,Facilities - Limpeza,Facilities - Limpeza,8.5,4,Regular,2019-09-14
+FORN-0270,Master Infraestrutura S.A.,89.363.926/4957-82,DF,ME,Consultoria - Jurídica,Consultoria - Jurídica,9.3,3,Regular,2019-07-22
+FORN-0271,Elite Transporte S.A.,29.251.881/2520-56,AM,Médio,Logística - Armazenagem,Logística - Armazenagem|Engenharia - Manutenção|Facilities - Vigilância,10.0,5,Irregular,2021-05-27
+FORN-0272,Norte Facilities Ltda,99.499.939/3305-17,PR,ME,TI - Infraestrutura,TI - Infraestrutura,9.1,1,Regular,2023-08-20
+FORN-0273,Oeste Manutenção Eireli,77.223.306/0463-33,MG,Médio,Consultoria - Jurídica,Consultoria - Jurídica,7.0,3,Irregular,2019-12-27
+FORN-0274,Inter Administração EPP,73.660.965/6999-88,MT,Médio,Segurança Patrimonial,Segurança Patrimonial,8.4,2,Irregular,2018-06-07
+FORN-0275,Max Engenharia ME,38.860.868/0347-64,AC,EPP,TI - Desenvolvimento,TI - Desenvolvimento,9.3,2,Regular,2021-03-17
+FORN-0276,Super Logística ME,82.771.812/9826-65,ES,Grande,TI - Desenvolvimento,TI - Desenvolvimento,7.6,2,Vencido,2018-04-13
+FORN-0277,Central Facilities ME,21.117.518/6892-68,MA,Grande,Segurança Patrimonial,Segurança Patrimonial,10.0,5,Vencido,2018-06-29
+FORN-0278,Elite Consultoria S.A.,44.742.123/0940-77,PB,ME,Facilities - Limpeza,Facilities - Limpeza|TI - Desenvolvimento|Facilities - Vigilância,6.9,2,Regular,2018-01-24
+FORN-0279,Premium Manutenção S.A.,76.719.903/8498-30,BA,EPP,Seguros,Seguros,6.7,2,Regular,2019-08-31
+FORN-0280,Beta Telecomunicações Ltda,99.451.016/2249-99,AP,Médio,TI - Desenvolvimento,TI - Desenvolvimento,8.0,1,Regular,2019-12-28
+FORN-0281,Super Telecomunicações Ltda,55.616.814/7214-58,AM,EPP,Logística - Armazenagem,Logística - Armazenagem,9.2,4,Regular,2023-11-19
+FORN-0282,Tech Facilities EPP,17.946.954/8995-29,PI,EPP,Material de Escritório,Material de Escritório,6.5,1,Regular,2023-07-27
+FORN-0283,Max Manutenção ME,30.107.139/6605-58,AP,Grande,Facilities - Recepção,Facilities - Recepção|Logística - Armazenagem,8.7,2,Regular,2020-05-19
+FORN-0284,Alpha Facilities Eireli,44.885.015/5699-02,DF,Médio,TI - Licenciamento,TI - Licenciamento,8.8,1,Vencido,2021-09-15
+FORN-0285,Leste Construções ME,27.857.608/4958-80,DF,Médio,TI - Desenvolvimento,TI - Desenvolvimento|Engenharia - Manutenção|Facilities - Recepção,8.0,4,Vencido,2021-09-20
+FORN-0286,Sul Telecomunicações Ltda,68.299.629/1450-46,MG,EPP,Logística - Transporte,Logística - Transporte|TI - Infraestrutura|Facilities - Limpeza,5.4,3,Regular,2023-07-29
+FORN-0287,Central Segurança Eireli,38.421.503/1780-78,PR,EPP,Logística - Armazenagem,Logística - Armazenagem,5.4,4,Regular,2020-02-19
+FORN-0288,Global Construções S.A.,30.768.104/0915-70,RS,Grande,Engenharia - Obras,Engenharia - Obras|Engenharia - Manutenção,3.3,1,Regular,2023-11-03
+FORN-0289,Norte Digital Ltda,53.344.857/1422-41,SP,ME,Logística - Armazenagem,Logística - Armazenagem|Facilities - Vigilância,6.0,3,Regular,2023-10-07
+FORN-0290,Smart Transporte Eireli,93.214.958/7020-70,RS,ME,Logística - Armazenagem,Logística - Armazenagem,8.0,0,Regular,2022-04-21
+FORN-0291,Beta Tecnologia ME,95.453.817/9217-17,SC,EPP,Treinamento e Capacitação,Treinamento e Capacitação,5.9,2,Regular,2023-03-22
+FORN-0292,Pro Segurança S.A.,56.255.770/1715-77,BA,ME,Logística - Transporte,Logística - Transporte,4.6,2,Regular,2021-03-02
+FORN-0293,Elite Consultoria EPP,58.148.769/6393-82,PB,EPP,Engenharia - Obras,Engenharia - Obras,7.2,3,Irregular,2022-04-22
+FORN-0294,Delta Construções S.A.,95.832.197/1997-58,RS,ME,Marketing e Comunicação,Marketing e Comunicação|Material de Escritório,7.7,4,Regular,2022-12-29
+FORN-0295,Prime Digital ME,96.570.132/9022-78,SC,Médio,Engenharia - Obras,Engenharia - Obras,6.7,4,Irregular,2022-05-17
+FORN-0296,Premium Administração S.A.,49.465.190/9862-40,PA,ME,Segurança Patrimonial,Segurança Patrimonial,5.9,4,Regular,2018-08-06
+FORN-0297,Alpha Transporte Eireli,03.696.566/6683-27,PR,EPP,Logística - Armazenagem,Logística - Armazenagem,9.7,4,Irregular,2020-02-10
+FORN-0298,Top Infraestrutura Eireli,22.010.276/2126-79,AM,Grande,Engenharia - Manutenção,Engenharia - Manutenção|Logística - Armazenagem,7.8,5,Vencido,2020-01-07
+FORN-0299,Super Limpeza ME,53.269.097/3846-89,PA,Grande,Treinamento e Capacitação,Treinamento e Capacitação|Consultoria - Jurídica,6.5,2,Regular,2018-05-18
+FORN-0300,Beta Manutenção Eireli,12.847.818/9137-18,AP,EPP,Seguros,Seguros,7.4,2,Irregular,2021-07-03

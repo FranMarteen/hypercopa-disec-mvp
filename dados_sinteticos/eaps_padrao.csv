@@ -1,0 +1,48 @@
+﻿eap_padrao,categoria,modalidade,etapa_seq,etapa_nome,prazo_padrao_dias,prazo_desvio_dias,responsavel
+Contratação de Serviços,Licitação,Licitação Eletrônica,1,Análise da Demanda,15,5,Equipe Técnica
+Contratação de Serviços,Licitação,Licitação Eletrônica,2,Complementação de Informações,10,4,Equipe Técnica
+Contratação de Serviços,Licitação,Licitação Eletrônica,3,Elaboração do Edital,25,8,Equipe Técnica
+Contratação de Serviços,Licitação,Licitação Eletrônica,4,Publicação do Edital,3,1,Pregoeiro
+Contratação de Serviços,Licitação,Licitação Eletrônica,5,Prazo de Elaboração das Propostas,15,5,Externo
+Contratação de Serviços,Licitação,Licitação Eletrônica,6,Sessão de Disputa,1,0,Pregoeiro
+Contratação de Serviços,Licitação,Licitação Eletrônica,7,Habilitação,10,4,Pregoeiro
+Contratação de Serviços,Licitação,Licitação Eletrônica,8,Declaração de Vencedor,3,1,Pregoeiro
+Contratação de Serviços,Licitação,Licitação Eletrônica,9,Convocação para Assinatura,8,3,Gestor do Contrato
+Contratação de Serviços,Licitação,Licitação Eletrônica,10,Assinatura do Contrato,5,2,Ordenador
+ARP Engenharia,Licitação,Licitação Eletrônica,1,Análise da Demanda,20,7,Equipe Técnica
+ARP Engenharia,Licitação,Licitação Eletrônica,2,Complementação de Informações,12,5,Equipe Técnica
+ARP Engenharia,Licitação,Licitação Eletrônica,3,Elaboração do Edital,35,10,Equipe Técnica
+ARP Engenharia,Licitação,Licitação Eletrônica,4,Publicação do Edital,3,1,Pregoeiro
+ARP Engenharia,Licitação,Licitação Eletrônica,5,Prazo de Elaboração das Propostas,20,7,Externo
+ARP Engenharia,Licitação,Licitação Eletrônica,6,Sessão de Disputa,1,0,Pregoeiro
+ARP Engenharia,Licitação,Licitação Eletrônica,7,Habilitação,12,5,Pregoeiro
+ARP Engenharia,Licitação,Licitação Eletrônica,8,Declaração de Vencedor,5,2,Pregoeiro
+ARP Engenharia,Licitação,Licitação Eletrônica,9,Convocação para Assinatura,10,4,Gestor do Contrato
+ARP Engenharia,Licitação,Licitação Eletrônica,10,Assinatura do Contrato,7,3,Ordenador
+ARP Bens,Licitação,Licitação Eletrônica,1,Análise da Demanda,12,4,Equipe Técnica
+ARP Bens,Licitação,Licitação Eletrônica,2,Complementação de Informações,8,3,Equipe Técnica
+ARP Bens,Licitação,Licitação Eletrônica,3,Elaboração do Edital,20,6,Equipe Técnica
+ARP Bens,Licitação,Licitação Eletrônica,4,Publicação do Edital,3,1,Pregoeiro
+ARP Bens,Licitação,Licitação Eletrônica,5,Prazo de Elaboração das Propostas,12,4,Externo
+ARP Bens,Licitação,Licitação Eletrônica,6,Sessão de Disputa,1,0,Pregoeiro
+ARP Bens,Licitação,Licitação Eletrônica,7,Habilitação,8,3,Pregoeiro
+ARP Bens,Licitação,Licitação Eletrônica,8,Declaração de Vencedor,3,1,Pregoeiro
+ARP Bens,Licitação,Licitação Eletrônica,9,Convocação para Assinatura,7,3,Gestor do Contrato
+ARP Bens,Licitação,Licitação Eletrônica,10,Assinatura do Contrato,5,2,Ordenador
+Contratação Direta por Limite de Valor,Contratação Direta,Contratação Direta,1,Análise de Conformidade,10,4,Equipe Técnica
+Contratação Direta por Limite de Valor,Contratação Direta,Contratação Direta,2,Complementação de Informações,5,2,Equipe Técnica
+Contratação Direta por Limite de Valor,Contratação Direta,Contratação Direta,3,Verificação de Documentação,5,2,Equipe Técnica
+Contratação Direta por Limite de Valor,Contratação Direta,Contratação Direta,4,Ratificação/Aprovação,3,1,Ordenador
+Contratação Direta por Limite de Valor,Contratação Direta,Contratação Direta,5,Convocação para Assinatura,5,2,Gestor do Contrato
+Contratação Direta por Limite de Valor,Contratação Direta,Contratação Direta,6,Assinatura do Contrato,3,1,Ordenador
+Contratação Direta Exceto Limite de Valor,Contratação Direta,Contratação Direta,1,Análise de Conformidade,12,5,Equipe Técnica
+Contratação Direta Exceto Limite de Valor,Contratação Direta,Contratação Direta,2,Complementação de Informações,7,3,Equipe Técnica
+Contratação Direta Exceto Limite de Valor,Contratação Direta,Contratação Direta,3,Verificação de Documentação,7,3,Equipe Técnica
+Contratação Direta Exceto Limite de Valor,Contratação Direta,Contratação Direta,4,Ratificação/Aprovação,5,2,Ordenador
+Contratação Direta Exceto Limite de Valor,Contratação Direta,Contratação Direta,5,Convocação para Assinatura,5,2,Gestor do Contrato
+Contratação Direta Exceto Limite de Valor,Contratação Direta,Contratação Direta,6,Assinatura do Contrato,3,1,Ordenador
+Inexigibilidade,Inexigibilidade,Inexigibilidade,1,Análise de Conformidade,10,4,Equipe Técnica
+Inexigibilidade,Inexigibilidade,Inexigibilidade,2,Justificativa de Inexigibilidade,7,3,Equipe Técnica
+Inexigibilidade,Inexigibilidade,Inexigibilidade,3,Ratificação,5,2,Ordenador
+Inexigibilidade,Inexigibilidade,Inexigibilidade,4,Convocação para Assinatura,5,2,Gestor do Contrato
+Inexigibilidade,Inexigibilidade,Inexigibilidade,5,Assinatura do Contrato,3,1,Ordenador

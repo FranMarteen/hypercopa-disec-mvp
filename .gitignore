@@ -1,0 +1,63 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# H2O
+h2o_logs/
+*.h2o/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Segredos (NUNCA commitar)
+.env
+.env.local
+
+# Dados de treino gerados pelo agente
+dados_treino/
+
+# Dados reais BB (NUNCA commitar — política interna)
+dados reais/
+dados_reais_limpos/
+dados_postgres/
+
+# Dados pessoais
+Extrato_Asaas.csv
+matriculas_*.csv
+Gmail*.pdf
+*.pdf
+
+# Logs e saídas grandes
+h2o_logs/
+*.log
+
+# Modelos H2O salvos (binários grandes — regenerar com o app)
+models/
+
+# Relatórios gerados (saída do app, não commitar)
+relatorios/
+
+# Notebooks com checkpoints
+.ipynb_checkpoints/
+
+# Pasta temporária
+.tmp_*/
+
+# Cache de tarefas
+.claude/

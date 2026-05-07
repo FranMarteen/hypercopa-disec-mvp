@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "cenario": {
+    "id": "atraso_dicoi",
+    "titulo": "EAP DICOI — Quais contratos vão atrasar?",
+    "narrativa_curta": "A DICOI nos enviou o extrato de contratos pós-assinatura. Queremos prever quais correm risco de atraso para priorizar revisão de gestor.",
+    "csv_pre_carregar": "dados_sinteticos/contratos.csv",
+    "csv_nome_amigavel": "contratos_dicoi.csv",
+    "target_esperado": "teve_atraso",
+    "task_esperada": "classification"
+  },
+  "turnos": [
+    {
+      "role": "user",
+      "content": "Recebi este extrato de contratos da DICOI. Preciso prever **quais contratos vão atrasar** para priorizar revisão antes de novas adesões."
+    },
+    {
+      "role": "assistant",
+      "content": "Recebi. Deixa eu dar uma olhada no arquivo.",
+      "tool_calls": [
+        {"name": "ler_schema", "arguments": {"nome_arquivo": "contratos_dicoi.csv"}},
+        {"name": "ler_amostra", "arguments": {"nome_arquivo": "contratos_dicoi.csv", "n": 5}}
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": "Vi 1.959 contratos, 21 colunas, com data de assinatura entre 2022 e 2025. Tem a coluna **`teve_atraso`** — ótimo, esse é o nosso target.\n\nConfere que o recorte é \"contratos que sofreram atraso na execução\"? Se sim, te proponho a preparação."
+    },
+    {
+      "role": "user",
+      "content": "Confere. Pode preparar."
+    },
+    {
+      "role": "assistant",
+      "content": "Proposta de preparação:\n\n- **manter** 9 features: `porte_fornecedor`, `valor_contratado`, `num_aditivos`, `num_penalidades`, `vigencia_meses`, `eap_padrao`, `categoria_contratacao`, `tipo_servico`, `nota_fornecedor`\n- **remover** IDs (`contrato_id`, `eap_id`, `fornecedor_id`, `fornecedor_nome`) e colunas de data bruta — geram vazamento\n- **target**: `teve_atraso` (classificação binária)\n- **tratar nulos**: numéricos com 0, texto com `desconhecido`\n\nMando executar?"
+    },
+    {
+      "role": "user",
+      "content": "Manda."
+    },
+    {
+      "role": "assistant",
+      "content": "Preparando o dataset...",
+      "tool_calls": [
+        {
+          "name": "executar_pandas",
+          "arguments": {
+            "codigo": "df = dfs['contratos_dicoi.csv'][['porte_fornecedor','valor_contratado','num_aditivos','num_penalidades','vigencia_meses','eap_padrao','categoria_contratacao','tipo_servico','nota_fornecedor','teve_atraso']].copy()\nfor c in ['porte_fornecedor','eap_padrao','categoria_contratacao','tipo_servico']:\n    df[c] = df[c].fillna('desconhecido')\nfor c in ['valor_contratado','num_aditivos','num_penalidades','vigencia_meses','nota_fornecedor']:\n    df[c] = df[c].fillna(0)\nresultado = df"
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": "Validando o resultado...",
+      "tool_calls": [
+        {
+          "name": "executar_pandas",
+          "arguments": {
+            "codigo": "resultado_info = {'linhas': len(resultado), 'colunas': len(resultado.columns), 'distrib_target': resultado['teve_atraso'].value_counts().to_dict(), 'pct_nulos': resultado.isna().sum().to_dict()}\nresultado = resultado_info"
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": "Validei: **1.959 contratos, 10 colunas** (9 features + target). Distribuição do target — 81% sem atraso, 19% com atraso. Proporção saudável para classificação binária. Sem nulos remanescentes.\n\nVou salvar o CSV final agora.",
+      "tool_calls": [
+        {
+          "name": "executar_pandas",
+          "arguments": {
+            "codigo": "df = dfs['contratos_dicoi.csv'][['porte_fornecedor','valor_contratado','num_aditivos','num_penalidades','vigencia_meses','eap_padrao','categoria_contratacao','tipo_servico','nota_fornecedor','teve_atraso']].copy()\nfor c in ['porte_fornecedor','eap_padrao','categoria_contratacao','tipo_servico']:\n    df[c] = df[c].fillna('desconhecido')\nfor c in ['valor_contratado','num_aditivos','num_penalidades','vigencia_meses','nota_fornecedor']:\n    df[c] = df[c].fillna(0)\nresultado = df"
+          }
+        },
+        {
+          "name": "salvar_csv_final",
+          "arguments": {
+            "pergunta": "Quais contratos da DICOI vão sofrer atraso?",
+            "target": "teve_atraso",
+            "task": "classification"
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": "Dataset salvo. **Pronto para treinar no H2O AutoML.** Pode rolar até a Etapa 2 e clicar em Treinar."
+    }
+  ]
+}

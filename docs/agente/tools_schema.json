@@ -1,0 +1,100 @@
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "ler_schema",
+        "description": "Retorna o schema (colunas e seus tipos) de um CSV que o usuário já disponibilizou. Use para descobrir o que existe no arquivo antes de propor qualquer preparação.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "nome_arquivo": {
+              "type": "string",
+              "description": "Nome do arquivo CSV (ex: 'contratos_ti_2024.csv'). Use exatamente como aparece na lista 'Arquivos disponíveis agora'."
+            }
+          },
+          "required": ["nome_arquivo"],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "ler_amostra",
+        "description": "Retorna as N primeiras linhas de um CSV para você entender o conteúdo real (valores típicos, formato de datas, categorias). Use logo após ler_schema.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "nome_arquivo": {
+              "type": "string",
+              "description": "Nome do arquivo CSV."
+            },
+            "n": {
+              "type": "integer",
+              "description": "Quantas linhas trazer (padrão 5, máx 20).",
+              "default": 5,
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          "required": ["nome_arquivo"],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "executar_pandas",
+        "description": "Executa código pandas/numpy em sandbox para preparar o DataFrame (JOINs, filtros, seleção de colunas, tratamento de nulos, validações estatísticas). O código DEVE atribuir o resultado final à variável chamada `resultado`. Você tem acesso ao dicionário `dfs` contendo todos os arquivos disponíveis (uploads do usuário e DataFrames criados em chamadas anteriores) — acesse como `dfs['nome_arquivo.csv']` ou `dfs['df_abc12345']`. Bibliotecas disponíveis: `pd` (pandas), `np` (numpy). Não há acesso a rede, filesystem ou imports.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "codigo": {
+              "type": "string",
+              "description": "Código Python (pandas) a executar. Deve terminar atribuindo um DataFrame ou resultado à variável `resultado`. Exemplo:\n\ncontratos = dfs['contratos_ti_2024.csv']\nresultado = contratos[contratos['dt_vigencia_fim'] < '2025-01-01'][['valor_contratado','porte_fornecedor','teve_atraso']]"
+            }
+          },
+          "required": ["codigo"],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "salvar_csv_final",
+        "description": "Persiste o DataFrame final (criado por executar_pandas) como CSV em disco e grava um sidecar .meta.json com a pergunta, o target e o tipo de tarefa. O H2O Guiado lê esse sidecar para pré-preencher a pergunta, escolher o target e fazer o split treino/teste automaticamente. Use APENAS após validar. Chame exatamente uma vez por conversa.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "df_id": {
+              "type": "string",
+              "description": "ID retornado por executar_pandas (ex: 'df_abc12345')."
+            },
+            "nome_sugerido": {
+              "type": "string",
+              "description": "Nome descritivo do dataset de treino, sem extensão (ex: 'contratos_atraso_ti_2026-04-17')."
+            },
+            "pergunta": {
+              "type": "string",
+              "description": "Pergunta preditiva em linguagem natural, PT-BR, que o usuário quer responder. Ex: 'Quais EAPs vão atrasar?'."
+            },
+            "target": {
+              "type": "string",
+              "description": "Nome EXATO da coluna do DataFrame final que é a variável-alvo do modelo."
+            },
+            "task": {
+              "type": "string",
+              "enum": ["classification", "regression"],
+              "description": "Tipo da tarefa: 'classification' se o target é binário/categórico; 'regression' se for numérico contínuo."
+            }
+          },
+          "required": ["df_id", "nome_sugerido", "pergunta", "target", "task"],
+          "additionalProperties": false
+        }
+      }
+    }
+  ]
+}
