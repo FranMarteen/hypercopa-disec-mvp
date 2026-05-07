@@ -1,9 +1,9 @@
 openapi: 3.0.1
 info:
-  title: H2O Guiado — Agente Preparador BB
+  title: H2O Guiado — Agente Predfy
   version: 2.0.0
   description: >
-    Actions do Agente Preparador H2O. Expõe as 4 tools do preparador local
+    Actions do Agente Predfy. Expõe as 4 tools do preparador local
     (ler_schema, ler_amostra, executar_pandas, salvar_csv_final) como endpoints
     HTTP para o Microsoft 365 Copilot chamar. O backend executa tudo localmente
     no servidor da DISEC — nenhum CSV cru sai da rede BB.

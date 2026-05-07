@@ -59,7 +59,7 @@ Com atraso:       367 (18.7%)
 
 **Verificação de reprodutibilidade.** Em qualquer máquina, esses números devem ser **idênticos**.
 
-### Etapa 1 — Agente Preparador (Caminho C, modo demo)
+### Etapa 1 — Agente Predfy (Caminho C, modo demo)
 
 **O que esperar.** Cenário pré-curado: *"EAP DICOI — vai atrasar?"*. CSV pré-carregado: `contratos_dicoi.csv` (1.959 linhas, 21 colunas).
 
@@ -183,7 +183,7 @@ Para testar dentro do tenant M365 BB:
 
 1. Veja [`COPILOT_STUDIO_GUIA.md`](COPILOT_STUDIO_GUIA.md) — passo-a-passo de 20-30 min, sem código.
 2. Submeta `teams_copilot/declarative-agent.json` ao admin M365.
-3. Após aprovação, o agente aparece no Teams como **"Preparador BB"**.
+3. Após aprovação, o agente aparece no Teams como **"Agente Predfy"**.
 4. Use-o como interface conversacional; o app local apenas processa o bloco devolvido.
 
 ---

@@ -1,4 +1,4 @@
-# Fluxograma da Jornada — Agente Preparador + Modelo Analítico
+# Fluxograma da Jornada — Predfy — Preparador + Modelo Analítico
 
 DISEC · Banco do Brasil · HyperCopa DISEC 2026
 Time: Equipe HyperCopa DISEC 2026
@@ -32,7 +32,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A[Usuario] -->|abre agente<br/>Preparador BB| B[Copilot Studio<br/>no tenant BB]
+    A[Usuario] -->|abre agente<br/>Agente Predfy| B[Copilot Studio<br/>no tenant BB]
     B -->|chat conversacional<br/>cola CSV ou anexa| C[Copilot M365<br/>do Teams]
     C -->|devolve bloco estruturado| D[Usuario copia bloco]
     D --> E[App Streamlit local<br/>cola bloco no campo]

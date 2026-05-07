@@ -1,4 +1,4 @@
-# Agente Preparador + Interprete BB — Microsoft Copilot no Teams
+# Agente Agente Predfy — Microsoft Copilot no Teams
 
 Versao **sem API** (copy-paste). O agente roda 100% conversacional dentro do Microsoft Copilot, sem precisar de servidor, tunel ou autenticacao OAuth.
 

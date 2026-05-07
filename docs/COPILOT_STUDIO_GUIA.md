@@ -1,6 +1,6 @@
 # Como criar o agente no Microsoft Copilot Studio
 
-Guia passo-a-passo para o Time HyperCopa (Equipe HyperCopa DISEC 2026) publicar o agente **Preparador + Interprete BB** no Copilot do Teams, sem API e sem código.
+Guia passo-a-passo para o Time HyperCopa (Equipe HyperCopa DISEC 2026) publicar o agente **Agente Predfy** no Copilot do Teams, sem API e sem código.
 
 > Estimativa de tempo: 20-30 minutos.
 
@@ -34,7 +34,7 @@ Na aba **`Overview`** preencha:
 
 | Campo | Valor |
 |---|---|
-| **Name** | `Preparador + Interprete BB` |
+| **Name** | `Agente Predfy` |
 | **Description** | `Agente da DISEC para preparar dados de Licitacao Eletronica (Fase 1) e interpretar relatorios de modelos H2O (Fase 2). Sem chamadas externas — totalmente conversacional via copy-paste.` |
 | **Icon** | (opcional) Faça upload de um icone amarelo/azul BB |
 
@@ -113,7 +113,7 @@ Na aba **`Settings`** → **`Security & compliance`**:
 1. Aba **`Channels`** → **`Microsoft Teams`**.
 2. Clique em **`Turn on Teams`**.
 3. Defina:
-   - **App name** (Teams): `Preparador BB`
+   - **App name** (Teams): `Agente Predfy`
    - **Short description**: `Agente DISEC para Licitacao Eletronica`
    - **Long description**: copie a Description do Passo 2.
 4. Clique em **`Submit for admin approval`**.

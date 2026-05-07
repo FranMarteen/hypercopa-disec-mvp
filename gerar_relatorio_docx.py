@@ -161,7 +161,7 @@ def add_capa(doc):
 
     par = doc.add_paragraph()
     par.paragraph_format.space_after = Pt(0)
-    add_run(par, "Agente Preparador BB + Modelo Analitico", size=18,
+    add_run(par, "Agente Predfy + Modelo Analitico", size=18,
             color=BB_AZUL)
 
     par = doc.add_paragraph()
@@ -210,7 +210,7 @@ def main():
     paragraph(
         doc,
         "A jornada ",
-        ("Agente Preparador + Modelo Analitico", {"bold": True}),
+        ("Predfy — Preparador + Modelo Analítico", {"bold": True}),
         " transforma um extrato bruto de Licitacao Eletronica em um modelo "
         "preditivo treinado e auditavel em ",
         ("menos de 5 minutos", {"bold": True}),

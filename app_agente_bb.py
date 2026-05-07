@@ -1,5 +1,5 @@
 """
-Agente Preparador BB + Modelo Analitico — app Streamlit standalone.
+Agente Predfy + Modelo Analitico — app Streamlit standalone.
 
 Identidade visual Banco do Brasil (paleta amarelo/azul, tipografia humanista).
 Jornada unica:
@@ -42,7 +42,7 @@ BB_TEXTO = "#1F1F1F"
 FONT_FAMILY = "'IBM Plex Sans', 'Segoe UI', sans-serif"
 
 st.set_page_config(
-    page_title="Agente Preparador BB",
+    page_title="Predfy · DISEC BB",
     page_icon="🟡",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -822,9 +822,13 @@ def etapa_atual_da_jornada() -> int:
 st.markdown(
     f"""
     <div class="bb-header">
-        <h1>Agente Preparador + Modelo Analitico</h1>
-        <div class="bb-sub">DISEC · Banco do Brasil · Licitacao Eletronica</div>
-        <span class="bb-tag">HyperCopa DISEC 2026</span>
+        <h1 style='font-size:2.2rem;letter-spacing:-0.02em;'>
+            🟡 <b>Predfy</b>
+            <span style='font-weight:400;font-size:1.1rem;color:{BB_AMARELO};
+            margin-left:0.6rem;'>· Preparador + Modelo Analítico</span>
+        </h1>
+        <div class="bb-sub">DISEC · Banco do Brasil · Licitação Eletrônica · Lei 14.133/21</div>
+        <span class="bb-tag">HyperCopa DISEC 2026 · MVP</span>
     </div>
     """,
     unsafe_allow_html=True,
@@ -1516,7 +1520,7 @@ if caminho_label == "A":
 elif caminho_label == "B":
     st.info(
         "**Como usar o Caminho B:**\n\n"
-        "1. Abra o agente **Preparador BB** no Microsoft Copilot do Teams.\n"
+        "1. Abra o agente **Agente Predfy** no Microsoft Copilot do Teams.\n"
         "2. Anexe seu CSV ou cole uma amostra.\n"
         "3. Conte a pergunta preditiva.\n"
         "4. O Copilot devolve um bloco com `PERGUNTA / TARGET / TASK / "
@@ -2302,7 +2306,7 @@ footer {{ margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd;
 </ul>
 
 <footer>
-Gerado automaticamente pela jornada Agente Preparador + Modelo Analitico.<br>
+Gerado automaticamente pela jornada Predfy — Preparador + Modelo Analítico.<br>
 Banco do Brasil · DISEC · {datetime.now().strftime('%d/%m/%Y %H:%M')}
 </footer>
 </body></html>"""
@@ -2517,7 +2521,7 @@ Gerado em: {r['treinado_em']}
                 <div style='background:linear-gradient(180deg,#4B53BC 0%,#5059C9 100%);
                 color:white;padding:0.7rem 1rem;border-radius:8px 8px 0 0;
                 font-weight:600;font-size:0.95rem;'>
-                💬 Agente Preparador + Intérprete BB · Microsoft Copilot do Teams (simulado offline)
+                💬 Agente Agente Predfy · Microsoft Copilot do Teams (simulado offline)
                 </div>
                 <div style='background:#F5F5FA;border:1px solid #E5E7EA;border-top:none;
                 border-radius:0 0 8px 8px;padding:1rem 1.2rem;margin-bottom:1rem;'>
@@ -2620,7 +2624,7 @@ Gerado em: {r['treinado_em']}
             st.markdown("#### Copie o bloco para o Copilot do Teams real")
             st.markdown(
                 "<p style='color:#5C6670'>Copie o bloco abaixo, cole na conversa "
-                "com o agente <b>Preparador + Interprete BB</b> no Microsoft "
+                "com o agente <b>Agente Predfy</b> no Microsoft "
                 "Copilot do Teams e peca <i>'interpreta esse relatorio'</i>. "
                 "O Copilot devolve o resumo executivo, traducao das metricas e "
                 "recomendacoes operacionais em linguagem de negocio.</p>",

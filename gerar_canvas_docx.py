@@ -116,7 +116,7 @@ def main():
 
     sub = doc.add_paragraph()
     sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run(sub, "Agente Preparador BB + Modelo Analítico (H2O AutoML)", bold=True, size=13, color=AZUL)
+    run(sub, "Agente Predfy + Modelo Analítico (H2O AutoML)", bold=True, size=13, color=AZUL)
 
     eq = doc.add_paragraph()
     eq.alignment = WD_ALIGN_PARAGRAPH.CENTER

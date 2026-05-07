@@ -1,4 +1,4 @@
-# HyperCopa DISEC 2026 — Agente Preparador BB + H2O AutoML
+# HyperCopa DISEC 2026 — Agente Predfy + H2O AutoML
 
 > **Modelos preditivos sobre Licitação Eletrônica** (Lei 14.133/21) para
 > **apoiar decisões e minimizar riscos** em prazos, intercorrências
@@ -15,7 +15,7 @@ Uma **jornada de 7 passos** que conduz o usuário do dado bruto à decisão acio
 ```
 0. Construção dos dados sintéticos (Faker + regras Lei 14.133, seed=42)
        ↓
-1. Agente Preparador (Teams ou local)  ── feature engineering visível,
+1. Agente Predfy (Teams ou local)  ── feature engineering visível,
                                            escolha de target, formulação
                                            da pergunta preditiva
        ↓

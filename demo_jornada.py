@@ -1,5 +1,5 @@
 """
-Demo end-to-end da jornada Agente Preparador + Modelo Analitico.
+Demo end-to-end da jornada Predfy — Preparador + Modelo Analítico.
 
 Funciona com QUALQUER CSV. Reproduz no terminal o que o app_agente_bb.py faz
 na UI, gerando os mesmos artefatos (CSV final + meta + relatorio HTML/JSON +
@@ -511,7 +511,7 @@ Esta e uma execucao automatica. Antes de operacionalizar:
 
 def main():
     p = argparse.ArgumentParser(
-        description="Demo end-to-end da jornada Agente Preparador + Modelo Analitico.",
+        description="Demo end-to-end da jornada Predfy — Preparador + Modelo Analítico.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )

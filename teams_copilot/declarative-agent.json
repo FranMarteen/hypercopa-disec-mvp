@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.2/schema.json",
   "version": "v1.2",
-  "name": "Agente Preparador + Interprete BB",
+  "name": "Agente Agente Predfy",
   "description": "Especialista da DISEC em duas fases: (1) prepara dados de Licitacao Eletronica para um modelo preditivo, devolvendo um bloco pronto para colar no app Streamlit local; (2) interpreta o JSON do relatorio H2O em linguagem de negocio. Sem chamadas a APIs externas — totalmente conversacional via copy-paste.",
   "instructions": "$[file('instructions.md')]",
   "conversation_starters": [

@@ -1,7 +1,7 @@
 # MVP Canvas — HyperCopa DISEC 2026
 
 **Equipe:** Equipe HyperCopa DISEC 2026 (Capitão · Bento · João)
-**Solução:** Agente Preparador BB + Modelo Analítico (H2O AutoML)
+**Solução:** Agente Predfy + Modelo Analítico (H2O AutoML)
 **Data de entrega:** 07/05/2026
 
 ---

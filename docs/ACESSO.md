@@ -1,4 +1,4 @@
-# Como acessar e rodar — Agente Preparador BB
+# Como acessar e rodar — Agente Predfy
 
 DISEC · Banco do Brasil · HyperCopa DISEC 2026
 Time: Equipe HyperCopa DISEC 2026
@@ -58,11 +58,11 @@ Abra `http://localhost:8501` e na tela escolha o **Caminho A**.
 
 1. Siga **`docs/COPILOT_STUDIO_GUIA.md`** — leva 20-30 min, sem código.
 2. O administrador BB aprova a publicação no Teams.
-3. Time HyperCopa (Equipe HyperCopa DISEC 2026) e usuários DISEC encontram o agente como **"Preparador BB"** na barra de apps do Teams.
+3. Time HyperCopa (Equipe HyperCopa DISEC 2026) e usuários DISEC encontram o agente como **"Agente Predfy"** na barra de apps do Teams.
 
 ### Rodar (cada usuário, sempre)
 
-1. Abra o agente **Preparador BB** no Microsoft Teams.
+1. Abra o agente **Agente Predfy** no Microsoft Teams.
 2. Clique em um conversation starter (ex: *"Fase 1 — Preparar dados para prever atraso"*) ou comece direto.
 3. Anexe o CSV (ou cole uma amostra como tabela markdown).
 4. Conte sua pergunta preditiva.
@@ -107,8 +107,8 @@ Use OBS Studio ou Loom. Use o **Caminho B** para a demo (mais impressionante par
 
 | Segundo | Tela | Narração |
 |---|---|---|
-| 0:00 - 0:10 | Header BB do app | "Agente Preparador BB. Pergunta de negócio vira modelo analítico em 5 minutos, dentro do Copilot do Teams." |
-| 0:10 - 0:25 | Teams + agente Preparador | "Abro o agente no Teams, anexo um extrato de contratos da DICOI, pergunto 'quais vão atrasar?'. O Copilot identifica 2.415 linhas, target `teve_atraso`, propõe 12 features." |
+| 0:00 - 0:10 | Header BB do app | "Agente Predfy. Pergunta de negócio vira modelo analítico em 5 minutos, dentro do Copilot do Teams." |
+| 0:10 - 0:25 | Teams + Agente Predfy | "Abro o agente no Teams, anexo um extrato de contratos da DICOI, pergunto 'quais vão atrasar?'. O Copilot identifica 2.415 linhas, target `teve_atraso`, propõe 12 features." |
 | 0:25 - 0:35 | Bloco devolvido no Teams | "O Copilot devolve um bloco estruturado pronto pra colar." |
 | 0:35 - 0:50 | App Streamlit Caminho B | "Colo no app local, clico em processar. CSV final gerado em segundos." |
 | 0:50 - 1:10 | Etapa 2 + treino H2O | "60 segundos de treino. H2O AutoML rodou GLM, GBM, XGBoost. AUC 0.84 no teste. GBM venceu." |

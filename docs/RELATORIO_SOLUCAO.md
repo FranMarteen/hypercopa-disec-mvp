@@ -1,6 +1,6 @@
 # Relatório da Solução
 
-## Agente Preparador BB + Modelo Analítico
+## Agente Predfy + Modelo Analítico
 
 **HyperCopa DISEC 2026** · Banco do Brasil · CESUP-Contratações
 
@@ -11,7 +11,7 @@
 
 ## 1. Sumário executivo
 
-A jornada **Agente Preparador + Modelo Analítico** transforma um extrato bruto de Licitação Eletrônica em um **modelo preditivo treinado e auditável** em **menos de 5 minutos**, sem que o usuário de negócio escreva uma única linha de código.
+A jornada **Predfy — Preparador + Modelo Analítico** transforma um extrato bruto de Licitação Eletrônica em um **modelo preditivo treinado e auditável** em **menos de 5 minutos**, sem que o usuário de negócio escreva uma única linha de código.
 
 A solução resolve a maior dor da DISEC ao operacionalizar analytics: **o tempo entre receber um extrato da área e ter uma resposta acionável**. Hoje esse ciclo é de **dias a semanas** (DBA → Cientista de Dados → Validação → Modelo). Nossa solução reduz para **minutos**, mantendo a governança técnica via `system_prompt` versionado e sandbox de execução.
 
