@@ -514,6 +514,9 @@ ss.setdefault("demo_carregado", False)
 ss.setdefault("demo_turn_idx", 0)
 ss.setdefault("demo_script", None)
 ss.setdefault("demo_finalizado", False)
+# Set de nomes de CSV carregados pelo modo demo — protegidos da limpeza
+# automatica que a sidebar faz baseada no file_uploader.
+ss.setdefault("demo_loaded", set())
 
 
 # ----------------------------------------------------------------------------
@@ -659,9 +662,11 @@ def load_demo_script() -> dict:
 
 def carregar_csv_demo() -> bool:
     """Carrega o CSV demo na memoria do app sob nome amigavel.
-    Retorna True se carregou com sucesso (ou ja estava carregado)."""
+    Retorna True se carregou com sucesso (ou ja estava carregado).
+    Marca o nome em ss.demo_loaded para protege-lo da limpeza da sidebar."""
     script = load_demo_script()
     nome_amigavel = script["cenario"]["csv_nome_amigavel"]
+    ss.demo_loaded.add(nome_amigavel)
     if nome_amigavel in ss.uploaded_dfs:
         return True
     if not DEMO_CSV_PATH.exists():
@@ -1098,7 +1103,11 @@ with st.sidebar:
     # Sincroniza: limpa arquivos que sumiram do uploader
     # (mantem os carregados via caminho local)
     for n in list(ss.uploaded_dfs.keys()):
-        if n not in upload_names and n not in ss.loaded_via_path:
+        # Preserva arquivos: subidos via uploader, via caminho local, ou
+        # carregados pelo modo demo (CSV pre-curado da banca).
+        if (n not in upload_names
+                and n not in ss.loaded_via_path
+                and n not in ss.demo_loaded):
             del ss.uploaded_dfs[n]
     # Carrega novos uploads
     if uploads:
