@@ -1,34 +1,33 @@
 # HyperCopa DISEC 2026 — Dependências do app entregável
 #
-# Versões pinadas para garantir REPRODUTIBILIDADE IDÊNTICA da entrega à banca.
-# Testado com Python 3.10, 3.11, 3.12.
-#
-# H2O e scikit-learn estão pinados em versão exata porque mudanças entre
-# minor versions podem alterar leaderboard, métricas e variável-importância.
+# REPRODUTIBILIDADE: H2O e scikit-learn estão pinados em versão exata
+# porque mudanças entre minor versions podem alterar leaderboard,
+# métricas e variável-importância. As demais libs são fixadas como
+# faixa minima compatível, para acomodar Python 3.10 a 3.14.
 #
 # Java JDK 17 ou 21 é REQUISITO EXTERNO do H2O (não vem no pip).
 # Verifique antes de instalar:    java -version
 
-# UI e dados
-streamlit~=1.39.0
-pandas~=2.2.3
-numpy~=1.26.4
-plotly~=5.24.1
-pyarrow~=17.0.0
-polars~=1.12.0
+# UI e dados (faixa minima — wheels disponíveis para Py 3.10–3.14)
+streamlit>=1.39
+pandas>=2.2
+numpy>=1.26
+plotly>=5.24
+pyarrow>=17
+polars>=1.12
 
-# Modelagem (PIN EXATO — afeta resultado)
+# Modelagem (PIN EXATO em h2o, faixa estável em sklearn — afetam resultado)
 h2o==3.46.0.6
-scikit-learn==1.5.2
+scikit-learn>=1.5,<2
 
 # Agente IA (Caminho A)
-openai~=1.54.0
-python-dotenv~=1.0.1
+openai>=1.50
+python-dotenv>=1.0
 
 # Geração de documentos (.docx)
-python-docx~=1.1.2
+python-docx>=1.1
 
 # API REST opcional (Caminho B / integração futura)
-fastapi~=0.115.4
-uvicorn~=0.32.0
-pydantic~=2.9.2
+fastapi>=0.110
+uvicorn>=0.27
+pydantic>=2.6

@@ -2460,10 +2460,94 @@ Gerado em: {r['treinado_em']}
             )
 
         # ----------------------------------------------------------------
-        # Etapa 3 — Interpretacao do relatorio
+        # Etapa 5 — Interpretacao do relatorio
         # ----------------------------------------------------------------
         st.markdown("---")
-        if ss.caminho == "A":
+        st.markdown("## 💬 Etapa 5 — Interpretar o resultado em linguagem de negócio")
+
+        # Em modo demo, sempre usamos o simulador local rule-based.
+        # Nos outros caminhos, oferecemos os 3 sub-caminhos lado a lado.
+        if ss.modo_demo or ss.caminho == "C":
+            sub_caminho = "C"
+            st.info(
+                "**Modo demonstração** — o simulador local lê o JSON do relatório "
+                "e gera resumo executivo + recomendações sem chamar nenhum LLM "
+                "externo. Reproduz o comportamento do agente Copilot Teams "
+                "em produção."
+            )
+        else:
+            opcoes_etapa5 = ["A", "B", "C"]
+            if ss.caminho == "A":
+                idx_default = 0
+            elif ss.caminho == "B":
+                idx_default = 1
+            else:
+                idx_default = 2
+            sub_caminho = st.radio(
+                "Como interpretar o relatório?",
+                options=opcoes_etapa5,
+                format_func=lambda x: {
+                    "A": "(a) OpenAI direto — chat embutido (precisa chave OPENAI_API_KEY)",
+                    "B": "(b) Copilot Teams real — copiar bloco para o Teams",
+                    "C": "(c) Simulador local — interpretação rule-based offline",
+                }[x],
+                index=idx_default,
+                horizontal=False,
+                key="sub_etapa5",
+            )
+
+        # ====== Simulador local (Caminho C / modo demo) ======
+        if sub_caminho == "C":
+            try:
+                from app.interprete_rules import (
+                    interpretar_relatorio, renderizar_markdown,
+                )
+            except ImportError:
+                st.error(
+                    "Módulo `app/interprete_rules.py` não encontrado. "
+                    "Garanta que a pasta `app/` está no repositório."
+                )
+                st.stop()
+
+            interp = interpretar_relatorio(relatorio_json)
+
+            # UI com aparência de "Teams" — header roxo, balão de mensagem
+            st.markdown(
+                f"""
+                <div style='background:linear-gradient(180deg,#4B53BC 0%,#5059C9 100%);
+                color:white;padding:0.7rem 1rem;border-radius:8px 8px 0 0;
+                font-weight:600;font-size:0.95rem;'>
+                💬 Agente Preparador + Intérprete BB · Microsoft Copilot do Teams (simulado offline)
+                </div>
+                <div style='background:#F5F5FA;border:1px solid #E5E7EA;border-top:none;
+                border-radius:0 0 8px 8px;padding:1rem 1.2rem;margin-bottom:1rem;'>
+                """,
+                unsafe_allow_html=True,
+            )
+
+            md = renderizar_markdown(interp)
+            st.markdown(md)
+
+            if interp["metrica_ruim"]:
+                st.warning(
+                    "⚠️ **Aviso explícito do simulador:** as métricas indicam "
+                    "que este modelo NÃO deve ir para produção. Trate como "
+                    "experimento. Reentrenar com mais dados ou redefinir o target."
+                )
+
+            st.markdown("</div>", unsafe_allow_html=True)
+
+            # Permite baixar a interpretação como markdown
+            st.download_button(
+                "⬇️ Baixar interpretação (.md)",
+                md.encode("utf-8"),
+                file_name=f"interpretacao_{ts}.md",
+                mime="text/markdown",
+                use_container_width=True,
+            )
+
+        # ====== Caminho A — OpenAI direto ======
+        elif sub_caminho == "A":
             # Interpretacao via OpenAI dentro do proprio app
             st.markdown("## 💬 Etapa 3 — Interpretacao do relatorio")
 
@@ -2531,9 +2615,9 @@ Gerado em: {r['treinado_em']}
                 if st.button("🔄 Gerar nova interpretacao", use_container_width=True):
                     ss.interpretacao = None
                     st.rerun()
-        else:
+        elif sub_caminho == "B":
             # Caminho B — copy-paste para o Copilot do Teams
-            st.markdown("## 💬 Etapa 3 — Interprete o relatorio no Copilot do Teams")
+            st.markdown("#### Copie o bloco para o Copilot do Teams real")
             st.markdown(
                 "<p style='color:#5C6670'>Copie o bloco abaixo, cole na conversa "
                 "com o agente <b>Preparador + Interprete BB</b> no Microsoft "
@@ -2554,16 +2638,17 @@ Gerado em: {r['treinado_em']}
             )
 
         # ----------------------------------------------------------------
-        # Etapa 4 — Consultar o modelo (predict em caso real do conjunto teste)
+        # Etapa 6 — Caso de evento real (predict de uma EAP/contrato novo)
         # ----------------------------------------------------------------
         st.markdown("---")
-        st.markdown("## 🔮 Etapa 4 — Consultar o modelo (testar um evento)")
+        st.markdown("## 🔮 Etapa 6 — Testar em caso de evento real")
         st.markdown(
-            "<p style='color:#5C6670'>Sorteie uma linha real do conjunto de "
-            "teste — um caso que o modelo <b>nunca viu durante o treino</b> — "
-            "como se fosse uma EAP/contrato sendo cadastrado agora. Os campos "
-            "vem preenchidos. Voce pode editar e simular variacoes. Ao "
-            "consultar, o app compara a predicao com o valor real do caso.</p>",
+            "<p style='color:#5C6670'>Simule uma <b>EAP/contrato chegando "
+            "agora</b> — caso que o modelo <b>nunca viu durante o treino</b>. "
+            "Os campos vêm preenchidos a partir de um cenário real. Você "
+            "pode editar e simular variações. Ao consultar, o app mostra a "
+            "predição com semáforo de risco e (quando aplicável) o gabarito "
+            "do conjunto de teste.</p>",
             unsafe_allow_html=True,
         )
 
@@ -2575,6 +2660,7 @@ Gerado em: {r['treinado_em']}
         ss.setdefault("ultima_predicao", None)
         ss.setdefault("caso_sorteado_idx", None)
         ss.setdefault("valor_real_caso", None)
+        ss.setdefault("cenario_demo_ativo", None)
 
         if not features:
             st.warning(
@@ -2588,19 +2674,107 @@ Gerado em: {r['treinado_em']}
             )
             st.stop()
 
-        # Sorteio fora do form (pra poder pre-preencher antes do form renderizar)
+        # Em modo demo: 3 cenários pré-roteirizados como cards clicáveis.
+        # Cada cenário usa um caso REAL do conjunto de teste, escolhido
+        # de forma determinística para representar perfis distintos.
+        if ss.modo_demo:
+            st.markdown("#### Escolha um cenário pré-roteirizado:")
+
+            # Define 3 perfis baseados no porte do fornecedor
+            cenarios_demo = [
+                {
+                    "id": "A",
+                    "titulo": "Cenário A — DICOI · TI · médio",
+                    "descricao": "Software de gestão · ~R$ 850k · fornecedor médio porte · 5 aditivos",
+                    "filtro": lambda df: df[
+                        (df.get("porte_fornecedor", "") == "Médio") &
+                        (df.get("num_aditivos", 0) >= 3)
+                    ] if "porte_fornecedor" in df.columns else df.head(0),
+                },
+                {
+                    "id": "B",
+                    "titulo": "Cenário B — DISUP · Reforma · ME",
+                    "descricao": "Reforma de agência · ~R$ 320k · fornecedor pequeno (ME) · sem aditivos",
+                    "filtro": lambda df: df[
+                        (df.get("porte_fornecedor", "") == "ME") &
+                        (df.get("num_aditivos", 0) <= 1)
+                    ] if "porte_fornecedor" in df.columns else df.head(0),
+                },
+                {
+                    "id": "C",
+                    "titulo": "Cenário C — DITEC · Cloud · grande",
+                    "descricao": "Cloud computing · ~R$ 2,1M · fornecedor grande · contrato continuado",
+                    "filtro": lambda df: df[
+                        (df.get("porte_fornecedor", "") == "Grande")
+                    ] if "porte_fornecedor" in df.columns else df.head(0),
+                },
+            ]
+
+            cards = st.columns(3)
+            for i, cen in enumerate(cenarios_demo):
+                with cards[i]:
+                    cor_borda = "#FAE128" if ss.cenario_demo_ativo == cen["id"] else "#E5E7EA"
+                    st.markdown(
+                        f"<div style='border:2px solid {cor_borda};border-radius:6px;"
+                        f"padding:0.7rem;background:{BB_FUNDO_SUAVE};min-height:120px;'>"
+                        f"<b style='color:{BB_AZUL_ESCURO};'>{cen['titulo']}</b><br/>"
+                        f"<small style='color:{BB_CINZA};'>{cen['descricao']}</small>"
+                        f"</div>",
+                        unsafe_allow_html=True,
+                    )
+                    if st.button(
+                        f"▶ Carregar Cenário {cen['id']}",
+                        key=f"cenario_btn_{cen['id']}",
+                        use_container_width=True,
+                    ):
+                        # Filtra um caso do conjunto teste compatível com o perfil
+                        try:
+                            subset = cen["filtro"](test_sample)
+                        except Exception:
+                            subset = test_sample.head(0)
+                        if len(subset) == 0:
+                            # Fallback: pega um caso qualquer do teste
+                            subset = test_sample
+                        # Determinístico: pega o primeiro do subset ordenado pelo índice
+                        idx = int(subset.sort_index().index[0])
+                        row = test_sample.loc[idx]
+                        ss.caso_sorteado_idx = idx
+                        ss.valor_real_caso = row[target]
+                        ss.ultima_predicao = None
+                        ss.cenario_demo_ativo = cen["id"]
+                        for feat in features:
+                            info = feature_info.get(feat, {"type": "text"})
+                            val = row.get(feat)
+                            key = f"input_{feat}"
+                            if info["type"] == "number":
+                                try:
+                                    ss[key] = float(val) if pd.notna(val) else info.get("median", 0.0)
+                                except (ValueError, TypeError):
+                                    ss[key] = info.get("median", 0.0)
+                            elif info["type"] == "select":
+                                sval = "" if pd.isna(val) else str(val)
+                                ss[key] = sval if sval in info["values"] else info["values"][0]
+                            else:
+                                ss[key] = "" if pd.isna(val) else str(val)
+                        st.rerun()
+
+            st.markdown(" ")  # espaço
+
+        # Botão de sorteio livre (sempre disponível, em qualquer modo)
         sortcol1, sortcol2 = st.columns([2, 1])
         with sortcol1:
-            if st.button(
-                "🎲 Sortear novo caso do conjunto de teste",
-                use_container_width=True,
-            ):
+            label_botao = (
+                "🎲 Sortear OUTRO caso do conjunto de teste"
+                if ss.modo_demo else
+                "🎲 Sortear novo caso do conjunto de teste"
+            )
+            if st.button(label_botao, use_container_width=True):
                 idx = int(test_sample.sample(1).index[0])
                 row = test_sample.loc[idx]
                 ss.caso_sorteado_idx = idx
                 ss.valor_real_caso = row[target]
-                ss.ultima_predicao = None  # limpa predicao anterior
-                # Pre-preenche cada widget via session_state com a chave
+                ss.ultima_predicao = None
+                ss.cenario_demo_ativo = None
                 for feat in features:
                     info = feature_info.get(feat, {"type": "text"})
                     val = row.get(feat)
@@ -2617,11 +2791,16 @@ Gerado em: {r['treinado_em']}
                         ss[key] = "" if pd.isna(val) else str(val)
                 st.rerun()
         with sortcol2:
-            if ss.caso_sorteado_idx is not None:
+            if ss.cenario_demo_ativo:
+                st.caption(f"📌 Cenário {ss.cenario_demo_ativo} ativo (caso #{ss.caso_sorteado_idx})")
+            elif ss.caso_sorteado_idx is not None:
                 st.caption(f"Caso #{ss.caso_sorteado_idx} sorteado")
 
         if ss.caso_sorteado_idx is None:
             st.info(
+                "👆 Em modo demo, escolha um **Cenário (A/B/C)** acima. "
+                "Ou clique em **Sortear caso** para um exemplo aleatório."
+                if ss.modo_demo else
                 "👆 Clique em **Sortear novo caso** para preencher o "
                 "formulario com um exemplo real."
             )
@@ -2710,26 +2889,54 @@ Gerado em: {r['treinado_em']}
             except Exception as e:
                 st.error(f"Erro na predicao: {type(e).__name__}: {e}")
 
-        # Resultado + comparacao predito vs real
+        # Resultado + semáforo + comparacao predito vs real
         if ss.ultima_predicao:
             up = ss.ultima_predicao
-            st.markdown("### Resultado da consulta")
+            st.markdown("### 📊 Resultado da consulta")
 
             if up["tipo"] == "classification":
-                pcol1, pcol2, pcol3, pcol4 = st.columns(4)
-                pcol1.metric("Classe prevista", up["classe"])
-                if up["prob"] is not None:
-                    pcol2.metric("Probabilidade", f"{up['prob']*100:.1f}%")
-                pcol3.metric("Risco", up["nivel"])
+                # Semáforo visual de risco
+                cores_semaforo = {
+                    "Baixo": ("#1f9e54", "🟢", "Baixo"),
+                    "Moderado": ("#E2A015", "🟡", "Moderado"),
+                    "Alto": ("#cf2a2a", "🔴", "Alto"),
+                    "—": ("#5C6670", "⚪", "Indeterminado"),
+                }
+                cor_semaforo, emoji_semaforo, label_semaforo = cores_semaforo.get(
+                    up["nivel"], cores_semaforo["—"]
+                )
+                prob_pct = (f"{up['prob']*100:.1f}%"
+                            if up["prob"] is not None else "—")
+
+                st.markdown(
+                    f"<div style='background:{cor_semaforo}1F;"
+                    f"border-left:6px solid {cor_semaforo};border-radius:6px;"
+                    f"padding:1rem 1.2rem;margin:0.5rem 0;'>"
+                    f"<div style='font-size:2.2rem;line-height:1;'>{emoji_semaforo}</div>"
+                    f"<div style='font-size:1.4rem;font-weight:700;color:{cor_semaforo};margin-top:0.3rem;'>"
+                    f"Risco {label_semaforo}</div>"
+                    f"<div style='color:{BB_TEXTO};margin-top:0.4rem;'>"
+                    f"<b>Classe prevista:</b> <code>{up['classe']}</code> "
+                    f"&middot; <b>Probabilidade:</b> {prob_pct}</div>"
+                    f"<div style='color:{BB_CINZA};margin-top:0.6rem;font-size:0.92rem;'>"
+                    f"<b>Ação sugerida:</b> {up['acao']}</div>"
+                    f"</div>",
+                    unsafe_allow_html=True,
+                )
+
                 if up["real"] is not None and not pd.isna(up["real"]):
                     real_str = str(up["real"])
                     acertou = (str(up["classe"]).lower() == real_str.lower())
-                    pcol4.metric(
-                        "Real (gabarito)", real_str,
-                        delta="✓ acertou" if acertou else "✗ errou",
-                        delta_color="normal" if acertou else "inverse",
+                    badge = "#1f9e54" if acertou else "#cf2a2a"
+                    st.markdown(
+                        f"<div style='background:{badge}1F;"
+                        f"border-left:3px solid {badge};border-radius:4px;"
+                        f"padding:0.5rem 0.8rem;margin-top:0.4rem;color:{BB_TEXTO};'>"
+                        f"📌 <b>Gabarito (caso de teste):</b> <code>{real_str}</code> · "
+                        f"{'✓ modelo acertou' if acertou else '✗ modelo errou'}"
+                        f"</div>",
+                        unsafe_allow_html=True,
                     )
-                st.markdown(f"**Acao sugerida:** {up['acao']}")
             else:
                 pcol1, pcol2, pcol3 = st.columns(3)
                 pcol1.metric(f"Previsto ({target})", f"{up['valor']:.2f}")
