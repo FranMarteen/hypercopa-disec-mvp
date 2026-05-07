@@ -1,11 +1,15 @@
-# Relatório da Solução
+# Relatório da Solução — Predfy
 
-## Agente Predfy + Modelo Analítico
+## Predfy — Agente Predfy + Modelo Analítico H2O AutoML + Intérprete Predfy
 
 **HyperCopa DISEC 2026** · Banco do Brasil · CESUP-Contratações
+**Repositório público:** https://github.com/FranMarteen/hypercopa-disec-mvp
 
 > Documento elaborado para a banca avaliadora.
-> Versão 1.0 · 06/05/2026
+> **Versão 2.0 · 07/05/2026** — atualizada com modo demonstração offline,
+> stepper visual de 7 etapas, simulador local do agente Teams (rule-based),
+> cenários pré-roteirizados na Etapa 6 com semáforo, pacote ZIP unificado
+> da entrega e reprodutibilidade total (seed=42).
 
 ---
 

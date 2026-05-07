@@ -1,6 +1,7 @@
 # Entrega MVP — Time 1 (Modelos Analíticos)
 
 **HyperCopa DISEC 2026** · CESUP-Contratações · Banco do Brasil
+**Produto:** **Predfy** — camada de Modelo Analítico (Etapas 2-3 da jornada)
 **Data de entrega:** 07/05/2026
 
 ---
@@ -10,16 +11,19 @@
 | Item | Conteúdo |
 |---|---|
 | Time | Time 1 — **Inteligência Analítica para Compras e Fornecedores** |
-| Camada | Camada Analítica (modelos preditivos + pipeline de dados) |
+| Camada no Predfy | Etapas 0, 2 e 3 da jornada (Dados sintéticos + Treino H2O AutoML + Avaliação) |
 | Tema HyperCopa | Inteligência Acionável para Compras e Fornecedores |
 | Equipe | Equipe HyperCopa DISEC 2026 — Capitão · Bento · João |
-| Cooperação | Time 2 (Agente IA + RPA) — schema único de saída JSON dos modelos |
+| Cooperação | Time 2 (Agente Predfy + Intérprete) — schema único de saída JSON dos modelos |
+| Repositório | https://github.com/FranMarteen/hypercopa-disec-mvp (público) |
 
 ---
 
 ## 2. Resumo executivo
 
-A camada analítica entrega **3 modelos H2O AutoML treinados, validados e empacotados** sobre dados sintéticos de Licitação Eletrônica (Lei 14.133/21), com schema JSON padronizado consumível pelo Time 2. O escopo de **6 modelos** da proposta original foi **rebalanceado para 3 modelos prioritários** após o Estudo de Campo, com 4 protótipos analíticos auxiliares (recorrência, anomalias, HHI, lock-in) preservados como evidência técnica e backlog de evolução.
+A camada analítica do **Predfy** entrega **3 modelos H2O AutoML treinados, validados e empacotados** sobre dados sintéticos de Licitação Eletrônica (Lei 14.133/21), com schema JSON padronizado consumível pelo Time 2. O escopo de **6 modelos** da proposta original foi **rebalanceado para 3 modelos prioritários** após o Estudo de Campo, com 4 protótipos analíticos auxiliares (recorrência, anomalias, HHI, lock-in) preservados como evidência técnica e backlog de evolução.
+
+A entrega é **reprodutível ponta-a-ponta**: `seed=42` em geradores, splits e AutoML; `h2o==3.46.0.6` pinado em `requirements_app.txt`; dados sintéticos commitados no repo. **A banca clona, instala e vê os mesmos números que a equipe.**
 
 ---
 

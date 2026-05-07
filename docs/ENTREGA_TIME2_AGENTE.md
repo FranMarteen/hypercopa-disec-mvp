@@ -1,6 +1,7 @@
 # Entrega MVP — Time 2 (Agente IA + RPA)
 
 **HyperCopa DISEC 2026** · CESUP-Contratações · Banco do Brasil
+**Produto:** **Predfy** — camadas de Agente Predfy (Etapa 1), Documentos (Etapa 4), Intérprete Predfy (Etapa 5) e Caso de Evento Real (Etapa 6)
 **Data de entrega:** 07/05/2026
 
 ---
@@ -10,16 +11,23 @@
 | Item | Conteúdo |
 |---|---|
 | Time | Time 2 — **Inteligência Acionável para Compras e Fornecedores** |
-| Camada | Camada de Interação e Automação (Agente IA + RPA + relatórios) |
+| Camada no Predfy | Etapas 1, 4, 5 e 6 da jornada (Preparação + Pacote ZIP + Interpretação + Evento real) |
 | Tema HyperCopa | Inteligência Acionável para Compras e Fornecedores |
 | Equipe | Equipe HyperCopa DISEC 2026 — Capitão · Bento · João |
 | Cooperação | Time 1 (Modelos Analíticos) — consome JSON do relatório H2O |
+| Repositório | https://github.com/FranMarteen/hypercopa-disec-mvp (público) |
 
 ---
 
 ## 2. Resumo executivo
 
-A camada de interação entrega um **Agente IA conversacional em dois caminhos** (OpenAI direto + Microsoft Copilot do Teams) integrado a uma jornada Streamlit com identidade visual BB. O agente conduz o usuário do CSV bruto ao relatório executivo em **3 a 5 minutos**, sem código. A arquitetura **RAG + ChromaDB** da proposta original foi substituída por **Tool Use (function calling)** com sandbox `pandas`, decisão validada na Mentoria de Agentes IA (01-02/04). Os fluxos RPA de alertas via e-mail/Teams foram substituídos por **interpretação executiva no Copilot do Teams**, que consome o JSON do relatório H2O e devolve recomendações acionáveis.
+A camada de interação do **Predfy** entrega um **Agente Predfy conversacional em três caminhos** (OpenAI direto + Microsoft Copilot do Teams + **Modo demonstração offline para a banca**) integrado a uma jornada Streamlit com identidade visual BB e stepper visual de 7 etapas. O agente conduz o usuário do CSV bruto ao relatório executivo em **3 a 5 minutos**, sem código.
+
+A arquitetura **RAG + ChromaDB** da proposta original foi substituída por **Tool Use (function calling)** com sandbox `pandas`, decisão validada na Mentoria de Agentes IA (01-02/04). Os fluxos RPA de alertas via e-mail/Teams foram substituídos por:
+
+- **Intérprete Predfy** rule-based local (`app/interprete_rules.py`) — UI estilo Teams que lê o JSON do relatório H2O e devolve resumo executivo + recomendações em PT-BR, sem rede externa.
+- **3 cenários pré-roteirizados** na Etapa 6 (DICOI/DISUP/DITEC) com **semáforo visual de risco** 🟢/🟡/🔴.
+- **Pacote ZIP unificado** na Etapa 4 (HTML + JSON + summary + canvas + instruções de reprodução) — banca anexa um único arquivo à entrega.
 
 ---
 

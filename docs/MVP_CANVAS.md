@@ -1,7 +1,8 @@
 # MVP Canvas — HyperCopa DISEC 2026
 
 **Equipe:** Equipe HyperCopa DISEC 2026 (Capitão · Bento · João)
-**Solução:** Agente Predfy + Modelo Analítico (H2O AutoML)
+**Solução:** **Predfy** — Agente Predfy (preparação) + Modelo Analítico H2O AutoML (treino) + Intérprete Predfy (interpretação)
+**Repositório público:** https://github.com/FranMarteen/hypercopa-disec-mvp
 **Data de entrega:** 07/05/2026
 
 ---
@@ -15,7 +16,7 @@
 **Personas atendidas (DISEC – CESUP-Contratações):**
 
 - **Demandantes de áreas-cliente** (DICOI, DISUP, DITEC, GECOI) — gestores que recebem pergunta de negócio (ex: *"quais EAPs vão atrasar?"*) e hoje dependem de fila de DBA + Cientista de Dados.
-- **Líderes de contratação da DISEC** — quem prioriza carteira de licitações sob a Lei 14.133/21.
+- **Líderes de contratação da DISEC** — quem prioriza carteira de Licitação Eletrônica sob a Lei 14.133/21.
 - **Cientistas de dados internos** — deixam de fazer ETL repetitivo e se concentram em modelos de maior valor.
 
 ---
@@ -28,14 +29,32 @@
 
 **O que foi simplificado/melhorado.**
 
-| Antes | Com o MVP |
+| Antes | Com o Predfy |
 |---|---|
 | 3-10 dias do extrato bruto ao modelo | **3-5 minutos** |
 | 50-300 linhas de código escritas pelo usuário | **zero linhas** |
 | 3-4 pessoas no ciclo | **1** |
 | CSV inteiro entregue ao analista | Só **schema + 20 linhas amostra** trafegam para o LLM (Caminho A) ou ficam dentro do tenant BB (Caminho B) |
 
-**Como funciona.** O usuário sobe o CSV no app BB; um **Agente IA** (OpenAI ou Microsoft Copilot do Teams) entende a pergunta, propõe target/features e gera o CSV final via sandbox `pandas`. O **H2O AutoML** treina 3 modelos preditivos em até 5 min. O **Copilot do Teams** (RPA conversacional) traduz o relatório técnico em recomendações de negócio.
+**Como funciona — jornada de 7 etapas.**
+
+```
+0. Construção dos dados sintéticos (seed=42, reprodutível)
+1. Agente Predfy   ── feature engineering visível, target, pergunta preditiva
+2. Treino H2O AutoML  ── GBM, GLM, XGBoost, RF; entrega o líder
+3. Avaliar  ── leaderboard, métricas no teste, importância
+4. Documentos  ── pacote ZIP único da entrega (HTML + JSON + summary)
+5. Intérprete Predfy  ── traduz métricas em recomendações de negócio
+6. Caso de evento real  ── EAP nova hipotética, predição com semáforo
+```
+
+**3 caminhos de uso** (selecionáveis na sidebar):
+
+| Caminho | Quem fala com o agente | Quando usar |
+|---|---|---|
+| **A** | OpenAI direto (chat embutido no app) | Dev local com chave própria |
+| **B** | Microsoft Copilot do Teams (paste do bloco) | Produção BB (acordo M365) |
+| **C** | **Modo demonstração offline** | **Avaliação da banca — sem chave OpenAI, sem rede** |
 
 ---
 
@@ -55,7 +74,8 @@
 - **Tempo de resposta a demandas analíticas** (redução de 3-10 dias → 3-5 min).
 - **Aderência à governança de dados BB** (Caminho B mantém CSV completo no laptop; só amostra trafega no tenant M365 BB sob Microsoft Purview).
 - **Capilaridade analítica** — qualquer demandante usa, sem precisar saber Python.
-- **Conformidade Lei 14.133/21** — terminologia oficial (Licitação Eletrônica, EAPs Padrão) embutida no system_prompt versionado.
+- **Conformidade Lei 14.133/21** — terminologia oficial (Licitação Eletrônica, EAPs Padrão, EAPs, Etapas, Contratos, Unidades Demandante/Executante) embutida no `system_prompt` versionado.
+- **Reprodutibilidade**: banca, equipe e auditoria interna obtêm os mesmos números (seed=42 em todos os pontos de aleatoriedade).
 
 ---
 
@@ -65,13 +85,14 @@
 
 | Categoria | Tecnologia | Justificativa |
 |---|---|---|
-| **Modelo analítico** | **H2O AutoML 3.46** (GBM, GLM, XGBoost, RF, DRF) | Roda em JVM local — dados nunca saem do laptop. AutoML elimina escolha manual de algoritmo. Leaderboard auditável. Open-source, sem custo de licença. |
-| **Agente de IA — Caminho A** | OpenAI `gpt-4o-mini` com **Tool Use** (4 tools: `ler_schema`, `ler_amostra`, `executar_pandas`, `salvar_csv_final`) | Pattern maduro e auditável. Apenas schema + ≤20 linhas saem para o LLM. Sandbox `exec()` com globals restritos. Custo ~R$ 0,30/conversa. Apropriado para demo e desenvolvimento. |
-| **Agente de IA — Caminho B (produção BB)** | **Microsoft Copilot do Teams** via Copilot Studio (declarativo, sem código) | Trafega pelo tenant M365 BB sob acordo Microsoft↔BB. Sem chave individual. Auditoria automática Microsoft Purview. **R$ 0** marginal (incluso na licença Copilot já paga). |
-| **RPA / Automação** | Copilot do Teams (interpretação executiva do JSON do relatório) + sandbox local de execução `pandas` (substitui scripts ad-hoc do cientista de dados) | Reaproveita licença M365. RPA conversacional > RPA programado: o usuário descreve o resultado, o agente formata. |
-| **Frontend / UX** | Streamlit single-page com **identidade visual BB** (paleta `#FAE128` / `#003DA5`, IBM Plex Sans como proxy de BB Texto) | Uma URL, jornada linear, sidebar = estado / centro = ação. Pensado para demandante recorrente, não para data scientist. |
-| **Relatório** | HTML autocontido + JSON estruturado | HTML abre em qualquer browser sem dependências; JSON serve de auditoria e entrada do Copilot interpretativo. |
-| **Dados** | Sintéticos (`Faker` + regras de negócio Lei 14.133/21) | Acesso a dados reais inviável no prazo. Engloba ciclo pós-contrato (aditivos, rescisão, atrasos). |
+| **Modelo analítico** | **H2O AutoML 3.46.0.6** (GBM, GLM, XGBoost, RF, DRF) | Roda em JVM local — dados nunca saem do laptop. AutoML elimina escolha manual de algoritmo. Leaderboard auditável. Open-source. **Versão pinada** para reprodutibilidade. |
+| **Agente Predfy — Caminho A** | OpenAI `gpt-5.2` com **Tool Use** (4 tools: `ler_schema`, `ler_amostra`, `executar_pandas`, `salvar_csv_final`) | Pattern maduro e auditável. Apenas schema + ≤20 linhas saem para o LLM. Sandbox `exec()` com globals restritos. Custo ~R$ 0,30/conversa. Apropriado para dev local. |
+| **Agente Predfy — Caminho B (produção BB)** | **Microsoft Copilot do Teams** via Copilot Studio (declarativo, sem código) | Trafega pelo tenant M365 BB sob acordo Microsoft↔BB. Sem chave individual. Auditoria automática Microsoft Purview. **R$ 0** marginal (incluso na licença Copilot já paga). |
+| **Agente Predfy — Caminho C (banca)** | **Player de turnos pré-gravados** + execução real das ferramentas via sandbox | **Zero rede externa**. Reproduz o comportamento dos Caminhos A/B com respostas determinísticas para a banca testar sem chave nem aprovação Copilot. |
+| **Intérprete Predfy (Etapa 5)** | Simulador rule-based local (`app/interprete_rules.py`) + OpenAI ou Copilot Teams (opcional) | Lê o JSON do relatório e gera resumo executivo + tradução de métricas + recomendações em PT-BR. Sem rede. UI estilo Teams. |
+| **Frontend / UX** | Streamlit single-page com **identidade visual BB** (paleta `#FAE128` / `#003DA5`, IBM Plex Sans) + **stepper visual de 7 etapas** | Jornada linear, sidebar = estado / centro = ação. Pensado para demandante recorrente, não para data scientist. |
+| **Relatório** | HTML autocontido + JSON estruturado + **pacote ZIP unificado** (HTML + JSON + `summary.md` + `como_reproduzir.txt` + `MVP_CANVAS`) | Banca anexa um único ZIP à entrega. Cada artefato auditável separadamente. |
+| **Dados** | **Sintéticos** (`Faker` desnecessário — geração própria com regras Lei 14.133/21, seed=42) | Acesso a dados reais inviável no prazo. Inclui ciclo pós-contrato (aditivos, rescisão, atrasos, penalidades). 6 datasets relacionais (EAPs, contratos, etapas, participantes, fornecedores, EAPs Padrão). |
 
 ---
 
@@ -85,16 +106,19 @@
   - Modelo 1 — Prazo de contratação (regressão GBM): RMSE ~18 dias / R² ~0,82.
   - Modelo 2 — Intercorrência (classificação binária GBM): AUC ~0,84.
   - Modelo 3 — Ruptura contratual (classificação binária GBM): AUC ~0,79.
-- **App entregável funcional** (`app_agente_bb.py`) com identidade visual BB e jornada de 3 etapas (Agente → H2O AutoML → Interpretação).
-- **Dois caminhos validados:** OpenAI direto (Caminho A) e Microsoft Copilot Teams (Caminho B). Caminho B é o de produção BB.
-- **Repositório privado no GitHub** com `.gitignore` protegendo `.env` e `dados reais/`.
+- **App entregável funcional** (`app_agente_bb.py`) com identidade visual BB, jornada de 7 etapas, **stepper visual** e **modo demonstração offline**.
+- **3 caminhos validados:** OpenAI direto (A), Microsoft Copilot Teams (B), Modo demonstração offline (C — para banca).
+- **Repositório público no GitHub** (`hypercopa-disec-mvp`) clonável e testável pela banca em ≤ 5 minutos.
+- **Reprodutibilidade total**: `seed=42` em geradores, splits e AutoML. Banca obtém os mesmos números que a equipe.
+- **Anonimização e segurança auditadas**: nenhum dado real BB, sem nomes pessoais sensíveis, sem chaves no repo.
 
 **Aprendizados.**
 
-1. **Velocidade analítica e governança não são trade-offs.** Separando *o que sai para o LLM* (apenas metadados e amostra) de *onde o modelo é treinado* (JVM H2O local), conseguimos a velocidade do LLM sem violar política BB de classificação de dados.
-2. **AutoML > escolher algoritmo manualmente** para o caso de uso DISEC. GBM venceu na maioria dos targets, mas nem sempre — a leaderboard expõe a escolha.
-3. **Caminho B (Copilot Teams) é o de produção.** Elimina chave individual, custo OpenAI e dependência de LLM público. Trafega no tenant M365 sob Purview.
+1. **Velocidade analítica e governança não são trade-offs.** Separar *o que sai para o LLM* (apenas metadados e amostra) de *onde o modelo é treinado* (JVM H2O local) entrega velocidade do LLM sem violar política BB de classificação de dados.
+2. **AutoML > escolher algoritmo manualmente.** GBM venceu na maioria dos targets, mas a leaderboard expõe a escolha quando não venceu.
+3. **Caminho B (Copilot Teams) é o de produção.** Caminho C (modo demo) é o de avaliação. Caminho A é o de dev.
 4. **Sandbox restrito é não-negociável.** Código gerado por LLM precisa de globals limitados, sem `os`, sem `subprocess`, sem rede.
+5. **Reprodutibilidade vale mais que vídeo.** Em vez de gravar uma demo, **publicamos o repo com modo demo offline** — a banca testa do mesmo jeito que rodamos.
 
 ---
 
@@ -102,22 +126,25 @@
 
 > *Indicadores afetados (tempo, custo, qualidade, risco). De que maneira evidenciamos êxito? Quais ganhos na data da entrega?*
 
-| Indicador | Antes | Com o MVP | Como evidenciamos |
+| Indicador | Antes | Com o Predfy | Como evidenciamos |
 |---|---:|---:|---|
-| **Tempo CSV bruto → modelo treinado** | 3-10 dias | **3-5 min** | Demo cronometrada no vídeo (segundos visíveis no spinner H2O). |
+| **Tempo CSV bruto → modelo treinado** | 3-10 dias | **3-5 min** | Banca mede no próprio app: stepper marca tempo entre Etapa 0 e Etapa 4. |
 | **Linhas de código escritas pelo demandante** | 50-300 | **0** | UX: usuário só sobe CSV e conversa. |
 | **Pessoas envolvidas no ciclo** | 3-4 | **1** | Jornada única no app. |
-| **Vazamento de CSV para LLM** | risco alto | **0% (Caminho A: só amostra; Caminho B: nem amostra completa sai)** | Print da chamada OpenAI — só schema + 20 linhas. |
-| **Custo marginal por conversa** | — | **R$ 0** (Caminho B) / R$ 0,30 (Caminho A) | Caminho B usa licença Copilot já paga. |
-| **AUC dos modelos de risco (intercorrência / ruptura)** | n/d (não havia modelo) | **0,84 / 0,79** | Relatório HTML gerado pelo H2O com leaderboard e métricas no teste. |
-| **Auditabilidade** | scripts ad-hoc | **system_prompt versionado em git + leaderboard H2O + logs Streamlit** | Repo `hypercopa-disec-2026` no GitHub. |
+| **Vazamento de CSV para LLM** | risco alto | **0%** (Caminho A: só amostra; Caminho B/C: nem amostra trafega externamente) | Apenas schema + 20 linhas saem para OpenAI; em modo demo, zero rede. |
+| **Custo marginal por conversa** | — | **R$ 0** (Caminho B/C) / R$ 0,30 (Caminho A) | Caminho B usa licença Copilot já paga; Caminho C é totalmente local. |
+| **AUC dos modelos de risco (intercorrência / ruptura)** | n/d | **0,84 / 0,79** | Relatório HTML gerado pelo H2O com leaderboard e métricas no teste. |
+| **R² do modelo de prazo (regressão)** | n/d | **~0,82** | Idem. |
+| **Reprodutibilidade banca → equipe** | — | **100%** (mesmos números) | seed=42 em todos os pontos de aleatoriedade; deps pinadas (h2o==3.46.0.6). |
+| **Auditabilidade** | scripts ad-hoc | **`system_prompt` versionado em git + leaderboard H2O + logs Streamlit + script de turnos do modo demo versionado** | Repo público. |
 
 **Ganhos obtidos na data da entrega (07/05/2026):**
 
-- App funcional e entregável (Caminhos A e B).
+- App Predfy funcional com 3 caminhos (A/B/C).
 - 3 modelos validados com performance acima do baseline (AUC > 0,75).
-- Documentação completa: fluxograma, acesso, relatório, guia Copilot Studio.
-- Vídeo de demonstração da jornada ponta-a-ponta.
+- Documentação completa: README, COMO_AVALIAR, FLUXOGRAMA, COPILOT_STUDIO_GUIA, RELATORIO_SOLUCAO.
+- **Repo clonável publicamente pela banca** com modo demonstração offline.
+- Pacote ZIP unificado da entrega (gerado dinamicamente pelo app).
 
 ---
 
@@ -148,8 +175,8 @@
 **Caminho de escala.**
 
 1. **Curto prazo (até Pitch Day 10/06/2026):** publicar agente Copilot no Teams via Copilot Studio (Caminho B oficial); rodar pilotos com extratos sintéticos das 4 áreas DISEC.
-2. **Médio prazo:** RAG com EAPs Padrão e jurisprudência da Lei 14.133/21; persistência das conversas em banco BB para auditoria; substituir IBM Plex Sans pelas fontes oficiais BB (BB Texto / BB Títulos).
-3. **Longo prazo:** out-of-time validation trimestral; detecção de drift; agente proativo (alerta a área quando uma EAP cruza limiar de risco); API REST (já há `api/main.py` em FastAPI) para consumo por sistemas internos BB.
+2. **Médio prazo:** RAG com EAPs Padrão e jurisprudência da Lei 14.133/21; persistência das conversas em banco BB para auditoria; substituir IBM Plex Sans pelas fontes oficiais BB.
+3. **Longo prazo:** out-of-time validation trimestral; detecção de drift; agente proativo (alerta a área quando uma EAP cruza limiar de risco); API REST (já em `api/main.py` em FastAPI) para consumo por sistemas internos BB.
 
 ---
 
@@ -157,17 +184,25 @@
 
 | Artefato | Caminho no repositório |
 |---|---|
-| App principal Streamlit (Caminhos A e B) | `app_agente_bb.py` |
-| Fluxograma da jornada (2 caminhos, Mermaid) | `docs/FLUXOGRAMA.md` |
+| App principal Streamlit (Caminhos A/B/C) | `app_agente_bb.py` |
+| Roteiro narrado para a banca avaliadora | **`docs/COMO_AVALIAR.md`** |
+| Fluxograma da jornada (Mermaid) | `docs/FLUXOGRAMA.md` |
 | Doc de acesso e instalação | `docs/ACESSO.md` |
 | Relatório técnico estendido | `docs/RELATORIO_SOLUCAO.md` / `.docx` |
 | Guia Copilot Studio passo-a-passo | `docs/COPILOT_STUDIO_GUIA.md` |
+| Entrega comparativa Time 1 (Modelos) | `docs/ENTREGA_TIME1_MODELOS.md` / `.docx` |
+| Entrega comparativa Time 2 (Agente IA + RPA) | `docs/ENTREGA_TIME2_AGENTE.md` / `.docx` |
 | System prompt OpenAI (Caminho A) | `docs/agente/system_prompt.md` |
 | Schema das 4 tools (Caminho A) | `docs/agente/tools_schema.json` |
 | Manifest Copilot declarativo (Caminho B) | `teams_copilot/declarative-agent.json` |
 | Instructions Copilot Studio (Caminho B) | `teams_copilot/instructions.md` |
+| Script de turnos pré-gravados (Caminho C / modo demo) | `docs/demo/script_turnos.json` |
+| Intérprete rule-based (modo demo) | `app/interprete_rules.py` |
+| Geradores de dados sintéticos | `gerar_dados_sinteticos_eaps.py`, `gerar_dados_postgres.py` |
+| Dicionário de dados | `dados_sinteticos/SCHEMA.md` |
+| Dados sintéticos commitados | `dados_sinteticos/*.csv` (4 MB total, seed=42) |
 | Notebook H2O do agente | `notebook_h2o_agente_mvp.ipynb` |
-| Repo privado | https://github.com/FranMarteen/hypercopa-disec-mvp |
+| Repo público | https://github.com/FranMarteen/hypercopa-disec-mvp |
 
 ---
 
