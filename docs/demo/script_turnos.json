@@ -57,21 +57,15 @@
         {
           "name": "executar_pandas",
           "arguments": {
-            "codigo": "resultado_info = {'linhas': len(resultado), 'colunas': len(resultado.columns), 'distrib_target': resultado['teve_atraso'].value_counts().to_dict(), 'pct_nulos': resultado.isna().sum().to_dict()}\nresultado = resultado_info"
+            "codigo": "df = dfs['contratos_dicoi.csv'][['porte_fornecedor','valor_contratado','num_aditivos','num_penalidades','vigencia_meses','eap_padrao','categoria_contratacao','tipo_servico','nota_fornecedor','teve_atraso']].copy()\nfor c in ['porte_fornecedor','eap_padrao','categoria_contratacao','tipo_servico']:\n    df[c] = df[c].fillna('desconhecido')\nfor c in ['valor_contratado','num_aditivos','num_penalidades','vigencia_meses','nota_fornecedor']:\n    df[c] = df[c].fillna(0)\nprint('linhas:', len(df))\nprint('colunas:', len(df.columns))\nprint('distrib_target:', df['teve_atraso'].value_counts().to_dict())\nprint('total_nulos:', int(df.isna().sum().sum()))\nresultado = df"
           }
         }
       ]
     },
     {
       "role": "assistant",
-      "content": "Validei: **1.959 contratos, 10 colunas** (9 features + target). Distribuição do target — 81% sem atraso, 19% com atraso. Proporção saudável para classificação binária. Sem nulos remanescentes.\n\nVou salvar o CSV final agora.",
+      "content": "Validei: **1.959 contratos, 10 colunas** (9 features + target). Distribuição do target — ~81% sem atraso, ~19% com atraso. Proporção saudável para classificação binária. Sem nulos remanescentes.\n\nVou salvar o CSV final agora.",
       "tool_calls": [
-        {
-          "name": "executar_pandas",
-          "arguments": {
-            "codigo": "df = dfs['contratos_dicoi.csv'][['porte_fornecedor','valor_contratado','num_aditivos','num_penalidades','vigencia_meses','eap_padrao','categoria_contratacao','tipo_servico','nota_fornecedor','teve_atraso']].copy()\nfor c in ['porte_fornecedor','eap_padrao','categoria_contratacao','tipo_servico']:\n    df[c] = df[c].fillna('desconhecido')\nfor c in ['valor_contratado','num_aditivos','num_penalidades','vigencia_meses','nota_fornecedor']:\n    df[c] = df[c].fillna(0)\nresultado = df"
-          }
-        },
         {
           "name": "salvar_csv_final",
           "arguments": {
