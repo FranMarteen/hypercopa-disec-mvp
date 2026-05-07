@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Predfy — HyperCopa DISEC 2026 · Overview</title>
+<style>
+  :root {
+    --bb-amarelo: #FAE128;
+    --bb-azul: #003DA5;
+    --bb-azul-esc: #002D72;
+    --bb-cinza: #5C6670;
+    --bb-fundo: #F7F8FA;
+    --bb-texto: #1F1F1F;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    background: white;
+    color: var(--bb-texto);
+    margin: 0;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  header {
+    background: linear-gradient(180deg, var(--bb-azul) 0%, var(--bb-azul-esc) 100%);
+    color: white;
+    padding: 24px 32px;
+    border-radius: 8px;
+    border-top: 8px solid var(--bb-amarelo);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    letter-spacing: -0.02em;
+  }
+  header h1 .yellow { color: var(--bb-amarelo); }
+  header .sub {
+    color: var(--bb-amarelo);
+    font-size: 1rem;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  header .tag {
+    display: inline-block;
+    background: var(--bb-amarelo);
+    color: var(--bb-azul-esc);
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-top: 14px;
+  }
+  h2 {
+    color: var(--bb-azul-esc);
+    border-bottom: 3px solid var(--bb-amarelo);
+    padding-bottom: 6px;
+    margin-top: 32px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .card {
+    background: var(--bb-fundo);
+    border-left: 4px solid var(--bb-amarelo);
+    padding: 16px;
+    border-radius: 4px;
+  }
+  .card h3 {
+    color: var(--bb-azul);
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+  }
+  .card p {
+    color: var(--bb-cinza);
+    font-size: 0.92rem;
+    margin: 0;
+  }
+  .stepper {
+    display: flex;
+    align-items: stretch;
+    margin: 24px 0;
+    overflow-x: auto;
+  }
+  .step {
+    flex: 1;
+    min-width: 130px;
+    text-align: center;
+    padding: 14px 10px;
+    background: var(--bb-fundo);
+    border-radius: 6px;
+    margin: 0 4px;
+    border-bottom: 4px solid var(--bb-azul);
+  }
+  .step .num {
+    background: var(--bb-amarelo);
+    color: var(--bb-azul-esc);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    line-height: 36px;
+    margin: 0 auto 8px;
+    font-weight: 700;
+  }
+  .step .label {
+    font-weight: 600;
+    color: var(--bb-azul-esc);
+    font-size: 0.88rem;
+  }
+  .step .desc {
+    font-size: 0.78rem;
+    color: var(--bb-cinza);
+    margin-top: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+  th {
+    background: var(--bb-amarelo);
+    color: var(--bb-azul-esc);
+    padding: 10px;
+    text-align: left;
+    font-size: 0.92rem;
+  }
+  td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #E5E7EA;
+    font-size: 0.92rem;
+  }
+  tr:nth-child(even) td { background: var(--bb-fundo); }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .metric {
+    background: white;
+    border: 2px solid var(--bb-amarelo);
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+  }
+  .metric .val {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--bb-azul-esc);
+    line-height: 1;
+  }
+  .metric .lbl {
+    color: var(--bb-cinza);
+    font-size: 0.85rem;
+    margin-top: 6px;
+  }
+  .caminhos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .caminho {
+    border: 2px solid var(--bb-azul);
+    border-radius: 8px;
+    padding: 16px;
+    background: white;
+  }
+  .caminho.demo {
+    border-color: var(--bb-amarelo);
+    border-width: 4px;
+    background: #FFFBEB;
+  }
+  .caminho h4 {
+    margin: 0 0 8px 0;
+    color: var(--bb-azul-esc);
+    font-size: 1rem;
+  }
+  .caminho .badge {
+    display: inline-block;
+    background: var(--bb-azul);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .caminho.demo .badge { background: var(--bb-amarelo); color: var(--bb-azul-esc); }
+  .caminho ul {
+    margin: 0;
+    padding-left: 16px;
+    font-size: 0.86rem;
+    color: var(--bb-cinza);
+  }
+  .equipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .equipe {
+    background: var(--bb-fundo);
+    padding: 14px 18px;
+    border-radius: 6px;
+    border-left: 4px solid var(--bb-azul);
+  }
+  .equipe h4 { margin: 0 0 8px 0; color: var(--bb-azul-esc); }
+  .equipe ul { margin: 0; padding-left: 18px; }
+  .equipe li {
+    color: var(--bb-cinza);
+    font-size: 0.92rem;
+  }
+  .equipe li strong { color: var(--bb-texto); }
+  footer {
+    margin-top: 32px;
+    padding: 14px 0;
+    border-top: 2px solid var(--bb-amarelo);
+    color: var(--bb-cinza);
+    font-size: 0.82rem;
+    text-align: center;
+  }
+  footer a { color: var(--bb-azul); }
+  .highlight {
+    background: #FFFBEB;
+    border-left: 4px solid var(--bb-amarelo);
+    padding: 14px 18px;
+    border-radius: 4px;
+    margin: 16px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🟡 <span class="yellow">Predfy</span> · Preparador + Modelo Analítico</h1>
+  <div class="sub">DISEC · Banco do Brasil · CESUP-Contratações · Licitação Eletrônica · Lei 13.303/16</div>
+  <span class="tag">HyperCopa DISEC 2026 · MVP · 07/05/2026</span>
+</header>
+
+<div class="highlight">
+<strong>O que é o Predfy?</strong> É um aplicativo Streamlit que conduz uma área demandante do BB
+do <strong>extrato CSV ao modelo preditivo treinado em 3 a 5 minutos</strong>, sem que o usuário escreva uma única linha de código.
+A solução foi desenvolvida em conjunto pelos <strong>Times 1 e 2 da ECOA do CESUP-Contratações</strong>
+durante a HyperCopa DISEC 2026.
+</div>
+
+<h2>📊 Métricas-chave</h2>
+<div class="metrics">
+  <div class="metric"><div class="val">3-5 min</div><div class="lbl">CSV bruto → modelo treinado</div></div>
+  <div class="metric"><div class="val">0</div><div class="lbl">linhas de código pelo demandante</div></div>
+  <div class="metric"><div class="val">~0,84</div><div class="lbl">AUC Intercorrência</div></div>
+  <div class="metric"><div class="val">~0,82</div><div class="lbl">R² Prazo</div></div>
+  <div class="metric"><div class="val">~0,79</div><div class="lbl">AUC Ruptura</div></div>
+  <div class="metric"><div class="val">100%</div><div class="lbl">reprodutibilidade (seed=42)</div></div>
+</div>
+
+<h2>🛤️ Jornada de 7 etapas</h2>
+<div class="stepper">
+  <div class="step"><div class="num">0</div><div class="label">Dados</div><div class="desc">sintéticos · seed=42</div></div>
+  <div class="step"><div class="num">1</div><div class="label">Preparar</div><div class="desc">Agente Predfy</div></div>
+  <div class="step"><div class="num">2</div><div class="label">Treinar</div><div class="desc">H2O AutoML</div></div>
+  <div class="step"><div class="num">3</div><div class="label">Avaliar</div><div class="desc">leaderboard · varimp</div></div>
+  <div class="step"><div class="num">4</div><div class="label">Documentos</div><div class="desc">pacote ZIP</div></div>
+  <div class="step"><div class="num">5</div><div class="label">Interpretar</div><div class="desc">Intérprete Predfy</div></div>
+  <div class="step"><div class="num">6</div><div class="label">Evento real</div><div class="desc">semáforo 🟢🟡🔴</div></div>
+</div>
+
+<h2>🧭 3 caminhos de uso</h2>
+<div class="caminhos">
+  <div class="caminho">
+    <div class="badge">A</div>
+    <h4>OpenAI direto</h4>
+    <ul>
+      <li>Chat embutido no app</li>
+      <li>Schema + 20 linhas amostra</li>
+      <li>Custo ~R$ 0,30/conversa</li>
+      <li>Dev local com chave própria</li>
+    </ul>
+  </div>
+  <div class="caminho">
+    <div class="badge">B</div>
+    <h4>Copilot Teams</h4>
+    <ul>
+      <li>Tenant M365 BB</li>
+      <li>Auditoria Microsoft Purview</li>
+      <li>Custo: R$ 0 (incluso na licença)</li>
+      <li>Caminho de produção BB</li>
+    </ul>
+  </div>
+  <div class="caminho demo">
+    <div class="badge">C — banca</div>
+    <h4>Modo demonstração offline</h4>
+    <ul>
+      <li><strong>Sem chave OpenAI</strong></li>
+      <li><strong>Sem rede externa</strong></li>
+      <li>Turnos pré-gravados</li>
+      <li>Resultado idêntico em qualquer máquina</li>
+    </ul>
+  </div>
+</div>
+
+<h2>🧠 3 modelos preditivos do MVP</h2>
+<table>
+  <thead>
+    <tr><th>#</th><th>Modelo</th><th>Tipo</th><th>Pergunta de negócio</th><th>Métrica</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Prazo / Atraso</strong></td><td>Regressão GBM</td><td>"Quanto tempo? Vai atrasar?"</td><td>RMSE ~18d / R² ~0,82</td></tr>
+    <tr><td>2</td><td><strong>Intercorrência</strong></td><td>Classif. binária GBM</td><td>"Vai ter impugnação/recurso?"</td><td>AUC ~0,84</td></tr>
+    <tr><td>3</td><td><strong>Ruptura contratual</strong></td><td>Classif. binária GBM</td><td>"Risco de rescisão?"</td><td>AUC ~0,79</td></tr>
+  </tbody>
+</table>
+
+<h2>🔮 Visão de produção</h2>
+<p style="font-size:0.95rem; color:var(--bb-cinza);">
+O Predfy foi concebido para ser <strong>incorporado ao fluxo de trabalho e à plataforma do BB</strong>,
+atuando preventivamente sobre dados de Licitação Eletrônica para indicar
+<strong>riscos e prazos reais por carteira / processo / contrato</strong>.
+Acoplado ao Agente Predfy, o app se generaliza para <strong>qualquer extrato / domínio</strong> —
+o agente conduz feature engineering, escolha de target e reuso de modelos
+a partir das definições de negócio do usuário, sem código.
+</p>
+<p style="font-size:0.95rem; color:var(--bb-cinza);">
+<strong>Para aproveitamento completo:</strong> hospedar o app em ambiente BB e publicar o agente declarativo
+no Microsoft Copilot Studio (Caminho B) — passo-a-passo já versionado em
+<code>docs/COPILOT_STUDIO_GUIA.md</code>.
+</p>
+
+<h2>👥 Equipes</h2>
+<div class="equipes">
+  <div class="equipe">
+    <h4>Time 1 — Modelos Analíticos</h4>
+    <ul>
+      <li><strong>João 23</strong> (capitão)</li>
+      <li>Francisco</li>
+      <li>Rosali</li>
+      <li>Silvia</li>
+    </ul>
+    <p style="margin-top:8px; font-size:0.82rem; color:var(--bb-cinza);">
+    Etapas 0, 2 e 3 — Dados sintéticos · Treino H2O · Avaliação
+    </p>
+  </div>
+  <div class="equipe">
+    <h4>Time 2 — Agente IA + RPA</h4>
+    <ul>
+      <li><strong>Bento 14</strong> (capitão)</li>
+      <li>Felipe</li>
+      <li>Amélia</li>
+      <li>Vânia</li>
+      <li>Rafael</li>
+    </ul>
+    <p style="margin-top:8px; font-size:0.82rem; color:var(--bb-cinza);">
+    Etapas 1, 4, 5 e 6 — Agente Predfy · Pacote ZIP · Intérprete · Evento real
+    </p>
+  </div>
+</div>
+
+<h2>📦 Para a banca avaliadora</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Repositório público</strong></td><td><a href="https://github.com/FranMarteen/hypercopa-disec-mvp">github.com/FranMarteen/hypercopa-disec-mvp</a></td></tr>
+    <tr><td><strong>Quickstart</strong></td><td><code>git clone</code> → <code>pip install -r requirements_app.txt</code> → <code>streamlit run app_agente_bb.py</code> → Modo demo</td></tr>
+    <tr><td><strong>Roteiro narrado</strong></td><td><code>docs/COMO_AVALIAR.md</code></td></tr>
+    <tr><td><strong>Pacote da entrega</strong></td><td>Botão na Etapa 4 → ZIP único (HTML + JSON + summary + canvas)</td></tr>
+    <tr><td><strong>Chave OpenAI brinde</strong></td><td>Encaminhada por canal seguro (não no repo)</td></tr>
+  </tbody>
+</table>
+
+<footer>
+🟡 Predfy · HyperCopa DISEC 2026 · Banco do Brasil · CESUP-Contratações<br/>
+Equipe ECOA · Times 1 e 2 · Documento gerado automaticamente · 07/05/2026
+</footer>
+
+</body>
+</html>
