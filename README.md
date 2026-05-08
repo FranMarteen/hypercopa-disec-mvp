@@ -245,7 +245,7 @@ hypercopa-disec-mvp/
 ├── modelos_mvp_base.py        ← código de referência da modelagem
 ├── analise_clusters.py        ← análise K-Means de recorrência (protótipo)
 │
-├── notebook_h2o_agente_mvp.ipynb   ← jornada como notebook (alternativa CLI)
+├── notebook_h2o_agente_mvp.ipynb   ← jornada como notebook (alternativa CLI) — cobre Caminhos A, B e C
 ├── demo_jornada.py            ← jornada via CLI sem UI
 │
 ├── docs/
