@@ -150,7 +150,7 @@ flowchart TB
     end
 
     subgraph LLM["LLM / Agente"]
-        OPENAI[OpenAI API<br/>gpt-5.2 · Tool Use<br/>4 tools auditáveis]
+        OPENAI[OpenAI API<br/>gpt-4o-mini · Tool Use<br/>4 tools auditáveis]
         COPILOT_LLM[Microsoft Copilot M365<br/>tenant BB]
         DEMO_PLAYER[Player rule-based<br/>script_turnos.json]
         RULES[interprete_rules.py<br/>tradutor JSON→PT-BR]

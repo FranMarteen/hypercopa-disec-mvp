@@ -48,6 +48,16 @@ Captura completa da viewport — útil para apresentações como single-page pos
 - **Relatório técnico**: usar todos os 8 para o capítulo de UX.
 - **Banca**: ler antes este `INDEX.md` para orientação.
 
+## Roadmap de capturas adicionais
+
+Backlog de screenshots identificados na auditoria de entrega — recomendados para a próxima rodada de captura (rode `streamlit run app_agente_bb.py --server.port 8504` e estenda `capturar_screenshots.py`):
+
+| Próximo screenshot | Tela | Por que |
+|---|---|---|
+| `09_etapa4_pacote_zip.png` | Etapa 4 — botão e dialog do download do ZIP | Mostra o entregável único da Etapa 4 |
+| `10_etapa6_semaforo.png` | Etapa 6 — 3 cards de cenários com semáforo 🟢🟡🔴 | Materializa o componente "semáforo de risco" da banca |
+| `11_relatorio_html.png` | Relatório HTML BB com leaderboard + importância | Comprova saída final do H2O com identidade visual BB |
+
 ---
 
 *Screenshots gerados em 07/05/2026 · Equipe HyperCopa DISEC 2026 — ECOA / CESUP-Contratações*

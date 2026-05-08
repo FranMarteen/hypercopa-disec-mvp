@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>__TITLE__</title>
+<style>
+  :root {
+    --bb-amarelo: #FAE128;
+    --bb-azul: #003DA5;
+    --bb-azul-esc: #002D72;
+    --bb-cinza: #5C6670;
+    --bb-fundo: #F7F8FA;
+    --bb-texto: #1F1F1F;
+    --bb-borda: #E5E7EB;
+  }
+  @page {
+    size: A4;
+    margin: 22mm 18mm 24mm 18mm;
+    @top-center {
+      content: "Predfy · HyperCopa DISEC 2026 · Lei 13.303/16";
+      color: #5C6670;
+      font-size: 9pt;
+    }
+    @bottom-center {
+      content: "Página " counter(page) " de " counter(pages);
+      color: #5C6670;
+      font-size: 9pt;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: 'IBM Plex Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--bb-texto);
+    line-height: 1.55;
+    font-size: 10.5pt;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+  .header-strip {
+    background: linear-gradient(180deg, var(--bb-azul) 0%, var(--bb-azul-esc) 100%);
+    color: white;
+    padding: 18px 24px;
+    border-top: 8px solid var(--bb-amarelo);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    page-break-after: avoid;
+  }
+  .header-strip h1 {
+    margin: 0;
+    font-size: 1.7rem;
+    color: white;
+    border: none;
+  }
+  .header-strip .sub {
+    color: var(--bb-amarelo);
+    font-size: 0.85rem;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  h1, h2, h3, h4 {
+    color: var(--bb-azul-esc);
+    page-break-after: avoid;
+    margin-top: 1.3em;
+    margin-bottom: 0.5em;
+  }
+  h1 {
+    font-size: 1.6rem;
+    border-bottom: 3px solid var(--bb-amarelo);
+    padding-bottom: 6px;
+  }
+  h2 {
+    font-size: 1.25rem;
+    border-bottom: 2px solid var(--bb-amarelo);
+    padding-bottom: 4px;
+  }
+  h3 { font-size: 1.05rem; }
+  h4 { font-size: 0.95rem; color: var(--bb-azul); }
+  p { margin: 0.5em 0; }
+  a { color: var(--bb-azul); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul, ol { margin: 0.5em 0; padding-left: 1.6em; }
+  li { margin-bottom: 0.18em; }
+  hr { border: none; border-top: 1px solid var(--bb-borda); margin: 1.5em 0; }
+  blockquote {
+    border-left: 4px solid var(--bb-amarelo);
+    background: var(--bb-fundo);
+    padding: 10px 14px;
+    margin: 0.8em 0;
+    color: var(--bb-texto);
+    font-style: normal;
+  }
+  blockquote p { margin: 0.3em 0; }
+  code, pre {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.88em;
+  }
+  code {
+    background: var(--bb-fundo);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--bb-azul-esc);
+  }
+  pre {
+    background: var(--bb-fundo);
+    border-left: 3px solid var(--bb-azul);
+    padding: 10px 14px;
+    overflow-x: auto;
+    border-radius: 4px;
+    page-break-inside: avoid;
+  }
+  pre code {
+    background: transparent;
+    padding: 0;
+    color: var(--bb-texto);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.8em 0;
+    font-size: 0.92em;
+    page-break-inside: avoid;
+  }
+  th, td {
+    border: 1px solid var(--bb-borda);
+    padding: 6px 9px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--bb-azul);
+    color: white;
+    font-weight: 600;
+  }
+  tr:nth-child(even) td {
+    background: var(--bb-fundo);
+  }
+  .mermaid {
+    text-align: center;
+    margin: 1em 0;
+    page-break-inside: avoid;
+  }
+  .mermaid svg { max-width: 100%; height: auto; }
+  .toc {
+    background: var(--bb-fundo);
+    border-left: 4px solid var(--bb-amarelo);
+    padding: 14px 18px;
+    margin: 1em 0;
+    border-radius: 4px;
+  }
+  .toc ul { padding-left: 1.2em; }
+  .footer-final {
+    margin-top: 2em;
+    padding-top: 12px;
+    border-top: 2px solid var(--bb-amarelo);
+    color: var(--bb-cinza);
+    font-size: 0.82rem;
+    text-align: center;
+  }
+  /* Banner amarelo destacado para "⭐ Banca: comece aqui" */
+  blockquote:first-of-type strong {
+    color: var(--bb-azul-esc);
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      themeVariables: {
+        primaryColor: '#FAE128',
+        primaryTextColor: '#1F1F1F',
+        primaryBorderColor: '#003DA5',
+        lineColor: '#003DA5',
+        secondaryColor: '#003DA5',
+        tertiaryColor: '#F7F8FA',
+        fontFamily: 'IBM Plex Sans, Segoe UI, Arial, sans-serif',
+      },
+      flowchart: { htmlLabels: true, curve: 'basis' },
+      sequence: { actorMargin: 50 }
+    });
+  });
+</script>
+</head>
+<body>
+
+<div class="header-strip">
+  <h1>__HEADER_TITLE__</h1>
+  <div class="sub">__HEADER_SUB__</div>
+</div>
+
+__CONTENT__
+
+<div class="footer-final">
+  Predfy · HyperCopa DISEC 2026 · Times 1 e 2 da ECOA / CESUP-Contratações · Banco do Brasil · 07/05/2026
+</div>
+
+</body>
+</html>

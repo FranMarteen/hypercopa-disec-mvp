@@ -41,7 +41,7 @@ dados_postgres/
 Extrato_Asaas.csv
 matriculas_*.csv
 Gmail*.pdf
-*.pdf
+# *.pdf  -> NÃO ignorar PDFs em geral, são entregáveis (docs/pdf/, entregas/)
 
 # Logs e saídas grandes
 h2o_logs/

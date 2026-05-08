@@ -101,7 +101,7 @@
 | Categoria | Tecnologia | Justificativa |
 |---|---|---|
 | **Modelo analítico** | **H2O AutoML 3.46.0.6** (GBM, GLM, XGBoost, RF, DRF) | Roda em JVM local — dados nunca saem do laptop. AutoML elimina escolha manual de algoritmo. Leaderboard auditável. Open-source. **Versão pinada** para reprodutibilidade. |
-| **Agente Predfy — Caminho A** | OpenAI `gpt-5.2` com **Tool Use** (4 tools: `ler_schema`, `ler_amostra`, `executar_pandas`, `salvar_csv_final`) | Pattern maduro e auditável. Apenas schema + ≤20 linhas saem para o LLM. Sandbox `exec()` com globals restritos. Custo ~R$ 0,30/conversa. Apropriado para dev local. |
+| **Agente Predfy — Caminho A** | OpenAI `gpt-4o-mini` com **Tool Use** (4 tools: `ler_schema`, `ler_amostra`, `executar_pandas`, `salvar_csv_final`) | Pattern maduro e auditável. Apenas schema + ≤20 linhas saem para o LLM. Sandbox `exec()` com globals restritos. Custo ~R$ 0,30/conversa. Apropriado para dev local. |
 | **Agente Predfy — Caminho B (produção BB)** | **Microsoft Copilot do Teams** via Copilot Studio (declarativo, sem código) | Trafega pelo tenant M365 BB sob acordo Microsoft↔BB. Sem chave individual. Auditoria automática Microsoft Purview. **R$ 0** marginal (incluso na licença Copilot já paga). |
 | **Agente Predfy — Caminho C (banca)** | **Player de turnos pré-gravados** + execução real das ferramentas via sandbox | **Zero rede externa**. Reproduz o comportamento dos Caminhos A/B com respostas determinísticas para a banca testar sem chave nem aprovação Copilot. |
 | **Intérprete Predfy (Etapa 5)** | Simulador rule-based local (`app/interprete_rules.py`) + OpenAI ou Copilot Teams (opcional) | Lê o JSON do relatório e gera resumo executivo + tradução de métricas + recomendações em PT-BR. Sem rede. UI estilo Teams. |
@@ -192,6 +192,37 @@
 1. **Curto prazo (até Pitch Day 10/06/2026):** publicar agente Copilot no Teams via Copilot Studio (Caminho B oficial); rodar pilotos com extratos sintéticos das 4 áreas DISEC.
 2. **Médio prazo:** RAG com EAPs Padrão e jurisprudência da Lei 13.303/16; persistência das conversas em banco BB para auditoria; substituir IBM Plex Sans pelas fontes oficiais BB.
 3. **Longo prazo:** out-of-time validation trimestral; detecção de drift; agente proativo (alerta a área quando uma EAP cruza limiar de risco); API REST (já em `api/main.py` em FastAPI) para consumo por sistemas internos BB.
+
+---
+
+## 8. Contexto legal · Lei 13.303/16 e termos oficiais
+
+> *Por que esta seção?* A banca pode estranhar a ausência da Lei 14.133/21. A escolha é proposital — o BB é estatal, e operações próprias do banco são regidas por outra lei.
+
+### Por que Lei 13.303/16 (Lei das Estatais), não Lei 14.133/21?
+
+| Regime | Quem aplica | Aplica ao BB? |
+|---|---|---|
+| **Lei 13.303/16** ("Lei das Estatais") | Empresas públicas e sociedades de economia mista (Banco do Brasil, Caixa, Petrobras, etc.) | **Sim** — para suas contratações próprias. |
+| Lei 14.133/21 ("Nova Lei de Licitações") | Administração pública direta, autarquias, fundações da União, Estados, DF e Municípios | **Não** se aplica ao BB para suas contratações próprias. |
+
+Toda terminologia do app, do `system_prompt` do agente e dos modelos foi calibrada para a **Lei 13.303/16**. Os geradores sintéticos refletem o ciclo de **Licitação Eletrônica** (modalidade preferencial das estatais), com **EAPs**, **EAPs Padrão**, **Etapas**, **Contratos** e ciclo pós-contratação (aditivos, intercorrências, rescisão).
+
+### Termos oficiais usados no app, dados e documentação
+
+| Termo | Significado no contexto BB · DISEC |
+|---|---|
+| **EAP** (Estimativa Anual de Provisionamento) | Documento que projeta a contratação para o período; gera demanda para a CESUP-Contratações. |
+| **EAP Padrão** | Modelo de EAP por categoria de objeto, com etapas-padrão pré-definidas. |
+| **Etapa** | Sub-passo da execução da EAP/contrato (definição de objeto → publicação → habilitação → adjudicação → assinatura → execução → encerramento). |
+| **Licitação Eletrônica** | Modalidade preferencial sob a Lei 13.303/16; equivale ao "pregão eletrônico" das estatais. |
+| **DISEC** | Diretoria de Logística e Suprimentos do BB. |
+| **CESUP-Contratações** | Centro de Suporte às Contratações da DISEC — área onde nasceu o Predfy. |
+| **DICOI / DITEC / DISEC / GECOI** | Áreas demandantes que abrem EAPs e consomem o output do Predfy. |
+| **Aditivo** | Alteração formal do escopo, prazo ou valor de um contrato em vigor. |
+| **Intercorrência** | Evento que afeta o curso da Licitação Eletrônica (impugnação, recurso, suspensão). |
+
+> Esta seção é o "glossário oficial" do projeto. O `system_prompt` do agente em `docs/agente/system_prompt.md` espelha exatamente esses termos para garantir que respostas conversacionais usem a linguagem da DISEC.
 
 ---
 

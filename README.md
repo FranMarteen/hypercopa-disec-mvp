@@ -53,6 +53,21 @@ A jornada tem **3 caminhos** para a fase conversacional, escolhidos na sidebar:
 
 ---
 
+## O que você verá no app (UX da jornada)
+
+Quando o app sobe (`http://localhost:8501`), a banca encontra **quatro elementos visuais** que orientam a avaliação:
+
+| Elemento | Onde fica | O que faz |
+|---|---|---|
+| **Stepper de 7 etapas** | Topo de toda a página | Sete círculos numerados (0–6) na paleta BB; o atual em **amarelo `#FAE128`**, os concluídos em **azul `#003DA5`**, os futuros em cinza. Marca o progresso em tempo real. |
+| **Banner amarelo "Modo demonstração"** | Logo abaixo do header, quando o toggle da sidebar está ativo | Avisa que a sessão é Caminho C (offline, seed=42, cenário canônico DICOI). |
+| **Semáforo de risco · Etapa 6** | Centro da Etapa 6 | Três cards clicáveis (cenários DICOI / DISEC / DITEC) → predição com 🟢 baixo · 🟡 médio · 🔴 alto risco + recomendação operacional + botão "Pedir interpretação". |
+| **Botão único "📦 Baixar pacote"** | Etapa 4 | Gera **um único ZIP** com `relatorio.html`, `relatorio.json`, `summary.md`, `como_reproduzir.txt` e o `MVP_CANVAS.md`/`.docx`. É o anexo da entrega oficial. |
+
+> **Contexto legal.** Toda a terminologia (EAP, EAPs Padrão, Etapas, Licitação Eletrônica, Aditivo, Intercorrência) reflete a **Lei 13.303/16 — Lei das Estatais**. Glossário completo em [`docs/MVP_CANVAS.md` §8](docs/MVP_CANVAS.md#8-contexto-legal--lei-1330316-e-termos-oficiais).
+
+---
+
 ## Segurança e privacidade — leia antes de clonar
 
 Este repositório foi **revisado e anonimizado** para distribuição pública à banca avaliadora. **Nenhum dado real do Banco do Brasil ou pessoal está incluído.**
@@ -159,6 +174,35 @@ streamlit run app_agente_bb.py
 | `H2OConnectionError: Java not found` | Instale o JDK 17 ou 21 e reabra o terminal |
 | `MemoryError` ao iniciar H2O | Feche outros apps; H2O precisa de ~2 GB livres |
 | App carrega mas modo demo não pré-carrega CSV | Garanta que `dados_sinteticos/contratos.csv` existe (ele vem versionado no repo) |
+
+---
+
+## Pacote em PDF (offline) e zipão único da entrega
+
+Toda a documentação está disponível como **PDF renderizado** (com diagramas Mermaid embutidos como vetores) em [`docs/pdf/`](docs/pdf/). É o conteúdo recomendado para a banca **imprimir, anexar a e-mail ou abrir sem clonar o repo**.
+
+| Arquivo | Conteúdo |
+|---|---|
+| `docs/pdf/COMO_AVALIAR.pdf` | Roteiro narrado dos 7 passos (entregar primeiro à banca) |
+| `docs/pdf/README.pdf` | Este documento |
+| `docs/pdf/MVP_CANVAS.pdf` | MVP Canvas com glossário Lei 13.303/16 (§8) |
+| `docs/pdf/RELATORIO_SOLUCAO.pdf` | Relatório técnico estendido (arquitetura, privacidade, ROI) |
+| `docs/pdf/ENTREGA_TIME1_MODELOS.pdf` · `docs/pdf/ENTREGA_TIME2_AGENTE.pdf` | Entregas comparativas dos dois times |
+| `docs/pdf/FLUXOGRAMA.pdf` | Diagramas Mermaid dos 3 caminhos (A/B/C) |
+| `docs/pdf/DIAGRAMAS.pdf` | 5 diagramas Mermaid (jornada, privacidade, sequência, tecnologias, produção) |
+| `docs/pdf/PREDFY_OVERVIEW.pdf` | 1-pager visual com identidade BB |
+| `docs/pdf/diagramas/*.pdf` | Cada fluxograma como PDF standalone (12 arquivos) |
+
+**Pacote único para o capitão submeter à banca:** [`entregas/Predfy_Banca_Entrega.zip`](entregas/Predfy_Banca_Entrega.zip) reúne todos os PDFs + screenshots + relatório de exemplo num único arquivo (~ 4 MB).
+
+Para **regerar** os PDFs e o zipão localmente após qualquer ajuste nos `.md`:
+
+```powershell
+npm i -g @mermaid-js/mermaid-cli   # uma vez
+pip install markdown                 # uma vez
+python gerar_pdfs.py
+python gerar_zipao_banca.py
+```
 
 ---
 

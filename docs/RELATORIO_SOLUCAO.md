@@ -62,7 +62,7 @@ Hoje, transformar essas perguntas em modelos passa por:
 
 ## 3. Arquitetura
 
-A solução tem **dois caminhos paralelos** para a fase conversacional, com a mesma camada de treino e relatório local.
+A solução tem **três caminhos paralelos** para a fase conversacional, com a mesma camada de treino, intérprete e relatório local. **Caminho A** (OpenAI direto) é dev local; **Caminho B** (Microsoft Copilot do Teams) é produção BB; **Caminho C** (Modo Demonstração offline) é o caminho recomendado para a banca avaliadora.
 
 ### 3.1 Caminho A — OpenAI direto (chat embutido no app)
 
@@ -99,7 +99,43 @@ A solução tem **dois caminhos paralelos** para a fase conversacional, com a me
 
 > **Como criar o agente Copilot Studio:** ver `docs/COPILOT_STUDIO_GUIA.md` (passo-a-passo, 20-30 min, sem código).
 
-### 3.3 As 4 tools do agente (Caminho A) / blocos estruturados (Caminho B)
+### 3.3 Caminho C — Modo Demonstração offline (banca avaliadora)
+
+```
+┌──────────────────────────────────────────────────────┐
+│  APP STREAMLIT — Modo demo (Caminho C)               │
+│                                                       │
+│  ▶ Player de turnos pré-gravados                     │
+│  ──▶ docs/demo/script_turnos.json (10 turnos)        │
+│  ──▶ tool_calls REAIS no sandbox local               │
+│  ──▶ CSV final + meta.json                           │
+│  ──▶ H2O AutoML (seed=42, 60s) ──▶ Relatório         │
+└──────────────────────────────────────────────────────┘
+              │
+              ▼ (zero rede externa)
+        ┌─────────────────────────┐
+        │   NADA SAI DO LAPTOP    │
+        └─────────────────────────┘
+```
+
+**Por que Caminho C existe.** A banca testa em ambientes restritos (sem chave OpenAI, sem rede pública confiável) e tem janela curta de avaliação. Caminho C dispensa **qualquer** dependência externa — toda a jornada de 7 etapas roda offline, com cenário pré-curado *"EAP DICOI / vai atrasar?"* e **resultado idêntico em qualquer máquina** (seed=42).
+
+**Como funciona.**
+
+1. Banca ativa o toggle **🎓 Modo demonstração da banca** na sidebar.
+2. App pré-carrega `dados_sinteticos/contratos.csv` (1.959 linhas).
+3. Botão **▶ Próximo turno** lê o próximo turno determinístico de `docs/demo/script_turnos.json`.
+4. Cada turno executa **as mesmas 4 ferramentas** dos Caminhos A/B (`ler_schema`, `ler_amostra`, `executar_pandas`, `salvar_csv_final`) **de verdade** no sandbox local — só o "pensar" do LLM é substituído por leitura do script.
+5. Após o turno 10, o CSV final está pronto e a Etapa 2 desbloqueia.
+6. Etapas 2–4 são idênticas aos demais caminhos.
+7. Etapa 5 usa o intérprete rule-based local `app/interprete_rules.py` (UI estilo Teams, sem rede).
+8. Etapa 6 oferece **3 cenários pré-roteirizados** (DICOI / DISEC / DITEC) com **semáforo 🟢🟡🔴** + recomendação operacional.
+
+**Quando usar:** avaliação da banca, demos em ambientes sem rede, validação de reprodutibilidade.
+
+> **Auditabilidade total.** O `script_turnos.json` é versionado em git — qualquer revisor pode comparar passo-a-passo o que o agente "diz" no Caminho C com o que o LLM faria nos Caminhos A/B (mesmo `system_prompt`).
+
+### 3.4 As 4 tools do agente (Caminhos A e C) / blocos estruturados (Caminho B)
 
 | Operação | Caminho A (tool OpenAI) | Caminho B (saída do Copilot) |
 |---|---|---|
@@ -108,7 +144,7 @@ A solução tem **dois caminhos paralelos** para a fase conversacional, com a me
 | Executar preparação | `executar_pandas` (sandbox) | `PASSO_A_PASSO_PANDAS` no bloco, executado pelo app |
 | Salvar CSV final | `salvar_csv_final` | botão "Processar bloco" no app |
 
-### 3.4 Os 3 modelos preditivos disponíveis
+### 3.5 Os 3 modelos preditivos disponíveis
 
 | # | Modelo | Tipo | Target | Uso |
 |---|---|---|---|---|
@@ -135,6 +171,22 @@ A solução tem **dois caminhos paralelos** para a fase conversacional, com a me
 2. **Sidebar = estado**, **centro = ação** — usuário vê uploads e CSV gerado à esquerda, age no centro.
 3. **Etapa 2 desbloqueia automaticamente** quando o agente entrega o CSV — sem necessidade de navegação.
 4. **Relatório HTML autocontido** — abre em qualquer navegador, sem dependências, com identidade BB.
+5. **Stepper visual de 7 etapas** no topo de toda a página — círculos numerados na paleta BB (atual em amarelo, concluídos em azul, futuros em cinza). Banca acompanha o progresso em tempo real, sem precisar lembrar onde está.
+6. **Banner amarelo "Modo demonstração"** confirma sessão Caminho C; **botão único "📦 Baixar pacote"** na Etapa 4 entrega o ZIP unificado; **semáforo 🟢🟡🔴** na Etapa 6 traduz a probabilidade em decisão.
+
+### 4.4 Pacote ZIP unificado da entrega (Etapa 4)
+
+O botão **"📦 Baixar pacote da entrega"** monta em memória um único `.zip` com **5 artefatos auditáveis**:
+
+| Arquivo | Função |
+|---|---|
+| `relatorio.html` | Relatório visual autocontido (paleta BB) |
+| `relatorio.json` | Estrutura para auditoria + Copilot |
+| `summary.md` | Resumo executivo de 1 página |
+| `como_reproduzir.txt` | Comandos para regerar o resultado em qualquer máquina |
+| `MVP_CANVAS.md` / `.docx` | Canvas do MVP completo |
+
+> Esse ZIP é o anexo único da entrega oficial à banca. Substitui o vídeo regulamentar.
 
 ---
 
@@ -233,10 +285,15 @@ A solução tem **dois caminhos paralelos** para a fase conversacional, com a me
 
 ## 10. Equipe e responsabilidades
 
-- **Capitão da Equipe** — líder técnico, arquitetura da jornada, agente preparador, integração Copilot/Streamlit.
-- **Bento** — modelagem preditiva, feature engineering, validação dos 3 modelos H2O.
-- **João** — fluxo conversacional, refinamento do `system_prompt`, exemplos few-shot, identidade visual BB.
-- **Apoio**: DISEC — terminologia oficial BB e conformidade Lei 13.303/16.
+**Time 1 — Modelos Analíticos (camada analítica):**
+- **João 23** (capitão) · Francisco · Rosali · Silvia.
+- Responsabilidades: dados sintéticos, modelagem H2O AutoML, validação dos 3 modelos, schema unificado de saída JSON.
+
+**Time 2 — Agente IA + RPA (camada de interação):**
+- **Bento 14** (capitão) · Felipe · Amélia · Vânia · Rafael.
+- Responsabilidades: Agente Predfy (Caminhos A/B/C), pacote ZIP unificado, Intérprete Predfy, semáforo Etapa 6, identidade visual BB.
+
+**Apoio:** DISEC / CESUP-Contratações — terminologia oficial BB e conformidade Lei 13.303/16.
 
 ---
 

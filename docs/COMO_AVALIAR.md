@@ -38,6 +38,19 @@ O navegador abre em `http://localhost:8501`. Se não abrir, copie a URL do termi
 
 ---
 
+## 2.1. Validação visual — o que aparecer na tela
+
+Antes de iniciar o roteiro, confira que o app está **com a identidade BB e os componentes esperados**:
+
+1. **Header amarelo `#FAE128` + azul `#003DA5`** com o título "🟡 Predfy · Preparador + Modelo Analítico".
+2. **Stepper horizontal de 7 círculos numerados (0–6)** logo abaixo do header. O círculo atual em amarelo, concluídos em azul, futuros em cinza.
+3. **Banner amarelo** com a mensagem *"Modo demonstração da banca — sem chave OpenAI…"* aparece assim que o toggle for ligado.
+4. **Sidebar à esquerda** com o toggle modo demo, configuração de modelo (desabilitada em modo demo) e seções de upload/caminho local/demo notebook.
+
+Se algum desses elementos não aparecer, recarregue a página (`Ctrl+F5`). Se persistir, veja a Seção 5.
+
+---
+
 ## 3. Roteiro narrado dos 7 passos
 
 ### Etapa 0 — Construção dos dados sintéticos
@@ -124,10 +137,28 @@ Há 3 sub-caminhos:
 ### Etapa 6 — Testar em evento real
 
 **O que esperar.**
-- Em modo demo: 3 cenários pré-roteirizados como cards clicáveis (EAPs hipotéticas das áreas DICOI, DISEC, DITEC).
-- Clicar num cenário pré-preenche o formulário com valores realistas.
-- Predição mostrada com **semáforo** (🟢 / 🟡 / 🔴) e probabilidade.
-- Botão **"Pedir interpretação"** leva o resultado para a Etapa 5.
+
+3 cenários pré-roteirizados aparecem como **cards clicáveis** (cenários hipotéticos das áreas DICOI, DISEC, DITEC):
+
+| Cenário | Área demandante | Características | Risco esperado |
+|---|---|---|---|
+| **A — DICOI** | Diretoria de Controles Internos | Software de gestão · R$ 850k · fornecedor médio · 5 aditivos previstos | 🟡 médio |
+| **B — DISEC** | Diretoria de Logística | Reforma de agência · R$ 320k · fornecedor pequeno (ME) | 🔴 alto |
+| **C — DITEC** | Diretoria de Tecnologia | Cloud computing · R$ 2,1M · fornecedor grande · contrato continuado | 🟢 baixo |
+
+**Como funciona:**
+1. Clique num card → o formulário **preenche-se com valores realistas e determinísticos**.
+2. Clique em **"🔮 Predizer"**.
+3. O app mostra:
+   - **Probabilidade** do evento (atraso, intercorrência, ruptura — conforme modelo selecionado).
+   - **Semáforo de risco** com limiares por modelo:
+     - 🟢 **baixo** — probabilidade < 30 % (acompanhamento padrão)
+     - 🟡 **médio** — 30 a 60 % (alerta para o gestor da carteira)
+     - 🔴 **alto** — ≥ 60 % (sinalização DIJUR/escalonamento)
+   - **Recomendação operacional** sugerindo próximas ações.
+4. Botão **"Pedir interpretação ao Agente Predfy"** envia o JSON do caso para a Etapa 5.
+
+> Cada modelo (Atraso · Intercorrência · Ruptura) tem seu próprio limiar de semáforo, ajustado para minimizar falsos negativos em risco operacional do BB.
 
 ---
 
