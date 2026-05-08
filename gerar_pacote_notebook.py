@@ -37,6 +37,7 @@ ZIP_PATH = ENTREGAS_DIR / "Predfy_Notebook_Standalone.zip"
 ARQUIVOS = [
     "notebook_h2o_agente_mvp.ipynb",
     "requirements_app.txt",
+    "gerar_demo_eaps.py",                 # Caminho B — gera demo_eaps_vai_atrasar.csv
     "docs/agente/system_prompt.md",
     "docs/agente/tools_schema.json",
     "docs/demo/script_turnos.json",
@@ -55,6 +56,7 @@ Conteudo
 --------
 - notebook_h2o_agente_mvp.ipynb  : o notebook em si.
 - requirements_app.txt            : versoes pinadas das dependencias.
+- gerar_demo_eaps.py              : gerador do CSV de demo (Caminho B).
 - docs/agente/system_prompt.md    : prompt do agente OpenAI (Caminho A).
 - docs/agente/tools_schema.json   : schema das 4 tools (Caminho A).
 - docs/demo/script_turnos.json    : turnos pre-gravados (Caminho C, modo demo).
