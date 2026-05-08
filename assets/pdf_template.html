@@ -137,12 +137,22 @@
   tr:nth-child(even) td {
     background: var(--bb-fundo);
   }
-  .mermaid {
+  .mermaid, .mermaid-rendered {
     text-align: center;
-    margin: 1em 0;
+    margin: 1.2em 0;
     page-break-inside: avoid;
   }
-  .mermaid svg { max-width: 100%; height: auto; }
+  .mermaid svg, .mermaid-rendered svg {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+  }
+  .mermaid-rendered {
+    background: white;
+    padding: 8px;
+    border: 1px solid var(--bb-borda);
+    border-radius: 6px;
+  }
   .toc {
     background: var(--bb-fundo);
     border-left: 4px solid var(--bb-amarelo);
@@ -164,26 +174,6 @@
     color: var(--bb-azul-esc);
   }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'default',
-      themeVariables: {
-        primaryColor: '#FAE128',
-        primaryTextColor: '#1F1F1F',
-        primaryBorderColor: '#003DA5',
-        lineColor: '#003DA5',
-        secondaryColor: '#003DA5',
-        tertiaryColor: '#F7F8FA',
-        fontFamily: 'IBM Plex Sans, Segoe UI, Arial, sans-serif',
-      },
-      flowchart: { htmlLabels: true, curve: 'basis' },
-      sequence: { actorMargin: 50 }
-    });
-  });
-</script>
 </head>
 <body>
 

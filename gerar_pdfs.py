@@ -120,8 +120,44 @@ def slugify(text: str) -> str:
     return out[:50] or "diagrama"
 
 
+def renderizar_mermaid_para_svg(code: str, mmdc_path: str = "mmdc") -> str:
+    """Chama mmdc para converter codigo Mermaid em SVG inline.
+    Retorna o conteudo SVG (string) ou um <pre> de fallback em caso de falha.
+    """
+    import tempfile, os
+    tmpdir = Path(tempfile.mkdtemp(prefix="mermaid_svg_"))
+    try:
+        mmd = tmpdir / "diagram.mmd"
+        svg = tmpdir / "diagram.svg"
+        cfg = tmpdir / "config.json"
+        mmd.write_text(code, encoding="utf-8")
+        cfg.write_text(MMDC_CONFIG_JSON, encoding="utf-8")
+        cmd = [
+            mmdc_path,
+            "-i", str(mmd),
+            "-o", str(svg),
+            "-c", str(cfg),
+            "-b", "white",
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True, shell=True)
+        if result.returncode != 0 or not svg.exists():
+            print(f"    [mermaid->svg] FALHA: {result.stderr[:200]}")
+            return f"<pre><code>{code}</code></pre>"
+        svg_text = svg.read_text(encoding="utf-8")
+        # Remove declaracao XML (problema dentro de HTML inline)
+        svg_text = re.sub(r"<\?xml[^>]*\?>", "", svg_text).strip()
+        return f'<div class="mermaid-rendered">{svg_text}</div>'
+    finally:
+        try:
+            for f in tmpdir.iterdir():
+                f.unlink(missing_ok=True)
+            tmpdir.rmdir()
+        except Exception:
+            pass
+
+
 def md_para_html_com_mermaid(md_text: str) -> str:
-    """Converte Markdown em HTML, mantendo blocos mermaid como <div class='mermaid'>."""
+    """Converte Markdown em HTML, pre-renderizando blocos Mermaid em SVG via mmdc."""
     placeholder_blocks = []
 
     def replace_mermaid(match):
@@ -144,16 +180,14 @@ def md_para_html_com_mermaid(md_text: str) -> str:
     )
 
     for i, code in enumerate(placeholder_blocks):
-        # Mermaid CDN exige texto cru dentro do <div class="mermaid">
-        bloco_html = f'<div class="mermaid">\n{code}\n</div>'
+        svg_html = renderizar_mermaid_para_svg(code)
         # markdown lib costuma envelopar o placeholder em <p> — remover
         html = re.sub(
             rf"<p>\s*@@MERMAID_PLACEHOLDER_{i}@@\s*</p>",
-            bloco_html,
+            svg_html,
             html,
         )
-        # fallback caso não esteja em <p>
-        html = html.replace(f"@@MERMAID_PLACEHOLDER_{i}@@", bloco_html)
+        html = html.replace(f"@@MERMAID_PLACEHOLDER_{i}@@", svg_html)
 
     return html
 
