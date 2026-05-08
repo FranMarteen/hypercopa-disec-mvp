@@ -190,6 +190,40 @@ Confronto rápido para a banca confirmar que vê o mesmo que a equipe:
 | Modo demo não pré-carrega CSV | `dados_sinteticos/contratos.csv` ausente | Rode `python gerar_dados_sinteticos_eaps.py` |
 | Botões individuais retornam 404 | popup blocker do navegador | Permita downloads para `localhost:8501` |
 | Caminho A pede chave | sem `.env` configurado | Use o **Modo demo** ou configure `.env` |
+| **`pip install` cai com erro 10054 / WinError "conexão forçada a fechar"** (rede BB instável) | Firewall/proxy BB derruba conexões longas em pacotes grandes (`h2o` ~150 MB, `pandas`) | Veja a **estratégia de instalação resiliente** abaixo. |
+
+### 5.1. Erro `10054` na instalação dos pacotes (rede corporativa BB)
+
+Sintoma: rodar `pip install -r requirements_app.txt` (ou a célula `%pip install` do notebook) falha em pacotes grandes com:
+
+```
+WinError 10054 — Foi forçado o cancelamento de uma conexão existente pelo host remoto
+```
+
+**Estratégia em 3 níveis** (já automática no notebook, manual no app):
+
+1. **Trocar `pip` por `uv`** — retry automático e downloads em paralelo. No notebook isso já é feito automaticamente; no terminal (com `.venv` ativo) rode:
+   ```powershell
+   pip install --default-timeout=600 --retries 5 uv
+   $env:UV_HTTP_TIMEOUT="300"
+   uv pip install --python (Get-Command python).Source -r requirements_app.txt
+   ```
+2. **Pip clássico com retries longos:**
+   ```powershell
+   pip install --retries 5 --timeout 300 -r requirements_app.txt
+   ```
+3. **Instalar em lotes menores** (deixa o `h2o` por último — se cair, você só repete o lote do `h2o`):
+   ```powershell
+   pip install --retries 5 --timeout 300 pandas numpy scikit-learn
+   pip install --retries 5 --timeout 300 openai python-dotenv plotly streamlit psutil
+   pip install --retries 5 --timeout 300 h2o
+   ```
+
+> **Diagnóstico paralelo:** abra outro terminal e teste se a rede está estável agora:
+> ```powershell
+> curl https://pypi.org -UseBasicParsing
+> ```
+> Se demorar muito ou der erro, a rede BB está com problema — espere 5–10 min ou tente fora do horário de pico.
 
 ---
 

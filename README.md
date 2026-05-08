@@ -193,15 +193,23 @@ Toda a documentação está disponível como **PDF renderizado** (com diagramas 
 | `docs/pdf/PREDFY_OVERVIEW.pdf` | 1-pager visual com identidade BB |
 | `docs/pdf/diagramas/*.pdf` | Cada fluxograma como PDF standalone (12 arquivos) |
 
-**Pacote único para o capitão submeter à banca:** [`entregas/Predfy_Banca_Entrega.zip`](entregas/Predfy_Banca_Entrega.zip) reúne todos os PDFs + screenshots + relatório de exemplo num único arquivo (~ 4 MB).
+### Dois pacotes de entrega à banca (pre-empacotados em `entregas/`)
 
-Para **regerar** os PDFs e o zipão localmente após qualquer ajuste nos `.md`:
+| Pacote | Tamanho | Conteúdo | Quando usar |
+|---|---|---|---|
+| **`Predfy_Banca_Entrega.zip`** | ~ 4 MB | 11 PDFs principais + 12 fluxogramas standalone + 8 screenshots + relatório-exemplo + `LEIA_ME` | Banca quer **só ler** (Pitch Day, comitê de avaliação) |
+| **`Predfy_Notebook_Standalone.zip`** | ~ 0.1 MB | Apenas o `.ipynb` + 4 assets mínimos (system_prompt, tools_schema, script_turnos, contratos.csv) + `requirements_app.txt` + `LEIA_ME` | Banca quer **executar** o notebook num ambiente isolado, sem clonar o repo |
+
+> **O notebook tem bootstrap automático.** Se a banca receber apenas o `.ipynb` (sem o zip standalone), a célula 2.1 baixa os 4 assets do repo público via `raw.githubusercontent.com` e segue o fluxo. Se a rede BB bloquear o GitHub raw, o `Predfy_Notebook_Standalone.zip` resolve.
+
+Para **regerar** os PDFs e os 2 zips localmente após qualquer ajuste:
 
 ```powershell
 npm i -g @mermaid-js/mermaid-cli   # uma vez
 pip install markdown                 # uma vez
-python gerar_pdfs.py
-python gerar_zipao_banca.py
+python gerar_pdfs.py                 # gera docs/pdf/
+python gerar_zipao_banca.py          # gera Predfy_Banca_Entrega.zip
+python gerar_pacote_notebook.py      # gera Predfy_Notebook_Standalone.zip
 ```
 
 ---
