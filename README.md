@@ -5,7 +5,7 @@
 > (impugnação/recurso), atrasos e ruptura contratual.
 >
 > Desenvolvido em conjunto pelos **Times 1 e 2 da ECOA do CESUP-Contratações**
-> (Banco do Brasil) durante a HyperCopa DISEC 2026.
+> durante a HyperCopa DISEC 2026.
 >
 > **Time 1 — Modelos Analíticos:** João 23 (capitão) · Francisco · Rosali · Silvia
 > **Time 2 — Agente IA + RPA:** Bento 14 (capitão) · Felipe · Amélia · Vânia · Rafael
